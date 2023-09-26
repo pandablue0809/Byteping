@@ -1,0 +1,106 @@
+{
+  "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:prettier/recommended"],
+  "rules": {
+    // Indentation
+    "indent": ["error", 2],
+
+    // Semicolons
+    "semi": ["error", "always"],
+
+    // Quotes
+    "quotes": ["error", "double"],
+
+    // No console.log in production code
+    "no-console": "error",
+
+    // Warn about unused variables
+    "no-unused-vars": "warn",
+
+    // Disallow undeclared variables
+    "no-undef": "error",
+
+    // Disallow unnecessary semicolons
+    "no-extra-semi": "error",
+
+    // Enforce return statements in else blocks
+    "no-else-return": "error",
+
+    // Disallow implicit type coercion
+    "no-implicit-coercion": "error",
+
+    // Disallow multiple consecutive spaces
+    "no-multi-spaces": "error",
+
+    // Disallow trailing whitespace
+    "no-trailing-spaces": "error",
+
+    // Enforce newline at the end of files
+    "eol-last": "error",
+
+    // Disallow trailing commas in objects/arrays
+    "comma-dangle": ["error", "never"],
+
+    // Enforce parentheses around arrow function parameters
+    "arrow-parens": ["error", "always"],
+
+    // Enforce arrow functions with braces only if needed
+    "arrow-body-style": ["error", "as-needed"],
+
+    // Enforce consistent spacing in object literals
+    "object-curly-spacing": ["error", "always"],
+
+    // Allow any spacing in array literals
+    "array-bracket-spacing": ["error", "never"],
+
+    // Disallow usage of var
+    "no-var": "error",
+
+    // Prefer const over let when variable is not reassigned
+    "prefer-const": "error",
+
+    // Prefer template literals over string concatenation
+    "prefer-template": "error",
+
+    // Disallow use of variables before they are defined (except functions)
+    "no-use-before-define": ["error", { "functions": false }],
+
+    // Disallow variable shadowing in the same scope
+    "no-shadow": "error",
+
+    // Disallow specific syntax (ForInStatement, LabeledStatement)
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "ForInStatement",
+        "message": "for..in loops are discouraged. Use Object.keys() instead."
+      },
+      {
+        "selector": "LabeledStatement",
+        "message": "Labels are discouraged in modern code."
+      }
+    ],
+
+    // Allow underscores in properties
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+
+    // Prefer arrow functions as callbacks
+    "prefer-arrow-callback": "error",
+
+    // Prefer rest parameters over arguments
+    "prefer-rest-params": "error",
+
+    // Prefer spread operator over apply()
+    "prefer-spread": "error",
+
+    // Disallow assignments in return statements
+    "no-return-assign": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "next": {
+      "version": "detect"
+    }
+  }
+}
