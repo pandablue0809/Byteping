@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "@/Home.css";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -16,6 +17,7 @@ const SignUp = () => {
   const [picture, setPicture] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   function postDetails(pic: File | undefined) {
     setLoading(true);
@@ -49,9 +51,61 @@ const SignUp = () => {
     }
   }
 
-  function submitHandler() {
-    // submit
-  }
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!name || !email || !password || !picture || !confirmPassword) {
+      setLoading(false);
+      // eslint-disable-next-line no-console
+      console.log("Fill all the fields");
+      return;
+    }
+
+    if (password != confirmPassword) {
+      setLoading(false);
+      // eslint-disable-next-line no-console
+      console.log("Password is not matching");
+      return;
+    }
+
+    try {
+      const url = "http://localhost:5000/api/user/register";
+      const data = {
+        name,
+        email,
+        password,
+        picture
+      };
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((responseData) => {
+          // eslint-disable-next-line no-console
+          console.log("Response data:", responseData);
+          router.push("/chats");
+          localStorage.setItem("userInfo", JSON.stringify(responseData));
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.error("Error:", error);
+        });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="display-flex-col-login">
@@ -83,7 +137,7 @@ const SignUp = () => {
         }}
       />
 
-      <button onClick={() => submitHandler()}>{loading ? "loading" : "Sign Up"}</button>
+      <button onClick={submitHandler}>{loading ? "loading" : "Sign Up"}</button>
     </section>
   );
 };
