@@ -1,5 +1,7 @@
 {
-  "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     // Indentation
     "indent": ["error", 2],
@@ -44,7 +46,7 @@
     "arrow-parens": ["error", "always"],
 
     // Enforce arrow functions with braces only if needed
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": "off",
 
     // Enforce consistent spacing in object literals
     "object-curly-spacing": ["error", "always"],
@@ -81,7 +83,7 @@
     ],
 
     // Allow underscores in properties
-    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "no-underscore-dangle": "off",
 
     // Prefer arrow functions as callbacks
     "prefer-arrow-callback": "error",
