@@ -3,58 +3,45 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion, useAnimate, stagger, AnimatePresence } from "framer-motion";
+import { useMutation } from "@tanstack/react-query";
+import { loginSubmitHandler } from "@/util/http";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [scope, animate] = useAnimate();
 
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: loginSubmitHandler,
+    onSuccess: (responseData) => {
+      // eslint-disable-next-line no-console
+      console.log("Response data:", responseData);
+      localStorage.setItem("userInfo", JSON.stringify(responseData));
+      router.push("/chats");
+    },
+    onError: (err) => {
+      // eslint-disable-next-line no-console
+      console.error("Login error:", err);
+    }
+  });
+
   const submitHandler = async () => {
-    setLoading(true);
     if (!email || !password) {
-      setLoading(false);
-      animate("input", { x: [-20, 0, 20, 0] }, { type: "spring", duration: 0.5, delay: stagger(0.05) });
+      animate("input", { x: [-20, 0, 20, 0] }, { type: "spring", delay: stagger(0.1) });
       // eslint-disable-next-line no-console
       console.log("Fill email and password");
       return;
     }
 
+    const data = { email, password };
     try {
-      const data = {
-        email,
-        password
-      };
-
-      const response = await fetch("http://localhost:5000/api/user/login", {
-        method: "post",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-      if (response.ok) {
-        const responseData = await response.json();
-        // eslint-disable-next-line no-console
-        console.log("Response data:", responseData);
-        localStorage.setItem("userInfo", JSON.stringify(responseData));
-        router.push("/chats");
-      } else {
-        if (response.status === 401) {
-          // eslint-disable-next-line no-console
-          console.error("Authentication failed: Invalid email or password");
-        } else {
-          // eslint-disable-next-line no-console
-          console.error("Authentication failed: Server error");
-        }
-      }
+      await mutateAsync({ data });
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error:", error);
-    } finally {
-      setLoading(false);
+      return;
     }
   };
 
@@ -85,7 +72,7 @@ const Login = () => {
           />
           <button onClick={() => setShowPassword((prev: boolean) => !prev)}>{showPassword ? "Hide" : "Show"}</button>
         </div>
-        <button onClick={submitHandler}>{loading ? "Loading" : "Login"}</button>
+        <button onClick={submitHandler}>{isPending ? "Submitting..." : "Login"}</button>
         <motion.button
           onClick={guestSubmitHandler}
           whileHover={{ scale: [0.8, 1.2, 1], backgroundColor: "#0ff", color: "#fff" }}

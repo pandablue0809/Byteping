@@ -17,6 +17,20 @@ export const fetchChats = async ({ signal, name = "" }) => {
   return data;
 };
 
-// export const loginSubmitHandler = async () => {};
-
-export async function loginSubmitHandler() {}
+export const loginSubmitHandler = async ({ data }) => {
+  const response = await fetch("http://localhost:5000/api/user/login", {
+    method: "post",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+  if (!response.ok) {
+    const error = new Error("Failed to authenticate");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+  const responseData = await response.json();
+  return responseData;
+};
