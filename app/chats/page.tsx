@@ -1,8 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fetchChats } from "@/util/http";
+import { fetchChats } from "@/utils/http";
 import { useQuery } from "@tanstack/react-query";
+import { ChatState } from "@/context/ChatProvider";
+import SideDrawer from "@/components/SideDrawer/SideDrawer";
+import MyChats from "@/components/MyChats/MyChats";
+import ChatBox from "@/components/ChatBox/ChatBox";
+import Container from "@/styles/Container.styled";
 
 type Chat = {
   _id: string;
@@ -10,6 +15,8 @@ type Chat = {
 };
 
 const Home = () => {
+  const { user } = ChatState() || { user: null };
+
   const {
     data: chats,
     isLoading,
@@ -74,6 +81,14 @@ const Home = () => {
             {chat.chatName}
           </motion.div>
         ))}
+
+        <Container padding={[100, 200, 100, 200]} border="4px solid red" borderRadius="4px">
+          {user && <SideDrawer />}
+        </Container>
+        <section style={{ display: "flex", width: "100%", gap: "30px" }}>
+          {user && <MyChats />}
+          {user && <ChatBox />}
+        </section>
       </motion.div>
     );
   }

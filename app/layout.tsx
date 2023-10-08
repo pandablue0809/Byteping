@@ -1,7 +1,8 @@
 import React from "react";
-import "@/styles/global.css";
 import type { Metadata } from "next";
 import ReactQueryProvider from "./providers/ReactQueryProvider";
+import ChatProvider from "./context/ChatProvider";
+import StyledComponentsProvider from "./providers/StyledComponentsProvider";
 
 export const metadata: Metadata = {
   title: "BytePing",
@@ -11,9 +12,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <ReactQueryProvider>
-        <body>{children}</body>
-      </ReactQueryProvider>
+      <StyledComponentsProvider>
+        <ChatProvider>
+          <ReactQueryProvider>
+            <body>{children}</body>
+          </ReactQueryProvider>
+        </ChatProvider>
+      </StyledComponentsProvider>
     </html>
   );
 }

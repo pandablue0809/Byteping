@@ -1,5 +1,5 @@
 export const fetchChats = async ({ signal, name = "" }) => {
-  let url = "http://localhost:5000/api/chats";
+  let url = "http://localhost:5000/api/dummy/chats";
 
   if (name !== "") {
     const trimmedName = name.replace(/\s/g, "").toLowerCase();

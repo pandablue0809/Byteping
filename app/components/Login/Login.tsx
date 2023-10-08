@@ -4,20 +4,23 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion, useAnimate, stagger, AnimatePresence } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
-import { loginSubmitHandler } from "@/util/http";
+import { loginSubmitHandler } from "@/utils/http";
+import { ChatState } from "@/context/ChatProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
   const [scope, animate] = useAnimate();
+  const { setUser } = ChatState()!;
+  const router = useRouter();
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: loginSubmitHandler,
     onSuccess: (responseData) => {
       // eslint-disable-next-line no-console
       console.log("Response data:", responseData);
+      setUser(responseData);
       localStorage.setItem("userInfo", JSON.stringify(responseData));
       router.push("/chats");
     },

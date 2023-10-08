@@ -16,14 +16,20 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.2.1",
     "@tanstack/react-query": "^5.0.0-beta.35",
     "framer-motion": "^10.16.4",
-    "next": "13.5.2",
+    "next": "^13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^6.0.8"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.1",
+    "@semantic-release/release-notes-generator": "^12.0.0",
     "@types/node": "^20.8.0",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
