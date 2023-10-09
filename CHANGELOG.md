@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/arjunan-k/byteping/compare/v1.0.0...v1.1.0) (2023-10-09)
+
+
+### Features
+
+* **style:** create custom flex container using styled components ([aaf0690](https://github.com/arjunan-k/byteping/commit/aaf069003fdfa5ab1b531986587f45512d5f4f70))
+
 # 1.0.0 (2023-10-08)
 
 
