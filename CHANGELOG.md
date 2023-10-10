@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/arjunan-k/byteping/compare/v1.1.0...v1.2.0) (2023-10-10)
+
+
+### Features
+
+* **font:** setup global font for the app ([675f2cb](https://github.com/arjunan-k/byteping/commit/675f2cb35afea4fbca5848ce6f9f28e68d6d862c))
+
 # [1.1.0](https://github.com/arjunan-k/byteping/compare/v1.0.0...v1.1.0) (2023-10-09)
 
 
