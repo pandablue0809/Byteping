@@ -34,12 +34,12 @@ const Container = styled.div.withConfig({
   text-align: ${({ textAlign = "left" }) => textAlign};
   border-radius: ${({ borderRadius = "0px" }) => borderRadius};
   border: ${({ border = "1px solid #000" }) => border};
-  box-shadow: ${({ boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)" }) => boxShadow};
-  transition: ${({ transition = "transform 0.3s, box-shadow 0.3s" }) => transition};
+  box-shadow: ${({ boxShadow }) => boxShadow};
+  transition: ${({ transition }) => transition};
 
   &:hover {
-    box-shadow: ${({ hBoxShadow = "0 0 20px rgba(0, 0, 0, 0.6)" }) => hBoxShadow};
-    transform: ${({ hTransform = "scale(1.025)" }) => hTransform};
+    box-shadow: ${({ hBoxShadow }) => hBoxShadow};
+    transform: ${({ hTransform }) => hTransform};
   }
 
   @media (max-width: ${({ theme }) => theme.mobile}) {

@@ -20,6 +20,15 @@ interface FlexProps {
   transition?: string;
   hTransform?: string;
   borderRadius?: string;
+  display?: string;
+  flexDirection?: string;
+  mFlexDirection?: string;
+  gap?: string;
+  mGap?: string;
+  alignItems?: string;
+  mAlignItems?: string;
+  justifyContent?: string;
+  mJustifyContent?: string;
 }
 
 const Flex = styled.div.withConfig({
@@ -34,12 +43,17 @@ const Flex = styled.div.withConfig({
   text-align: ${({ textAlign = "left" }) => textAlign};
   border-radius: ${({ borderRadius = "0px" }) => borderRadius};
   border: ${({ border = "1px solid #000" }) => border};
-  box-shadow: ${({ boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)" }) => boxShadow};
-  transition: ${({ transition = "transform 0.3s, box-shadow 0.3s" }) => transition};
+  box-shadow: ${({ boxShadow }) => boxShadow};
+  transition: ${({ transition }) => transition};
+  display: ${({ display = "flex" }) => display};
+  flex-direction: ${({ flexDirection = "row" }) => flexDirection};
+  gap: ${({ gap = "0px" }) => gap};
+  align-items: ${({ alignItems = "flex-start" }) => alignItems};
+  justify-content: ${({ justifyContent = "flex-start" }) => justifyContent};
 
   &:hover {
-    box-shadow: ${({ hBoxShadow = "0 0 20px rgba(0, 0, 0, 0.6)" }) => hBoxShadow};
-    transform: ${({ hTransform = "scale(1.025)" }) => hTransform};
+    box-shadow: ${({ hBoxShadow }) => hBoxShadow};
+    transform: ${({ hTransform }) => hTransform};
   }
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
@@ -48,6 +62,10 @@ const Flex = styled.div.withConfig({
     width: ${({ mWidth }) => mWidth};
     height: ${({ mHeight }) => mHeight};
     text-align: ${({ mTextAlign = "center" }) => mTextAlign};
+    flex-direction: ${({ mFlexDirection }) => mFlexDirection};
+    gap: ${({ mGap }) => mGap};
+    align-items: ${({ mAlignItems }) => mAlignItems};
+    justify-content: ${({ mJustifyContent }) => mJustifyContent};
   }
 `;
 

@@ -8,6 +8,9 @@ import SideDrawer from "@/components/SideDrawer/SideDrawer";
 import MyChats from "@/components/MyChats/MyChats";
 import ChatBox from "@/components/ChatBox/ChatBox";
 import Container from "@/styles/Container.styled";
+import Flex from "@/styles/Flex.styled";
+import Text from "@/styles/Text.styled";
+import Theme from "@/styles/Theme.styled";
 
 type Chat = {
   _id: string;
@@ -85,6 +88,32 @@ const Home = () => {
         <Container padding={[100, 200, 100, 200]} border="4px solid red" borderRadius="4px">
           {user && <SideDrawer />}
         </Container>
+
+        <Flex
+          padding={[32, 32, 32, 32]}
+          mPadding={[24, 24, 24, 24]}
+          backgroundColor="#8EA7E9"
+          textColor="#000"
+          justifyContent="space-between"
+        >
+          <Container>Search User</Container>
+          <Text
+            fontFamily={Theme.fonts.teritiary}
+            fontSize="30px"
+            letterSpacing="1.6px"
+            wordSpacing="0"
+            color="#000000"
+            fontWeight="700"
+            textDecoration="none"
+            fontStyle="normal"
+            fontVariant="small-caps"
+            textTransform="uppercase"
+          >
+            BytePing
+          </Text>
+          <Container>Account</Container>
+        </Flex>
+
         <section style={{ display: "flex", width: "100%", gap: "30px" }}>
           {user && <MyChats />}
           {user && <ChatBox />}
