@@ -4,64 +4,64 @@ import isPropValid from "@emotion/is-prop-valid";
 interface FlexProps {
   backgroundColor?: string;
   textColor?: string;
-  padding?: [number, number, number, number];
-  mPadding?: [number, number, number, number];
-  margin?: [number, number, number, number];
-  mMargin?: [number, number, number, number];
+  padding?: [string, string, string, string];
+  margin?: [string, string, string, string];
   width?: string;
-  mWidth?: string;
   height?: string;
-  mHeight?: string;
   textAlign?: string;
-  mTextAlign?: string;
   border?: string;
   boxShadow?: string;
-  hBoxShadow?: string;
   transition?: string;
-  hTransform?: string;
   borderRadius?: string;
   display?: string;
   flexDirection?: string;
-  mFlexDirection?: string;
   gap?: string;
-  mGap?: string;
   alignItems?: string;
-  mAlignItems?: string;
   justifyContent?: string;
+  hBoxShadow?: string;
+  hTransform?: string;
+  mPadding?: [string, string, string, string];
+  mMargin?: [string, string, string, string];
+  mWidth?: string;
+  mHeight?: string;
+  mTextAlign?: string;
+  mFlexDirection?: string;
+  mGap?: string;
+  mAlignItems?: string;
   mJustifyContent?: string;
 }
 
 const Flex = styled.div.withConfig({
   shouldForwardProp: (prop) => isPropValid(prop)
 })<FlexProps>`
-  background-color: ${({ theme, backgroundColor = theme.colors.primary }) => backgroundColor};
-  color: ${({ theme, textColor = theme.colors.secondary }) => textColor};
-  padding: ${({ padding = [0, 0, 0, 0] }) => `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`};
-  margin: ${({ margin = [0, 0, 0, 0] }) => `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`};
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ textColor }) => textColor};
+  padding: ${({ padding = ["0", "0", "0", "0"] }) => `${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}`};
+  margin: ${({ margin = ["0", "0", "0", "0"] }) => `${margin[0]} ${margin[1]} ${margin[2]} ${margin[3]}`};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  text-align: ${({ textAlign = "left" }) => textAlign};
-  border-radius: ${({ borderRadius = "0px" }) => borderRadius};
-  border: ${({ border = "1px solid #000" }) => border};
+  text-align: ${({ textAlign }) => textAlign};
+  border: ${({ border }) => border};
   box-shadow: ${({ boxShadow }) => boxShadow};
   transition: ${({ transition }) => transition};
+  border-radius: ${({ borderRadius }) => borderRadius};
   display: ${({ display = "flex" }) => display};
-  flex-direction: ${({ flexDirection = "row" }) => flexDirection};
-  gap: ${({ gap = "0px" }) => gap};
-  align-items: ${({ alignItems = "flex-start" }) => alignItems};
-  justify-content: ${({ justifyContent = "flex-start" }) => justifyContent};
+  flex-direction: ${({ flexDirection }) => flexDirection};
+  gap: ${({ gap }) => gap};
+  align-items: ${({ alignItems }) => alignItems};
+  justify-content: ${({ justifyContent }) => justifyContent};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
     transform: ${({ hTransform }) => hTransform};
   }
 
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    padding: ${({ mPadding = [0, 0, 0, 0] }) => `${mPadding[0]}px ${mPadding[1]}px ${mPadding[2]}px ${mPadding[3]}px`};
-    margin: ${({ mMargin = [0, 0, 0, 0] }) => `${mMargin[0]}px ${mMargin[1]}px ${mMargin[2]}px ${mMargin[3]}px`};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ mPadding = ["0", "0", "0", "0"] }) => `${mPadding[0]} ${mPadding[1]} ${mPadding[2]} ${mPadding[3]}`};
+    margin: ${({ mMargin = ["0", "0", "0", "0"] }) => `${mMargin[0]} ${mMargin[1]} ${mMargin[2]} ${mMargin[3]}`};
     width: ${({ mWidth }) => mWidth};
     height: ${({ mHeight }) => mHeight};
-    text-align: ${({ mTextAlign = "center" }) => mTextAlign};
+    text-align: ${({ mTextAlign }) => mTextAlign};
     flex-direction: ${({ mFlexDirection }) => mFlexDirection};
     gap: ${({ mGap }) => mGap};
     align-items: ${({ mAlignItems }) => mAlignItems};

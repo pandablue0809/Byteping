@@ -4,16 +4,8 @@ import isPropValid from "@emotion/is-prop-valid";
 interface TextProps {
   bg?: string;
   color?: string;
-  padding?: [number, number, number, number];
-  margin?: [number, number, number, number];
-  hBg?: string;
-  hColor?: string;
-  hPadding?: [number, number, number, number];
-  hMargin?: [number, number, number, number];
-  mBg?: string;
-  mColor?: string;
-  mPadding?: [number, number, number, number];
-  mMargin?: [number, number, number, number];
+  padding?: [string, string, string, string];
+  margin?: [string, string, string, string];
   fontSize?: string;
   fontFamily?: string;
   lineHeight?: string;
@@ -24,6 +16,11 @@ interface TextProps {
   textDecoration?: string;
   fontVariant?: string;
   textTransform?: string;
+  opacity?: string;
+  hBg?: string;
+  hColor?: string;
+  hPadding?: [string, string, string, string];
+  hMargin?: [string, string, string, string];
   hFontSize?: string;
   hFontFamily?: string;
   hLineHeight?: string;
@@ -34,6 +31,11 @@ interface TextProps {
   hTextDecoration?: string;
   hFontVariant?: string;
   hTextTransform?: string;
+  hOpacity?: string;
+  mBg?: string;
+  mColor?: string;
+  mPadding?: [string, string, string, string];
+  mMargin?: [string, string, string, string];
   mFontSize?: string;
   mFontFamily?: string;
   mLineHeight?: string;
@@ -44,31 +46,33 @@ interface TextProps {
   mTextDecoration?: string;
   mFontVariant?: string;
   mTextTransform?: string;
+  mOpacity?: string;
 }
 
 const Text = styled.p.withConfig({
   shouldForwardProp: (prop) => isPropValid(prop)
 })<TextProps>`
-  background: ${({ bg = "transparent" }) => bg};
-  color: ${({ color = "black" }) => color};
-  padding: ${({ padding = [0, 0, 0, 0] }) => `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px`};
-  margin: ${({ margin = [0, 0, 0, 0] }) => `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`};
+  background: ${({ bg }) => bg};
+  color: ${({ color }) => color};
+  padding: ${({ padding = ["0", "0", "0", "0"] }) => `${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}`};
+  margin: ${({ margin = ["0", "0", "0", "0"] }) => `${margin[0]} ${margin[1]} ${margin[2]} ${margin[3]}`};
   font-size: ${({ fontSize }) => fontSize};
   font-family: ${({ fontFamily }) => fontFamily};
   line-height: ${({ lineHeight }) => lineHeight};
   font-style: ${({ fontStyle }) => fontStyle};
   font-weight: ${({ fontWeight }) => fontWeight};
-  letter-spacing: ${({ letterSpacing }) => letterSpacing};
+  letterspacing: ${({ letterSpacing }) => letterSpacing};
   word-spacing: ${({ wordSpacing }) => wordSpacing};
   text-decoration: ${({ textDecoration }) => textDecoration};
   font-variant: ${({ fontVariant }) => fontVariant};
   text-transform: ${({ textTransform }) => textTransform};
+  opacity: ${({ opacity }) => opacity};
 
   &:hover {
-    background: ${({ hBg = "transparent" }) => hBg};
-    color: ${({ hColor = "black" }) => hColor};
-    padding: ${({ hPadding = [0, 0, 0, 0] }) => `${hPadding[0]}px ${hPadding[1]}px ${hPadding[2]}px ${hPadding[3]}px`};
-    margin: ${({ hMargin = [0, 0, 0, 0] }) => `${hMargin[0]}px ${hMargin[1]}px ${hMargin[2]}px ${hMargin[3]}px`};
+    background: ${({ hBg }) => hBg};
+    color: ${({ hColor }) => hColor};
+    padding: ${({ hPadding = ["0", "0", "0", "0"] }) => `${hPadding[0]} ${hPadding[1]} ${hPadding[2]} ${hPadding[3]}`};
+    margin: ${({ hMargin = ["0", "0", "0", "0"] }) => `${hMargin[0]} ${hMargin[1]} ${hMargin[2]} ${hMargin[3]}`};
     font-size: ${({ hFontSize }) => hFontSize};
     font-family: ${({ hFontFamily }) => hFontFamily};
     line-height: ${({ hLineHeight }) => hLineHeight};
@@ -79,13 +83,14 @@ const Text = styled.p.withConfig({
     text-decoration: ${({ hTextDecoration }) => hTextDecoration};
     font-variant: ${({ hFontVariant }) => hFontVariant};
     text-transform: ${({ hTextTransform }) => hTextTransform};
+    opacity: ${({ hOpacity }) => hOpacity};
   }
 
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    background: ${({ mBg = "transparent" }) => mBg};
-    color: ${({ mColor = "black" }) => mColor};
-    padding: ${({ mPadding = [0, 0, 0, 0] }) => `${mPadding[0]}px ${mPadding[1]}px ${mPadding[2]}px ${mPadding[3]}px`};
-    margin: ${({ mMargin = [0, 0, 0, 0] }) => `${mMargin[0]}px ${mMargin[1]}px ${mMargin[2]}px ${mMargin[3]}px`};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    background: ${({ mBg }) => mBg};
+    color: ${({ mColor }) => mColor};
+    padding: ${({ mPadding = ["0", "0", "0", "0"] }) => `${mPadding[0]} ${mPadding[1]} ${mPadding[2]} ${mPadding[3]}`};
+    margin: ${({ mMargin = ["0", "0", "0", "0"] }) => `${mMargin[0]} ${mMargin[1]} ${mMargin[2]} ${mMargin[3]}`};
     font-size: ${({ mFontSize }) => mFontSize};
     font-family: ${({ mFontFamily }) => mFontFamily};
     line-height: ${({ mLineHeight }) => mLineHeight};
@@ -96,6 +101,7 @@ const Text = styled.p.withConfig({
     text-decoration: ${({ mTextDecoration }) => mTextDecoration};
     font-variant: ${({ mFontVariant }) => mFontVariant};
     text-transform: ${({ mTextTransform }) => mTextTransform};
+    opacity: ${({ mOpacity }) => mOpacity};
   }
 `;
 

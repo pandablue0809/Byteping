@@ -1,13 +1,24 @@
 const Theme = {
   colors: {
-    primary: "#A8DF8E",
-    secondary: "#F2EE9D"
+    violet: "#615EF0",
+    green: "#68D391",
+    lightGreen: "#C6F6D5",
+    darkGreen: "#38A169",
+    lightOrange: "#FEEBC8",
+    darkOrange: "#DD6B20",
+    white: "#FFF",
+    black: "#000",
+    grey: "#F1F1F1",
+    lightGrey: "#CBD5E0",
+    darkGrey: "#F3F3F3",
+    extraDarkGrey: "#718096"
   },
-  mobile: "768px",
+  breakpoints: {
+    mobile: "768px"
+  },
   fonts: {
-    primary: "Anton",
-    secondary: "sans-serif",
-    teritiary: "Nunito"
+    primary: "Metropolis",
+    secondary: "sans-serif"
   }
 };
 

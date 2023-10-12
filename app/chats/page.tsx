@@ -85,20 +85,14 @@ const Home = () => {
           </motion.div>
         ))}
 
-        <Container padding={[100, 200, 100, 200]} border="4px solid red" borderRadius="4px">
+        <Container border="4px solid red" borderRadius="4px">
           {user && <SideDrawer />}
         </Container>
 
-        <Flex
-          padding={[32, 32, 32, 32]}
-          mPadding={[24, 24, 24, 24]}
-          backgroundColor="#8EA7E9"
-          textColor="#000"
-          justifyContent="space-between"
-        >
+        <Flex backgroundColor="#8EA7E9" textColor="#000" justifyContent="space-between">
           <Container>Search User</Container>
           <Text
-            fontFamily={Theme.fonts.teritiary}
+            fontFamily={Theme.fonts.secondary}
             fontSize="30px"
             letterSpacing="1.6px"
             wordSpacing="0"
