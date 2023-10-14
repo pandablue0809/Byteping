@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/arjunan-k/byteping/compare/v1.2.0...v1.3.0) (2023-10-12)
+
+
+### Features
+
+* **ui:** setup figma font colors and styled global components ([fb57908](https://github.com/arjunan-k/byteping/commit/fb579087ee9585bb5fa2b6c3c4d1d19af4b701b3))
+
 # [1.2.0](https://github.com/arjunan-k/byteping/compare/v1.1.0...v1.2.0) (2023-10-10)
 
 
