@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ChatState } from "@/context/ChatProvider";
 import SideDrawer from "@/components/SideDrawer/SideDrawer";
 import MyChats from "@/components/MyChats/MyChats";
-import ChatBox from "@/components/ChatBox/ChatBox";
+import ChatBox from "@/components/ChatBox";
 import Container from "@/styles/Container.styled";
 import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";

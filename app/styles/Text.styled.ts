@@ -4,8 +4,8 @@ import isPropValid from "@emotion/is-prop-valid";
 interface TextProps {
   bg?: string;
   color?: string;
-  padding?: [string, string, string, string];
-  margin?: [string, string, string, string];
+  padding?: string;
+  margin?: string;
   fontSize?: string;
   fontFamily?: string;
   lineHeight?: string;
@@ -19,8 +19,8 @@ interface TextProps {
   opacity?: string;
   hBg?: string;
   hColor?: string;
-  hPadding?: [string, string, string, string];
-  hMargin?: [string, string, string, string];
+  hPadding?: string;
+  hMargin?: string;
   hFontSize?: string;
   hFontFamily?: string;
   hLineHeight?: string;
@@ -34,8 +34,8 @@ interface TextProps {
   hOpacity?: string;
   mBg?: string;
   mColor?: string;
-  mPadding?: [string, string, string, string];
-  mMargin?: [string, string, string, string];
+  mPadding?: string;
+  mMargin?: string;
   mFontSize?: string;
   mFontFamily?: string;
   mLineHeight?: string;
@@ -54,14 +54,14 @@ const Text = styled.p.withConfig({
 })<TextProps>`
   background: ${({ bg }) => bg};
   color: ${({ color }) => color};
-  padding: ${({ padding = ["0", "0", "0", "0"] }) => `${padding[0]} ${padding[1]} ${padding[2]} ${padding[3]}`};
-  margin: ${({ margin = ["0", "0", "0", "0"] }) => `${margin[0]} ${margin[1]} ${margin[2]} ${margin[3]}`};
+  padding: ${({ padding }) => padding};
+  margin: ${({ margin }) => margin};
   font-size: ${({ fontSize }) => fontSize};
   font-family: ${({ fontFamily }) => fontFamily};
   line-height: ${({ lineHeight }) => lineHeight};
   font-style: ${({ fontStyle }) => fontStyle};
   font-weight: ${({ fontWeight }) => fontWeight};
-  letterspacing: ${({ letterSpacing }) => letterSpacing};
+  letter-spacing: ${({ letterSpacing }) => letterSpacing};
   word-spacing: ${({ wordSpacing }) => wordSpacing};
   text-decoration: ${({ textDecoration }) => textDecoration};
   font-variant: ${({ fontVariant }) => fontVariant};
@@ -71,8 +71,8 @@ const Text = styled.p.withConfig({
   &:hover {
     background: ${({ hBg }) => hBg};
     color: ${({ hColor }) => hColor};
-    padding: ${({ hPadding = ["0", "0", "0", "0"] }) => `${hPadding[0]} ${hPadding[1]} ${hPadding[2]} ${hPadding[3]}`};
-    margin: ${({ hMargin = ["0", "0", "0", "0"] }) => `${hMargin[0]} ${hMargin[1]} ${hMargin[2]} ${hMargin[3]}`};
+    padding: ${({ hPadding }) => hPadding};
+    margin: ${({ hMargin }) => hMargin};
     font-size: ${({ hFontSize }) => hFontSize};
     font-family: ${({ hFontFamily }) => hFontFamily};
     line-height: ${({ hLineHeight }) => hLineHeight};
@@ -89,8 +89,8 @@ const Text = styled.p.withConfig({
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     background: ${({ mBg }) => mBg};
     color: ${({ mColor }) => mColor};
-    padding: ${({ mPadding = ["0", "0", "0", "0"] }) => `${mPadding[0]} ${mPadding[1]} ${mPadding[2]} ${mPadding[3]}`};
-    margin: ${({ mMargin = ["0", "0", "0", "0"] }) => `${mMargin[0]} ${mMargin[1]} ${mMargin[2]} ${mMargin[3]}`};
+    padding: ${({ mPadding }) => mPadding};
+    margin: ${({ mMargin }) => mMargin};
     font-size: ${({ mFontSize }) => mFontSize};
     font-family: ${({ mFontFamily }) => mFontFamily};
     line-height: ${({ mLineHeight }) => mLineHeight};

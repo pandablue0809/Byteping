@@ -1,17 +1,17 @@
 "use client";
 
+import React from "react";
 import Container from "@/styles/Container.styled";
 import Theme from "@/styles/Theme.styled";
-import React from "react";
+import Navbar from "@/components/Navbar";
+import ChatBox from "@/components/ChatBox";
 
 const Home = () => {
   return (
-    <Container
-      backgroundColor={Theme.colors.violet}
-      minHeight="100vh"
-      padding={["64px", "64px", "64px", "64px"]}
-      mPadding={["32px", "32px", "32px", "32px"]}
-    ></Container>
+    <Container as={"main"} backgroundColor={Theme.colors.violet} minHeight="100vh" padding="48px" mPadding="24px">
+      <Navbar />
+      <ChatBox />
+    </Container>
   );
 };
 
