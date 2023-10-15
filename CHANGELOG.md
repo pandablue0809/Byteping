@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/arjunan-k/byteping/compare/v1.3.0...v1.4.0) (2023-10-14)
+
+
+### Features
+
+* **ui:** build ui for navbar and chat window ([c325d5d](https://github.com/arjunan-k/byteping/commit/c325d5d59300528158abb30b140a279c0a9e5c4b))
+
 # [1.3.0](https://github.com/arjunan-k/byteping/compare/v1.2.0...v1.3.0) (2023-10-12)
 
 
