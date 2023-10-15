@@ -14,8 +14,10 @@ interface ContainerProps {
   boxShadow?: string;
   transition?: string;
   borderRadius?: string;
+  cursor?: string;
   hBoxShadow?: string;
   hTransform?: string;
+  hBackgroundColor?: string;
   mPadding?: string;
   mMargin?: string;
   mWidth?: string;
@@ -37,11 +39,13 @@ const Container = styled.div.withConfig({
   border: ${({ border }) => border};
   boxshadow: ${({ boxShadow }) => boxShadow};
   transition: ${({ transition }) => transition};
-  border-radius: ${({ borderRadius = "0" }) => borderRadius};
+  border-radius: ${({ borderRadius }) => borderRadius};
+  cursor: ${({ cursor }) => cursor};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
     transform: ${({ hTransform }) => hTransform};
+    background-color: ${({ hBackgroundColor }) => hBackgroundColor};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

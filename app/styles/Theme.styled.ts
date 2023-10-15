@@ -1,6 +1,7 @@
 const Theme = {
   colors: {
     violet: "#615EF0",
+    lightViolet: "#615ef0cc",
     green: "#68D391",
     lightGreen: "#C6F6D5",
     darkGreen: "#38A169",

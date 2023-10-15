@@ -4,6 +4,7 @@ import ReactQueryProvider from "./providers/ReactQueryProvider";
 import ChatProvider from "./context/ChatProvider";
 import StyledComponentsProvider from "./providers/StyledComponentsProvider";
 import { Nunito } from "next/font/google";
+import DarkLightModeProvider from "./context/DarkLightModeProvider";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -16,11 +17,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <StyledComponentsProvider>
-        <ChatProvider>
-          <ReactQueryProvider>
-            <body className={font.className}>{children}</body>
-          </ReactQueryProvider>
-        </ChatProvider>
+        <DarkLightModeProvider>
+          <ChatProvider>
+            <ReactQueryProvider>
+              <body className={font.className}>{children}</body>
+            </ReactQueryProvider>
+          </ChatProvider>
+        </DarkLightModeProvider>
       </StyledComponentsProvider>
     </html>
   );

@@ -47,6 +47,7 @@ interface TextProps {
   mFontVariant?: string;
   mTextTransform?: string;
   mOpacity?: string;
+  mDisplay?: string;
 }
 
 const Text = styled.p.withConfig({
@@ -102,6 +103,7 @@ const Text = styled.p.withConfig({
     font-variant: ${({ mFontVariant }) => mFontVariant};
     text-transform: ${({ mTextTransform }) => mTextTransform};
     opacity: ${({ mOpacity }) => mOpacity};
+    display: ${({ mDisplay }) => mDisplay};
   }
 `;
 
