@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/arjunan-k/byteping/compare/v1.4.0...v1.5.0) (2023-10-15)
+
+
+### Features
+
+* **ui:** create ui for dark mode and notifications ([f71c3be](https://github.com/arjunan-k/byteping/commit/f71c3be62c7d426ffa29a09244f93749aca2dd53))
+
 # [1.4.0](https://github.com/arjunan-k/byteping/compare/v1.3.0...v1.4.0) (2023-10-14)
 
 
