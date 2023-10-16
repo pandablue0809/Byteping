@@ -5,7 +5,7 @@ import { useState } from "react";
 import { motion, useAnimate, stagger, AnimatePresence } from "framer-motion";
 import { useMutation } from "@tanstack/react-query";
 import { loginSubmitHandler } from "@/utils/http";
-import { ChatState } from "@/context/ChatProvider";
+import { ChatState } from "@/contexts/ChatProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");

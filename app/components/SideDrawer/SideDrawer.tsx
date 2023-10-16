@@ -1,5 +1,5 @@
 import React from "react";
-import { ChatState } from "@/context/ChatProvider";
+import { ChatState } from "@/contexts/ChatProvider";
 import Image from "next/image";
 import ProfileModal from "../ProfileModal/ProfileModal";
 import { useRouter } from "next/navigation";

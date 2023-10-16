@@ -15,6 +15,7 @@ interface ContainerProps {
   transition?: string;
   borderRadius?: string;
   cursor?: string;
+  borderLeft?: string;
   hBoxShadow?: string;
   hTransform?: string;
   hBackgroundColor?: string;
@@ -41,6 +42,7 @@ const Container = styled.div.withConfig({
   transition: ${({ transition }) => transition};
   border-radius: ${({ borderRadius }) => borderRadius};
   cursor: ${({ cursor }) => cursor};
+  border-left: ${({ borderLeft }) => borderLeft};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};

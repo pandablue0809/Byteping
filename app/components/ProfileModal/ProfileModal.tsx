@@ -1,4 +1,4 @@
-import { ChatState } from "@/context/ChatProvider";
+import { ChatState } from "@/contexts/ChatProvider";
 import Image from "next/image";
 import React from "react";
 

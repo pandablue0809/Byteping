@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fetchChats } from "@/utils/http";
 import { useQuery } from "@tanstack/react-query";
-import { ChatState } from "@/context/ChatProvider";
+import { ChatState } from "@/contexts/ChatProvider";
 import SideDrawer from "@/components/SideDrawer/SideDrawer";
 import MyChats from "@/components/MyChats/MyChats";
 import ChatBox from "@/components/ChatBox";
@@ -11,6 +11,7 @@ import Container from "@/styles/Container.styled";
 import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
+import Link from "next/link";
 
 type Chat = {
   _id: string;
@@ -54,7 +55,11 @@ const Home = () => {
   let message;
 
   if (isLoading) {
-    message = <p>Loading...</p>;
+    message = (
+      <p>
+        <Link href={"/chat"}>Loading...</Link>
+      </p>
+    );
   }
 
   if (isError) {

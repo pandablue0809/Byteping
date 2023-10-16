@@ -18,6 +18,7 @@ interface FlexProps {
   gap?: string;
   alignItems?: string;
   justifyContent?: string;
+  borderBottom?: string;
   hBoxShadow?: string;
   hTransform?: string;
   mPadding?: string;
@@ -50,6 +51,7 @@ const Flex = styled.div.withConfig({
   gap: ${({ gap }) => gap};
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
+  border-bottom: ${({ borderBottom }) => borderBottom};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};

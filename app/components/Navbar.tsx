@@ -7,93 +7,96 @@ import { VscAccount } from "react-icons/vsc";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { BsSun } from "react-icons/bs";
 import { BsMoonStars } from "react-icons/bs";
-import { DarkModeState } from "@/context/DarkLightModeProvider";
-import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { DarkLightModeContext } from "@/contexts/DarkLightModeProvider";
+import { AnimatePresence, motion } from "framer-motion";
+import Nav from "@/styles/Nav.styled";
 
 const Navbar = () => {
-  const { darkMode, setDarkMode } = DarkModeState()!;
-  const router = useRouter();
+  const { isDark, toggleDarkLightMode } = useContext(DarkLightModeContext)!;
 
-  const darkModeHandler = () => {
-    setDarkMode((prev) => !prev);
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    router.refresh();
-  };
   return (
-    <Flex
-      as={"nav"}
-      backgroundColor={Theme.colors.white}
-      borderRadius="4px 4px 0 0"
-      padding="24px"
-      border={`1px solid ${Theme.colors.lightGrey}`}
-      justifyContent="space-between"
-      alignItems="center"
-    >
-      <Flex gap="24px" alignItems="center" justifyContent="flex-start">
-        <Container
-          width="40px"
-          height="40px"
-          padding="8px"
-          backgroundColor={Theme.colors.violet}
-          borderRadius="12px"
-          hBackgroundColor={Theme.colors.lightViolet}
-          cursor="pointer"
-        >
-          <AiOutlineSearch size={24} fill={Theme.colors.green} />
-        </Container>
-        <Container
-          width="40px"
-          height="40px"
-          padding="8px"
-          backgroundColor={Theme.colors.violet}
-          borderRadius="12px"
-          hBackgroundColor={Theme.colors.lightViolet}
-          cursor="pointer"
-          onClick={darkModeHandler}
-        >
-          {darkMode ? (
-            <BsSun size={24} fill={Theme.colors.green} />
-          ) : (
-            <BsMoonStars size={24} fill={Theme.colors.green} />
-          )}
-        </Container>
-      </Flex>
-      <Text
-        as={"h1"}
-        fontSize="1.5rem"
-        fontStyle="normal"
-        fontWeight="800"
-        lineHeight="150%"
-        letterSpacing="4px"
-        mDisplay="none"
+    <AnimatePresence>
+      <Nav
+        as={motion.nav}
+        animate={{ x: 100 }}
+        transition={{ delay: 1, type: "spring" }}
+        whileHover={{ scale: 1.1 }}
+        $backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
+        $borderRadius="4px 4px 0 0"
+        $padding="24px"
+        $justifyContent="space-between"
+        $alignItems="center"
+        $borderBottom={`1px solid ${isDark ? Theme.colors.lightWhite : Theme.colors.lightGrey}`}
+        $transition="background-color 1s ease"
       >
-        BYTEPING
-      </Text>
-      <Flex gap="24px" alignItems="center" justifyContent="flex-end">
-        <Container
-          width="40px"
-          height="40px"
-          padding="8px"
-          backgroundColor={Theme.colors.violet}
-          borderRadius="12px"
-          hBackgroundColor={Theme.colors.lightViolet}
-          cursor="pointer"
+        <Flex gap="24px" alignItems="center" justifyContent="flex-start">
+          <Container
+            width="40px"
+            height="40px"
+            padding="8px"
+            backgroundColor={Theme.colors.violet}
+            borderRadius="12px"
+            hBackgroundColor={Theme.colors.lightViolet}
+            cursor="pointer"
+          >
+            <AiOutlineSearch size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+          </Container>
+          <Container
+            width="40px"
+            height="40px"
+            padding="8px"
+            backgroundColor={Theme.colors.violet}
+            borderRadius="12px"
+            hBackgroundColor={Theme.colors.lightViolet}
+            cursor="pointer"
+            onClick={toggleDarkLightMode}
+          >
+            {isDark ? (
+              <BsSun size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+            ) : (
+              <BsMoonStars size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+            )}
+          </Container>
+        </Flex>
+        <Text
+          as={"h1"}
+          fontSize="1.5rem"
+          fontStyle="normal"
+          fontWeight="800"
+          lineHeight="150%"
+          letterSpacing="4px"
+          mDisplay="none"
+          color={isDark ? Theme.colors.white : Theme.colors.black}
         >
-          <IoMdNotificationsOutline size={24} fill={Theme.colors.green} />
-        </Container>
-        <Container
-          width="40px"
-          height="40px"
-          padding="8px"
-          backgroundColor={Theme.colors.violet}
-          borderRadius="12px"
-          hBackgroundColor={Theme.colors.lightViolet}
-          cursor="pointer"
-        >
-          <VscAccount size={24} fill={Theme.colors.green} />
-        </Container>
-      </Flex>
-    </Flex>
+          BYTEPING
+        </Text>
+        <Flex gap="24px" alignItems="center" justifyContent="flex-end">
+          <Container
+            width="40px"
+            height="40px"
+            padding="8px"
+            backgroundColor={Theme.colors.violet}
+            borderRadius="12px"
+            hBackgroundColor={Theme.colors.lightViolet}
+            cursor="pointer"
+          >
+            <IoMdNotificationsOutline size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+          </Container>
+          <Container
+            width="40px"
+            height="40px"
+            padding="8px"
+            backgroundColor={Theme.colors.violet}
+            borderRadius="12px"
+            hBackgroundColor={Theme.colors.lightViolet}
+            cursor="pointer"
+          >
+            <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+          </Container>
+        </Flex>
+      </Nav>
+    </AnimatePresence>
   );
 };
 
