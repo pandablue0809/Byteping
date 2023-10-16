@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/arjunan-k/byteping/compare/v1.5.0...v1.6.0) (2023-10-16)
+
+
+### Features
+
+* **ui:** create dark & light mode theme state across app ([a9d39a9](https://github.com/arjunan-k/byteping/commit/a9d39a97d213a72ff776e13a181b3b27a9e67ccd))
+
 # [1.5.0](https://github.com/arjunan-k/byteping/compare/v1.4.0...v1.5.0) (2023-10-15)
 
 
