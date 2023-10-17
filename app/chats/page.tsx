@@ -111,6 +111,7 @@ const Home = () => {
             BytePing
           </Text>
           <Container>Account</Container>
+          <Link href="/chat">chat page link</Link>
         </Flex>
 
         <section style={{ display: "flex", width: "100%", gap: "30px" }}>

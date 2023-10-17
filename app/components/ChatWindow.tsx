@@ -15,7 +15,11 @@ const ChatWindow = () => {
       borderLeft={`1px solid ${isDark ? Theme.colors.lightWhite : Theme.colors.lightGrey}`}
       color={isDark ? Theme.colors.black : Theme.colors.white}
     >
-      <Text>This is chat window</Text>
+      <Text color={isDark ? Theme.colors.white : Theme.colors.black}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem magni pariatur, dignissimos quia
+        accusamus dolorem ad saepe, tempora magnam cum eum corrupti perspiciatis aliquid aperiam? Cupiditate vero amet
+        quam perferendis?
+      </Text>
     </Container>
   );
 };

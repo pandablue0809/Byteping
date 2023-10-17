@@ -16,6 +16,11 @@ interface ContainerProps {
   borderRadius?: string;
   cursor?: string;
   borderLeft?: string;
+  $position?: string;
+  $top?: string;
+  $bottom?: string;
+  $right?: string;
+  $left?: string;
   hBoxShadow?: string;
   hTransform?: string;
   hBackgroundColor?: string;
@@ -43,6 +48,11 @@ const Container = styled.div.withConfig({
   border-radius: ${({ borderRadius }) => borderRadius};
   cursor: ${({ cursor }) => cursor};
   border-left: ${({ borderLeft }) => borderLeft};
+  position: ${({ $position }) => $position};
+  top: ${({ $top }) => $top};
+  bottom: ${({ $bottom }) => $bottom};
+  right: ${({ $right }) => $right};
+  left: ${({ $left }) => $left};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};

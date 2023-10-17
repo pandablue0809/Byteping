@@ -22,11 +22,6 @@ const ContactList = () => {
         accusamus dolorem ad saepe, tempora magnam cum eum corrupti perspiciatis aliquid aperiam? Cupiditate vero amet
         quam perferendis?
       </Text>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
-      <li>E</li>
     </Flex>
   );
 };

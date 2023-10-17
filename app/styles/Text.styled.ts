@@ -17,6 +17,7 @@ interface TextProps {
   fontVariant?: string;
   textTransform?: string;
   opacity?: string;
+  $cursor?: string;
   hBg?: string;
   hColor?: string;
   hPadding?: string;
@@ -68,6 +69,7 @@ const Text = styled.p.withConfig({
   font-variant: ${({ fontVariant }) => fontVariant};
   text-transform: ${({ textTransform }) => textTransform};
   opacity: ${({ opacity }) => opacity};
+  cursor: ${({ $cursor }) => $cursor};
 
   &:hover {
     background: ${({ hBg }) => hBg};
