@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/arjunan-k/byteping/compare/v1.6.0...v1.7.0) (2023-10-17)
+
+
+### Features
+
+* **nav:** create profile modal component and notification dropdown ([0c28616](https://github.com/arjunan-k/byteping/commit/0c286161e5a17dd9194e22f67f9a0eeadfd9b0fb))
+
 # [1.6.0](https://github.com/arjunan-k/byteping/compare/v1.5.0...v1.6.0) (2023-10-16)
 
 
