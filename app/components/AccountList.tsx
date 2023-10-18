@@ -5,11 +5,13 @@ import { DarkLightModeContext } from "@/contexts/DarkLightModeProvider";
 import Theme from "@/styles/Theme.styled";
 import ProfileModal from "./ProfileModal/ProfileModal";
 import { useRouter } from "next/navigation";
+import { ChatState } from "@/contexts/ChatProvider";
 
 const AccountList = () => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
+  const { user } = ChatState() || { user: null };
 
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
@@ -38,11 +40,7 @@ const AccountList = () => {
       <Text color={isDark ? Theme.colors.black : Theme.colors.white} onClick={profileClickHandler} $cursor="pointer">
         My Profile
       </Text>
-      <ProfileModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <Text color={isDark ? Theme.colors.white : Theme.colors.black} onClick={logoutHandler}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, quo!
-        </Text>
-      </ProfileModal>
+      <ProfileModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} user={user} />
       <Text color={isDark ? Theme.colors.black : Theme.colors.white} onClick={logoutHandler} $cursor="pointer">
         Logout
       </Text>

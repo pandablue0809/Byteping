@@ -15,7 +15,7 @@ const AccountButton = () => {
   };
 
   return (
-    <Flex flexDirection="column" alignItems="flex-end" gap="8px" $position="relative">
+    <Flex $position="relative">
       <Container
         width="40px"
         height="40px"

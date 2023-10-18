@@ -16,6 +16,7 @@ const ChatBox = () => {
       backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
       width="100%"
       borderRadius="0 0 4px 4px"
+      height="80vh"
     >
       <ContactList />
       <ChatWindow />

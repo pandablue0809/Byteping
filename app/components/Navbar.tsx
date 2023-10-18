@@ -2,7 +2,6 @@ import Container from "@/styles/Container.styled";
 import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
-import { AiOutlineSearch } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
 import { BsMoonStars } from "react-icons/bs";
 import { useContext } from "react";
@@ -11,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Nav from "@/styles/Nav.styled";
 import NotificationButton from "./NotificationButton";
 import AccountButton from "./AccountButton";
+import SearchButton from "./SearchButton";
 
 const Navbar = () => {
   const { isDark, toggleDarkLightMode } = useContext(DarkLightModeContext)!;
@@ -27,17 +27,7 @@ const Navbar = () => {
         $borderBottom={`1px solid ${isDark ? Theme.colors.lightWhite : Theme.colors.lightGrey}`}
       >
         <Flex gap="24px" alignItems="center" justifyContent="flex-start">
-          <Container
-            width="40px"
-            height="40px"
-            padding="8px"
-            backgroundColor={Theme.colors.violet}
-            borderRadius="12px"
-            hBackgroundColor={Theme.colors.lightViolet}
-            cursor="pointer"
-          >
-            <AiOutlineSearch size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
-          </Container>
+          <SearchButton />
           <Container
             width="40px"
             height="40px"

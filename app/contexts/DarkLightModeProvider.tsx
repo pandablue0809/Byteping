@@ -19,8 +19,8 @@ const DarkLightModeProvider: React.FC<DarkLightModeProviderProps> = ({ children 
   };
 
   useEffect(() => {
-    const isLocalDark = localStorage.getItem("isDark") === "true" || null;
-    if (isLocalDark) {
+    if (localStorage.getItem("isDark")) {
+      const isLocalDark = localStorage.getItem("isDark") === "true";
       setIsDark(isLocalDark);
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setIsDark(true);

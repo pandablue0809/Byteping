@@ -5,7 +5,7 @@ import Theme from "@/styles/Theme.styled";
 import React, { useContext } from "react";
 import { HashLoader } from "react-spinners";
 
-const Loader = () => {
+const Loader = ({ height, backgroundColor }: { height?: string; backgroundColor?: string }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
 
   const divStyle = {
@@ -13,14 +13,15 @@ const Loader = () => {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: height,
     width: "100%",
-    backgroundColor: `${isDark ? Theme.colors.black : Theme.colors.white}`
+    backgroundColor: `${backgroundColor ? backgroundColor : isDark ? Theme.colors.black : Theme.colors.white}`,
+    borderRadius: "4px"
   };
 
   return (
     <div style={divStyle as React.CSSProperties}>
-      <HashLoader size={100} color={Theme.colors.violet} />
+      <HashLoader size={100} color={isDark ? Theme.colors.white : Theme.colors.black} />
     </div>
   );
 };
