@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/arjunan-k/byteping/compare/v1.7.0...v1.8.0) (2023-10-18)
+
+
+### Features
+
+* **search:** create profile modal and side drawer for user search ([697468c](https://github.com/arjunan-k/byteping/commit/697468c391b83c598f42321bd830da170439d40c))
+
 # [1.7.0](https://github.com/arjunan-k/byteping/compare/v1.6.0...v1.7.0) (2023-10-17)
 
 
