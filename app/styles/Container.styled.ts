@@ -21,6 +21,7 @@ interface ContainerProps {
   $bottom?: string;
   $right?: string;
   $left?: string;
+  $display?: string;
   hBoxShadow?: string;
   hTransform?: string;
   hBackgroundColor?: string;
@@ -29,6 +30,7 @@ interface ContainerProps {
   mWidth?: string;
   mHeight?: string;
   mTextAlign?: string;
+  $mDisplay?: string;
 }
 
 const Container = styled.div.withConfig({
@@ -53,6 +55,7 @@ const Container = styled.div.withConfig({
   bottom: ${({ $bottom }) => $bottom};
   right: ${({ $right }) => $right};
   left: ${({ $left }) => $left};
+  display: ${({ $display }) => $display};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
@@ -66,6 +69,7 @@ const Container = styled.div.withConfig({
     width: ${({ mWidth }) => mWidth};
     height: ${({ mHeight }) => mHeight};
     text-align: ${({ mTextAlign }) => mTextAlign};
+    display: ${({ $mDisplay }) => $mDisplay};
   }
 `;
 

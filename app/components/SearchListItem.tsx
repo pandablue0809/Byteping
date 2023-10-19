@@ -15,7 +15,7 @@ type UserData = {
   _id: string;
 };
 
-const SearchListItem = ({ user, handleFuncion }: { user: UserData; handleFuncion: () => void }) => {
+const SearchListItem = ({ user, handleFuncion }: { user: UserData; handleFuncion?: () => void }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const defaultProfileUrl = "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg";
 
@@ -33,7 +33,7 @@ const SearchListItem = ({ user, handleFuncion }: { user: UserData; handleFuncion
           <VscAccount size={32} fill={isDark ? Theme.colors.white : Theme.colors.black} />
         ) : (
           <Image
-            src={user?.pic || ""}
+            src={user?.pic}
             alt={user?.name || "user profile photo"}
             width={32}
             height={32}

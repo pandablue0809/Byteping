@@ -28,7 +28,7 @@ const SearchButton = () => {
       >
         <AiOutlineSearch size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
       </Container>
-      {toggleSearch && <SearchList />}
+      {toggleSearch && <SearchList onClose={toggleSearchHandler} />}
     </Flex>
   );
 };

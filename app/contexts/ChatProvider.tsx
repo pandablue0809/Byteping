@@ -12,18 +12,24 @@ type UserData = {
 };
 
 type ChatContextType = {
-  user: UserData | null;
-  setUser: React.Dispatch<React.SetStateAction<UserData | null>>;
+  user: UserData | undefined;
+  setUser: React.Dispatch<React.SetStateAction<UserData | undefined>>;
+  selectedChat: UserData | undefined;
+  setSelectedChat: React.Dispatch<React.SetStateAction<UserData | undefined>>;
+  chats: [];
+  setChats: React.Dispatch<React.SetStateAction<[]>>;
 };
 
-const ChatContext = createContext<ChatContextType | null>(null);
+const ChatContext = createContext<ChatContextType | undefined>(undefined);
 
 interface IChatContext {
   children: React.ReactNode;
 }
 
 const ChatProvider = ({ children }: IChatContext) => {
-  const [user, setUser] = useState<UserData | null>(null);
+  const [user, setUser] = useState<UserData | undefined>(undefined);
+  const [selectedChat, setSelectedChat] = useState<UserData | undefined>(undefined);
+  const [chats, setChats] = useState<[]>([]);
 
   const router = useRouter();
 
@@ -39,7 +45,11 @@ const ChatProvider = ({ children }: IChatContext) => {
     }
   }, [router]);
 
-  return <ChatContext.Provider value={{ user, setUser }}>{children}</ChatContext.Provider>;
+  return (
+    <ChatContext.Provider value={{ user, setUser, selectedChat, setSelectedChat, chats, setChats }}>
+      {children}
+    </ChatContext.Provider>
+  );
 };
 
 export const ChatState = () => {
