@@ -27,6 +27,8 @@ interface FlexProps {
   $textWrap?: string;
   $cursor?: string;
   $zIndex?: string;
+  $borderLeft?: string;
+  $flex?: string;
   hBoxShadow?: string;
   hTransform?: string;
   $hBackgroundColor?: string;
@@ -39,6 +41,7 @@ interface FlexProps {
   mGap?: string;
   mAlignItems?: string;
   mJustifyContent?: string;
+  $mDisplay?: string;
 }
 
 const Flex = styled.div.withConfig({
@@ -69,6 +72,8 @@ const Flex = styled.div.withConfig({
   text-wrap: ${({ $textWrap }) => $textWrap};
   cursor: ${({ $cursor }) => $cursor};
   z-index: ${({ $zIndex }) => $zIndex};
+  border-left: ${({ $borderLeft }) => $borderLeft};
+  flex: ${({ $flex }) => $flex};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
@@ -86,6 +91,7 @@ const Flex = styled.div.withConfig({
     gap: ${({ mGap }) => mGap};
     align-items: ${({ mAlignItems }) => mAlignItems};
     justify-content: ${({ mJustifyContent }) => mJustifyContent};
+    display: ${({ $mDisplay }) => $mDisplay};
   }
 `;
 

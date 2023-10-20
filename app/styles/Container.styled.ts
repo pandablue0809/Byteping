@@ -22,6 +22,7 @@ interface ContainerProps {
   $right?: string;
   $left?: string;
   $display?: string;
+  $flex?: string;
   hBoxShadow?: string;
   hTransform?: string;
   hBackgroundColor?: string;
@@ -56,6 +57,7 @@ const Container = styled.div.withConfig({
   right: ${({ $right }) => $right};
   left: ${({ $left }) => $left};
   display: ${({ $display }) => $display};
+  flex: ${({ $flex }) => $flex};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};

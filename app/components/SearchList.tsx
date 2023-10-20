@@ -9,7 +9,7 @@ import React, { useContext, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Loader from "./Loader";
 import SearchListItem from "./SearchListItem";
-import { useRouter } from "next/navigation";
+import { SERVER_URL } from "@/utils/global";
 
 type UserData = {
   email: string;
@@ -19,13 +19,17 @@ type UserData = {
   _id: string;
 };
 
-const SearchList = () => {
+const SearchList = ({ onClose }: { onClose: () => void }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
-  const { user } = ChatState() || { user: null };
+  const { user, setSelectedChat, chats, setChats } = ChatState() || {
+    user: undefined,
+    setSelectedChat: () => {},
+    chats: [],
+    setChats: () => {}
+  };
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState<UserData[]>([]);
   const [loadingChat, setLoadingChat] = useState(false);
-  const router = useRouter();
 
   const searchHandler = async () => {
     if (!searchText) {
@@ -41,7 +45,7 @@ const SearchList = () => {
           Authorization: `Bearer ${user?.token}`
         }
       };
-      const response = await fetch(`http://localhost:5000/api/user?search=${searchText}`, config);
+      const response = await fetch(`${SERVER_URL}/api/user?search=${searchText}`, config);
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
@@ -51,8 +55,29 @@ const SearchList = () => {
     }
   };
 
-  const accessChat = (id?: string) => {
-    router.push(`/${id}`);
+  const accessChat = async (userId: string) => {
+    try {
+      setLoadingChat(true);
+      const config = {
+        method: "POST",
+        body: JSON.stringify({ userId }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user?.token}`
+        }
+      };
+      const response = await fetch(`${SERVER_URL}/api/chat`, config);
+      const data = await response.json();
+      if (!chats.find((u) => u._id === data._id)) {
+        setChats([data, ...chats]);
+      }
+      setSelectedChat(data);
+    } catch (error) {
+      throw new Error("Failed to fetch user chat");
+    } finally {
+      setLoadingChat(false);
+      onClose();
+    }
   };
 
   return (
@@ -120,6 +145,7 @@ const SearchList = () => {
               <SearchListItem user={searchUser} key={searchUser._id} handleFuncion={() => accessChat(searchUser._id)} />
             ))
           )}
+          {loadingChat && <Loader />}
         </Flex>
       )}
     </Flex>

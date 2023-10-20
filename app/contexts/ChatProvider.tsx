@@ -1,5 +1,6 @@
 "use client";
 
+import { ChatData } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { createContext, useState, useEffect, useContext } from "react";
 
@@ -16,8 +17,8 @@ type ChatContextType = {
   setUser: React.Dispatch<React.SetStateAction<UserData | undefined>>;
   selectedChat: UserData | undefined;
   setSelectedChat: React.Dispatch<React.SetStateAction<UserData | undefined>>;
-  chats: [];
-  setChats: React.Dispatch<React.SetStateAction<[]>>;
+  chats: ChatData[];
+  setChats: React.Dispatch<React.SetStateAction<ChatData[]>>;
 };
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -29,7 +30,7 @@ interface IChatContext {
 const ChatProvider = ({ children }: IChatContext) => {
   const [user, setUser] = useState<UserData | undefined>(undefined);
   const [selectedChat, setSelectedChat] = useState<UserData | undefined>(undefined);
-  const [chats, setChats] = useState<[]>([]);
+  const [chats, setChats] = useState<ChatData[]>([]);
 
   const router = useRouter();
 
