@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/arjunan-k/byteping/compare/v1.8.0...v1.9.0) (2023-10-19)
+
+
+### Features
+
+* **search:** add search for users functionality in side drawer ([2b497cc](https://github.com/arjunan-k/byteping/commit/2b497cca682010bf1a5ab0366d804c7ade3ae049))
+
 # [1.8.0](https://github.com/arjunan-k/byteping/compare/v1.7.0...v1.8.0) (2023-10-18)
 
 
