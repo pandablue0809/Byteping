@@ -37,6 +37,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ user, children, isOpen, onC
           $left="0"
           $right="0"
           backgroundColor={`${!isDark ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 0.5)"}`}
+          $zIndex="100"
         >
           <Flex width="100%" height="100%" justifyContent="center" alignItems="center">
             <Container
