@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/arjunan-k/byteping/compare/v1.10.0...v1.11.0) (2023-10-21)
+
+
+### Features
+
+* **group:** create modal for group creation and fetch all chats ([72362ee](https://github.com/arjunan-k/byteping/commit/72362eee316e17f73902dbf197f93a939f2e7aa5))
+
 # [1.10.0](https://github.com/arjunan-k/byteping/compare/v1.9.0...v1.10.0) (2023-10-20)
 
 
