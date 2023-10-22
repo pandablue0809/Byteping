@@ -15,12 +15,12 @@ type UserData = {
   _id: string;
 };
 
-const SearchListItem = ({ user, handleFuncion }: { user: UserData; handleFuncion?: () => void }) => {
+const SearchListItem = ({ user, handleFunction }: { user: UserData; handleFunction?: () => void }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const defaultProfileUrl = "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg";
 
   return (
-    <Flex gap="16px" alignItems="center" onClick={handleFuncion} $cursor="pointer">
+    <Flex gap="16px" alignItems="center" onClick={handleFunction} $cursor="pointer">
       <Container
         width="48px"
         height="48px"

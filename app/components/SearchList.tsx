@@ -142,7 +142,11 @@ const SearchList = ({ onClose }: { onClose: () => void }) => {
             </Text>
           ) : (
             searchResults?.map((searchUser) => (
-              <SearchListItem user={searchUser} key={searchUser._id} handleFuncion={() => accessChat(searchUser._id)} />
+              <SearchListItem
+                user={searchUser}
+                key={searchUser._id}
+                handleFunction={() => accessChat(searchUser._id)}
+              />
             ))
           )}
           {loadingChat && <Loader />}

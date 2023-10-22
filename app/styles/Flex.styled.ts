@@ -29,6 +29,7 @@ interface FlexProps {
   $zIndex?: string;
   $borderLeft?: string;
   $flex?: string;
+  $flexWrap?: string;
   hBoxShadow?: string;
   hTransform?: string;
   $hBackgroundColor?: string;
@@ -74,6 +75,7 @@ const Flex = styled.div.withConfig({
   z-index: ${({ $zIndex }) => $zIndex};
   border-left: ${({ $borderLeft }) => $borderLeft};
   flex: ${({ $flex }) => $flex};
+  flex-wrap: ${({ $flexWrap }) => $flexWrap};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};

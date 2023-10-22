@@ -5,7 +5,7 @@ import Theme from "@/styles/Theme.styled";
 import React, { useContext } from "react";
 import { HashLoader } from "react-spinners";
 
-const Loader = ({ height, backgroundColor }: { height?: string; backgroundColor?: string }) => {
+const Loader = ({ height, backgroundColor, size }: { height?: string; backgroundColor?: string; size?: string }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
 
   const divStyle = {
@@ -21,7 +21,7 @@ const Loader = ({ height, backgroundColor }: { height?: string; backgroundColor?
 
   return (
     <div style={divStyle as React.CSSProperties}>
-      <HashLoader size={100} color={isDark ? Theme.colors.white : Theme.colors.black} />
+      <HashLoader size={size ? size : 100} color={isDark ? Theme.colors.white : Theme.colors.black} />
     </div>
   );
 };
