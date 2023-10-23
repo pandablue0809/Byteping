@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/arjunan-k/byteping/compare/v1.11.0...v1.12.0) (2023-10-22)
+
+
+### Features
+
+* **group:** create group chat modal and submit handler for group creation ([bd1180b](https://github.com/arjunan-k/byteping/commit/bd1180b75091ccecd7dfc2770f087bad9cade5da))
+
 # [1.11.0](https://github.com/arjunan-k/byteping/compare/v1.10.0...v1.11.0) (2023-10-21)
 
 
