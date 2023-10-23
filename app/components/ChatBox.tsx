@@ -1,6 +1,6 @@
 import Flex from "@/styles/Flex.styled";
 import Theme from "@/styles/Theme.styled";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ChatWindow from "./ChatWindow";
 import ContactList from "./ContactList";
 import { DarkLightModeContext } from "@/contexts/DarkLightModeProvider";
@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const ChatBox = () => {
   const { isDark } = useContext(DarkLightModeContext)!;
+  const [fetchAgain, setFetchAgain] = useState<boolean>(false);
 
   return (
     <Flex
@@ -18,8 +19,8 @@ const ChatBox = () => {
       borderRadius="0 0 4px 4px"
       height="80vh"
     >
-      <ContactList />
-      <ChatWindow />
+      <ContactList fetchAgain={fetchAgain} />
+      <ChatWindow fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
     </Flex>
   );
 };

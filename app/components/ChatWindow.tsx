@@ -1,11 +1,17 @@
 import { ChatState } from "@/contexts/ChatProvider";
 import { DarkLightModeContext } from "@/contexts/DarkLightModeProvider";
 import Flex from "@/styles/Flex.styled";
-import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
 import React, { useContext } from "react";
+import ChatHistory from "./ChatHistory";
 
-const ChatWindow = () => {
+const ChatWindow = ({
+  fetchAgain,
+  setFetchAgain
+}: {
+  fetchAgain: boolean;
+  setFetchAgain: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const { selectedChat } = ChatState()!;
 
@@ -16,13 +22,10 @@ const ChatWindow = () => {
       as={"section"}
       $borderLeft={`1px solid ${isDark ? Theme.colors.lightWhite : Theme.colors.lightGrey}`}
       display="flex"
+      flexDirection="column"
       $mDisplay={selectedChat ? "flex" : "none"}
     >
-      <Text color={isDark ? Theme.colors.white : Theme.colors.black}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem magni pariatur, dignissimos quia
-        accusamus dolorem ad saepe, tempora magnam cum eum corrupti perspiciatis aliquid aperiam? Cupiditate vero amet
-        quam perferendis?
-      </Text>
+      <ChatHistory fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
     </Flex>
   );
 };

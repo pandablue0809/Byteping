@@ -12,7 +12,7 @@ import Image from "next/image";
 import { UserData } from "@/types";
 import NewGroupButton from "./NewGroupButton";
 
-const ContactList = () => {
+const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const [loggedUser, setLoggedUser] = useState<UserData>();
   const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState()! || {
@@ -89,7 +89,7 @@ const ContactList = () => {
     }
 
     fetchAllChats();
-  }, [fetchAllChats]);
+  }, [fetchAgain, fetchAllChats]);
 
   return (
     <Flex
