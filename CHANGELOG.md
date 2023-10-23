@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/arjunan-k/byteping/compare/v1.12.0...v1.13.0) (2023-10-23)
+
+
+### Features
+
+* **chat:** create chat window based on selected user ([9c96fed](https://github.com/arjunan-k/byteping/commit/9c96fedd839334cc17ee46c782c864747ee34d0c))
+
 # [1.12.0](https://github.com/arjunan-k/byteping/compare/v1.11.0...v1.12.0) (2023-10-22)
 
 
