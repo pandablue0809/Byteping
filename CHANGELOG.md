@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/arjunan-k/byteping/compare/v1.13.0...v1.14.0) (2023-10-24)
+
+
+### Features
+
+* **group:** create group update modal and functionalities ([757a473](https://github.com/arjunan-k/byteping/commit/757a473624812a1465307b102c31a33e4b442a52))
+
 # [1.13.0](https://github.com/arjunan-k/byteping/compare/v1.12.0...v1.13.0) (2023-10-23)
 
 
