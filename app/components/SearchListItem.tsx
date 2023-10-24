@@ -11,7 +11,7 @@ type UserData = {
   email: string;
   name: string;
   pic: string;
-  token: string;
+  token?: string;
   _id: string;
 };
 
