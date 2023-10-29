@@ -11,6 +11,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import ProfileModal from "./ProfileModal/ProfileModal";
 import UpdateGroupModal from "./UpdateGroupModal";
+import SingleChat from "./SingleChat";
 
 const ChatHistory = ({
   fetchAgain,
@@ -84,6 +85,7 @@ const ChatHistory = ({
       {selectedChat ? (
         <>
           <Flex
+            as={"header"}
             justifyContent="space-between"
             alignItems="center"
             borderBottom={`1px solid ${isDark ? Theme.colors.white : Theme.colors.black}`}
@@ -146,6 +148,7 @@ const ChatHistory = ({
               <BiArrowBack size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
             </Container>
           </Flex>
+          <SingleChat />
         </>
       ) : (
         <Text color={isDark ? Theme.colors.white : Theme.colors.black}>Select a chat to start a Byte Chat...</Text>

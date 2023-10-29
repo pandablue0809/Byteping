@@ -3,9 +3,9 @@ export interface UserData {
   name: string;
   email: string;
   pic: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
 }
 
 export interface ChatData {

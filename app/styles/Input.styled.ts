@@ -28,6 +28,7 @@ interface InputProps {
   $cursor?: string;
   $zIndex?: string;
   $flex?: string;
+  $fontSize?: string;
   hBoxShadow?: string;
   hTransform?: string;
   $hBackgroundColor?: string;
@@ -78,6 +79,7 @@ const Input = styled.input<InputProps>`
   cursor: ${({ $cursor }) => $cursor};
   z-index: ${({ $zIndex }) => $zIndex};
   flex: ${({ $flex }) => $flex};
+  font-size: ${({ $fontSize }) => $fontSize};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
