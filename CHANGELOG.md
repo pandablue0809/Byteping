@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/arjunan-k/byteping/compare/v1.14.0...v1.15.0) (2023-10-29)
+
+
+### Features
+
+* **message:** create selected chat ui and utils for fetching and sending messages ([5fe78d6](https://github.com/arjunan-k/byteping/commit/5fe78d6e1f633537448e67e0311170210fbab681))
+
 # [1.14.0](https://github.com/arjunan-k/byteping/compare/v1.13.0...v1.14.0) (2023-10-24)
 
 
