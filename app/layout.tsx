@@ -17,17 +17,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <StyledComponentsRegistry>
-        <StyledComponentsProvider>
-          <DarkLightModeProvider>
-            <ChatProvider>
+      <DarkLightModeProvider>
+        <ChatProvider>
+          <StyledComponentsRegistry>
+            <StyledComponentsProvider>
               <ReactQueryProvider>
                 <body className={font.className}>{children}</body>
               </ReactQueryProvider>
-            </ChatProvider>
-          </DarkLightModeProvider>
-        </StyledComponentsProvider>
-      </StyledComponentsRegistry>
+            </StyledComponentsProvider>
+          </StyledComponentsRegistry>
+        </ChatProvider>
+      </DarkLightModeProvider>
     </html>
   );
 }
