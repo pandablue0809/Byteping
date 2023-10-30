@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/arjunan-k/byteping/compare/v1.15.0...v1.16.0) (2023-10-30)
+
+
+### Features
+
+* **message:** create ui for messages based on sender ([3020c36](https://github.com/arjunan-k/byteping/commit/3020c3676c6c0cf74c1967e84ca95c7a55f5ea48))
+
 # [1.15.0](https://github.com/arjunan-k/byteping/compare/v1.14.0...v1.15.0) (2023-10-29)
 
 
