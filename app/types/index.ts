@@ -18,3 +18,27 @@ export interface ChatData {
   __v: number;
   groupAdmin?: UserData;
 }
+
+export interface MessageData {
+  _id: string;
+  sender: {
+    _id: string;
+    name: string;
+    email: string;
+    pic: string;
+  };
+  content: string;
+  chat: {
+    _id: string;
+    chatName: string;
+    isGroupChat: boolean;
+    users: string[];
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+    latestMessage: string;
+  };
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}

@@ -29,11 +29,11 @@ type NewGroupModalProps = {
 const NewGroupModal: React.FC<NewGroupModalProps> = ({ children, isOpen, onClose }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const [groupChatName, setGroupChatName] = useState("");
-  const [selectedUsers, setSelectedUsers] = useState<UserData[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<UserData[] | []>([]);
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const { setChats, user } = ChatState()!;
+  const { setChats, user, setSelectedChat } = ChatState()!;
 
   const handleSearch = async (query: string) => {
     setSearchText(query);
@@ -81,16 +81,28 @@ const NewGroupModal: React.FC<NewGroupModalProps> = ({ children, isOpen, onClose
       const data = await response.json();
       setChats((prev) => [data, ...prev]);
       onClose();
+      setSelectedChat(data);
     } catch (error) {
       throw new Error("Failed to create group");
+    } finally {
+      setSearchResults([]);
+      setSelectedUsers([]);
+      setSearchText("");
     }
   };
 
   const handleGroup = (userToAdd: UserData) => {
     if (selectedUsers.some((addedUser) => addedUser._id === userToAdd._id)) {
+      setSearchText("");
+      setSearchResults([]);
       return;
     }
-    setSelectedUsers((prev) => [...prev, userToAdd]);
+    try {
+      setSelectedUsers((prev) => [...prev, userToAdd]);
+    } finally {
+      setSearchText("");
+      setSearchResults([]);
+    }
   };
 
   const handleDelete = (userToDelete: UserData) => {
@@ -165,6 +177,7 @@ const NewGroupModal: React.FC<NewGroupModalProps> = ({ children, isOpen, onClose
                     />
                     <Input
                       type="text"
+                      value={searchText}
                       height="48px"
                       borderRadius="4px"
                       backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}

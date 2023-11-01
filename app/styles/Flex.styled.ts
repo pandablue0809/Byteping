@@ -32,6 +32,7 @@ interface FlexProps {
   $flexWrap?: string;
   $overflowY?: string;
   $scrollbarWidth?: string;
+  $alignSelf?: string;
   hBoxShadow?: string;
   hTransform?: string;
   $hBackgroundColor?: string;
@@ -80,6 +81,7 @@ const Flex = styled.div.withConfig({
   flex-wrap: ${({ $flexWrap }) => $flexWrap};
   overflow-y: ${({ $overflowY }) => $overflowY};
   scrollbar-width: ${({ $scrollbarWidth }) => $scrollbarWidth};
+  align-self: ${({ $alignSelf }) => $alignSelf};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
