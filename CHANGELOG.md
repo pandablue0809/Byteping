@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/arjunan-k/byteping/compare/v1.16.0...v1.17.0) (2023-11-01)
+
+
+### Features
+
+* **chat:** create ui for sender and user messages in scroll window ([cef94e9](https://github.com/arjunan-k/byteping/commit/cef94e9bdbbe0d59ada4a3065bece901378133c5))
+
 # [1.16.0](https://github.com/arjunan-k/byteping/compare/v1.15.0...v1.16.0) (2023-10-30)
 
 
