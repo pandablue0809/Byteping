@@ -8,6 +8,10 @@ import { SERVER_URL } from "@/utils/global";
 import { ChatState } from "@/contexts/ChatProvider";
 import ScrollableChat from "./ScrollableChat";
 import { MessageData } from "@/types";
+import io, { Socket } from "socket.io-client";
+
+const ENDPOINT = SERVER_URL;
+let socket: Socket;
 
 const SingleChat = () => {
   const { isDark } = useContext(DarkLightModeContext)!;
@@ -15,6 +19,8 @@ const SingleChat = () => {
   const [messages, setMessages] = useState<MessageData[]>([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  const [socketConnected, setSocketConnected] = useState(false);
 
   const sendMessage = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter" && newMessage) {
@@ -69,6 +75,12 @@ const SingleChat = () => {
     fetchMessages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedChat]);
+
+  useEffect(() => {
+    socket = io(ENDPOINT);
+    socket.emit("setup", user);
+    socket.on("connection", () => setSocketConnected(true));
+  }, [user]);
 
   return (
     <>
