@@ -8,8 +8,9 @@ import { MessageData } from "@/types";
 import Image from "next/image";
 import React, { useContext, useEffect, useRef } from "react";
 import { VscAccount } from "react-icons/vsc";
+import { SyncLoader } from "react-spinners";
 
-const ScrollableChat = ({ messages }: { messages: MessageData[] }) => {
+const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyping: boolean }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
   const { user } = ChatState()!;
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +30,7 @@ const ScrollableChat = ({ messages }: { messages: MessageData[] }) => {
 
   useEffect(() => {
     messageContainerRef.current?.scrollTo(0, messageContainerRef.current?.scrollHeight);
-  }, [messages]);
+  }, [messages, isTyping]);
 
   return (
     <Flex
@@ -78,6 +79,11 @@ const ScrollableChat = ({ messages }: { messages: MessageData[] }) => {
             <Text color={isDark ? Theme.colors.white : Theme.colors.black}>{message.content}</Text>
           </Flex>
         ))}
+      {isTyping ? (
+        <Flex $alignSelf="flex-start" margin="8px 0">
+          <SyncLoader color={Theme.colors.violet} size={20} />
+        </Flex>
+      ) : null}
     </Flex>
   );
 };

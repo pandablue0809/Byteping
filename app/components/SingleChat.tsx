@@ -7,11 +7,12 @@ import Theme from "@/styles/Theme.styled";
 import { SERVER_URL } from "@/utils/global";
 import { ChatState } from "@/contexts/ChatProvider";
 import ScrollableChat from "./ScrollableChat";
-import { MessageData } from "@/types";
+import { ChatData, MessageData } from "@/types";
 import io, { Socket } from "socket.io-client";
 
 const ENDPOINT = SERVER_URL;
 let socket: Socket;
+let selectedChatCompare: ChatData | undefined;
 
 const SingleChat = () => {
   const { isDark } = useContext(DarkLightModeContext)!;
@@ -19,11 +20,33 @@ const SingleChat = () => {
   const [messages, setMessages] = useState<MessageData[]>([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [socketConnected, setSocketConnected] = useState(false);
+  const [typing, setTyping] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const fetchMessages = async () => {
+    if (!selectedChat) return;
+    try {
+      setLoading(true);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user?.token}`
+        }
+      };
+      const response = await fetch(`${SERVER_URL}/api/message/${selectedChat?._id}`, config);
+      const data = await response.json();
+      setMessages(data);
+      socket.emit("join chat", selectedChat._id);
+    } catch (error) {
+      throw new Error("Failed to fetch messages");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const sendMessage = async (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter" && newMessage) {
+      socket.emit("stop typing", selectedChat?._id);
       try {
         const reqData = {
           content: newMessage,
@@ -41,7 +64,8 @@ const SingleChat = () => {
 
         const response = await fetch(`${SERVER_URL}/api/message`, config);
         const data = await response.json();
-        setMessages([...messages, data]);
+        socket.emit("new message", data);
+        setMessages((prev) => [...prev, data]);
       } catch (error) {
         throw new Error("Failed to send Message");
       }
@@ -50,37 +74,54 @@ const SingleChat = () => {
 
   const typingHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewMessage(event.target.value);
-  };
 
-  const fetchMessages = async () => {
-    if (!selectedChat) return;
-    try {
-      setLoading(true);
-      const config = {
-        headers: {
-          Authorization: `Bearer ${user?.token}`
-        }
-      };
-      const response = await fetch(`${SERVER_URL}/api/message/${selectedChat?._id}`, config);
-      const data = await response.json();
-      setMessages(data);
-    } catch (error) {
-      throw new Error("Failed to fetch messages");
-    } finally {
-      setLoading(false);
+    // Typing Indicator
+    if (!socketConnected) return;
+    if (!typing) {
+      setTyping(true);
+      socket.emit("typing", selectedChat?._id);
     }
-  };
 
-  useEffect(() => {
-    fetchMessages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedChat]);
+    const lastTypingTime = new Date().getTime();
+    const timerLength = 3000;
+
+    setTimeout(() => {
+      const timeNow = new Date().getTime();
+      if (timeNow - lastTypingTime >= timerLength && typing) {
+        socket.emit("stop typing", selectedChat?._id);
+        setTyping(false);
+      }
+    }, timerLength);
+  };
 
   useEffect(() => {
     socket = io(ENDPOINT);
     socket.emit("setup", user);
-    socket.on("connection", () => setSocketConnected(true));
-  }, [user]);
+    socket.on("connected", () => setSocketConnected(true));
+    socket.on("typing", () => setIsTyping(true));
+    socket.on("stop typing", () => setIsTyping(false));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchMessages();
+    selectedChatCompare = selectedChat;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedChat]);
+
+  useEffect(() => {
+    socket.on("message received", (newMessageReceived) => {
+      if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id) {
+        // give notification
+      } else {
+        setMessages((prev) => [...prev, newMessageReceived]);
+      }
+    });
+    return () => {
+      socket.off("message received");
+    };
+  });
 
   return (
     <>
@@ -96,7 +137,7 @@ const SingleChat = () => {
             justifyContent="space-between"
             $overflowY="auto"
           >
-            <ScrollableChat messages={messages} />
+            <ScrollableChat messages={messages} isTyping={isTyping} />
             <Input
               type="text"
               required
