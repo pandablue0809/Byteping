@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/arjunan-k/byteping/compare/v1.18.0...v1.19.0) (2023-11-10)
+
+
+### Features
+
+* **socket:** add websocket connection for sending and fetching messages ([a404ca4](https://github.com/arjunan-k/byteping/commit/a404ca445c84aa02e60450fbcf838978a24a8da7))
+
 # [1.18.0](https://github.com/arjunan-k/byteping/compare/v1.17.0...v1.18.0) (2023-11-07)
 
 
