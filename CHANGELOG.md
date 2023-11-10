@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/arjunan-k/byteping/compare/v1.17.0...v1.18.0) (2023-11-07)
+
+
+### Features
+
+* **socket:** create socket.io connection b/w server for real time chat ([c755a97](https://github.com/arjunan-k/byteping/commit/c755a97ce976cb9996cd0b7adc131da23827965f))
+
 # [1.17.0](https://github.com/arjunan-k/byteping/compare/v1.16.0...v1.17.0) (2023-11-01)
 
 
