@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/arjunan-k/byteping/compare/v1.19.0...v1.20.0) (2023-11-12)
+
+
+### Features
+
+* **route:** add global state for notification and fix chats route ([4e54aca](https://github.com/arjunan-k/byteping/commit/4e54acaa308b7d10d01fdb81ec6e9c7fb7c66b55))
+
 # [1.19.0](https://github.com/arjunan-k/byteping/compare/v1.18.0...v1.19.0) (2023-11-10)
 
 
