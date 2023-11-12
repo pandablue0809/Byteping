@@ -19,6 +19,8 @@ type ChatContextType = {
   setSelectedChat: React.Dispatch<React.SetStateAction<ChatData | undefined>>;
   chats: ChatData[];
   setChats: React.Dispatch<React.SetStateAction<ChatData[]>>;
+  notifications: [];
+  setNotifications: React.Dispatch<React.SetStateAction<[]>>;
 };
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -31,6 +33,7 @@ const ChatProvider = ({ children }: IChatContext) => {
   const [user, setUser] = useState<UserData | undefined>(undefined);
   const [selectedChat, setSelectedChat] = useState<ChatData | undefined>(undefined);
   const [chats, setChats] = useState<ChatData[]>([]);
+  const [notifications, setNotifications] = useState<[]>([]);
 
   const router = useRouter();
 
@@ -47,7 +50,9 @@ const ChatProvider = ({ children }: IChatContext) => {
   }, [router]);
 
   return (
-    <ChatContext.Provider value={{ user, setUser, selectedChat, setSelectedChat, chats, setChats }}>
+    <ChatContext.Provider
+      value={{ user, setUser, selectedChat, setSelectedChat, chats, setChats, notifications, setNotifications }}
+    >
       {children}
     </ChatContext.Provider>
   );
