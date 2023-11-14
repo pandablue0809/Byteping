@@ -8,7 +8,7 @@ import { MessageData } from "@/types";
 import Image from "next/image";
 import React, { useContext, useEffect, useRef } from "react";
 import { VscAccount } from "react-icons/vsc";
-import { SyncLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 
 const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyping: boolean }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
@@ -53,15 +53,15 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
           >
             {isSameSender(messages, message, index, user?._id) || isLastMessage(messages, index, user?._id) ? (
               <Container
-                width="32px"
-                height="32px"
-                padding="4px"
+                width="40px"
+                height="40px"
+                padding="8px"
                 backgroundColor={Theme.colors.violet}
-                borderRadius="100%"
+                borderRadius="12px"
                 hBackgroundColor={Theme.colors.lightViolet}
                 cursor="pointer"
               >
-                {user?.pic === defaultProfileUrl ? (
+                {user?.pic !== defaultProfileUrl ? (
                   <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
                 ) : (
                   <Image
@@ -79,11 +79,9 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
             <Text color={isDark ? Theme.colors.white : Theme.colors.black}>{message.content}</Text>
           </Flex>
         ))}
-      {isTyping ? (
-        <Flex $alignSelf="flex-start" margin="8px 0">
-          <SyncLoader color={Theme.colors.violet} size={20} />
-        </Flex>
-      ) : null}
+      <Flex $alignSelf="flex-start" height="16px">
+        {isTyping && <PropagateLoader color={Theme.colors.violet} size={10} />}
+      </Flex>
     </Flex>
   );
 };

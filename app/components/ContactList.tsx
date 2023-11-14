@@ -4,7 +4,7 @@ import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
 import { SERVER_URL } from "@/utils/global";
-import React, { useContext, useEffect, useState, useCallback } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "@/styles/Container.styled";
 import Loader from "./Loader";
 import { VscAccount } from "react-icons/vsc";
@@ -50,7 +50,7 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
     return users[0]._id === loggedUserData?._id ? users[1].name : users[0].name;
   };
 
-  const fetchAllChats = useCallback(async () => {
+  const fetchAllChats = async () => {
     try {
       let token;
       let userInfoString;
@@ -79,7 +79,7 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
     } catch (error) {
       throw new Error("Failed to fetch chats");
     }
-  }, [setChats, user?.token]);
+  };
 
   useEffect(() => {
     const userInfoFromLocalStorage = localStorage.getItem("userInfo");
@@ -89,7 +89,8 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
     }
 
     fetchAllChats();
-  }, [fetchAgain, fetchAllChats]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchAgain]);
 
   return (
     <Flex

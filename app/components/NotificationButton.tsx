@@ -29,7 +29,7 @@ const NotificationButton = () => {
       >
         <IoMdNotificationsOutline size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
       </Container>
-      {toggleNotification && <NotificationList />}
+      {toggleNotification && <NotificationList toggleNotificationHandler={toggleNotificationHandler} />}
     </Flex>
   );
 };

@@ -33,6 +33,7 @@ interface FlexProps {
   $overflowY?: string;
   $scrollbarWidth?: string;
   $alignSelf?: string;
+  $visibility?: string;
   hBoxShadow?: string;
   hTransform?: string;
   $hBackgroundColor?: string;
@@ -82,6 +83,7 @@ const Flex = styled.div.withConfig({
   overflow-y: ${({ $overflowY }) => $overflowY};
   scrollbar-width: ${({ $scrollbarWidth }) => $scrollbarWidth};
   align-self: ${({ $alignSelf }) => $alignSelf};
+  visibility: ${({ $visibility }) => $visibility};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
