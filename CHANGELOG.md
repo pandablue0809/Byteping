@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/arjunan-k/byteping/compare/v1.20.0...v1.21.0) (2023-11-14)
+
+
+### Features
+
+* **style:** fix profile icons and make js to ts ([49b8125](https://github.com/arjunan-k/byteping/commit/49b81255db39ec4044ed205fc3df44fb9255a2e2))
+
 # [1.20.0](https://github.com/arjunan-k/byteping/compare/v1.19.0...v1.20.0) (2023-11-12)
 
 
