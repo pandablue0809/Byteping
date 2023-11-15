@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/arjunan-k/byteping/compare/v1.21.0...v1.22.0) (2023-11-15)
+
+
+### Features
+
+* **time:** add time of messages and fix typing indicator ui shaking ([7a4eeb2](https://github.com/arjunan-k/byteping/commit/7a4eeb244b96c7f371a6983509abdd38042ff23f))
+
 # [1.21.0](https://github.com/arjunan-k/byteping/compare/v1.20.0...v1.21.0) (2023-11-14)
 
 
