@@ -5,7 +5,7 @@ import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
 import { MessageData } from "@/types";
-import { getTime } from "@/utils/date";
+import { getDate, getTime } from "@/utils/date";
 import Image from "next/image";
 import React, { useContext, useEffect, useRef } from "react";
 import { VscAccount } from "react-icons/vsc";
@@ -29,6 +29,12 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
     return i === msgs.length - 1 && msgs[msgs.length - 1].sender._id !== userId && msgs[msgs.length - 1].sender._id;
   };
 
+  const isSameDate = (msg: MessageData, msgIdx: number, msgs: MessageData[]) => {
+    if (msgIdx === 0) return false;
+    if (getDate(msgs[msgIdx - 1].createdAt) === getDate(msg.createdAt)) return true;
+    return false;
+  };
+
   useEffect(() => {
     messageContainerRef.current?.scrollTo(0, messageContainerRef.current?.scrollHeight);
   }, [messages, isTyping]);
@@ -46,49 +52,58 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
       >
         {messages &&
           messages.map((message, index) => (
-            <Flex
-              key={message._id}
-              alignItems="center"
-              gap="12px"
-              margin="0 12px 0 0"
-              $alignSelf={message.sender._id === user?._id ? "flex-end" : "flex-start"}
-            >
-              {isSameSender(messages, message, index, user?._id) || isLastMessage(messages, index, user?._id) ? (
-                <Container
-                  width="40px"
-                  height="40px"
-                  padding="8px"
-                  backgroundColor={Theme.colors.violet}
-                  borderRadius="12px"
-                  hBackgroundColor={Theme.colors.lightViolet}
-                  cursor="pointer"
-                >
-                  {user?.pic !== defaultProfileUrl ? (
-                    <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
-                  ) : (
-                    <Image
-                      src={message?.sender?.pic || ""}
-                      alt={message?.sender?.name || "user profile photo"}
-                      width={24}
-                      height={24}
-                      style={{ borderRadius: "100%" }}
-                    />
-                  )}
-                </Container>
-              ) : (
-                <Container width="40px" height="40px" padding="4px" $display="hidden"></Container>
-              )}
-              <Flex gap="12px" alignItems="center">
-                <Text fontSize="18px" color={isDark ? Theme.colors.white : Theme.colors.black}>
-                  {message.content}
-                </Text>
-                <Flex $alignSelf="flex-end">
-                  <Text fontSize="12px" color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}>
-                    {getTime(message.createdAt, false)}
+            <>
+              <Flex $alignSelf="center">
+                {!isSameDate(message, index, messages) && (
+                  <Text fontSize="16px" color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}>
+                    {getDate(message.createdAt)}
                   </Text>
+                )}
+              </Flex>
+              <Flex
+                key={message._id}
+                alignItems="center"
+                gap="12px"
+                margin="0 12px 0 0"
+                $alignSelf={message.sender._id === user?._id ? "flex-end" : "flex-start"}
+              >
+                {isSameSender(messages, message, index, user?._id) || isLastMessage(messages, index, user?._id) ? (
+                  <Container
+                    width="40px"
+                    height="40px"
+                    padding="8px"
+                    backgroundColor={Theme.colors.violet}
+                    borderRadius="12px"
+                    hBackgroundColor={Theme.colors.lightViolet}
+                    cursor="pointer"
+                  >
+                    {user?.pic !== defaultProfileUrl ? (
+                      <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+                    ) : (
+                      <Image
+                        src={message?.sender?.pic || ""}
+                        alt={message?.sender?.name || "user profile photo"}
+                        width={24}
+                        height={24}
+                        style={{ borderRadius: "100%" }}
+                      />
+                    )}
+                  </Container>
+                ) : (
+                  <Container width="40px" height="40px" padding="4px" $display="hidden"></Container>
+                )}
+                <Flex gap="12px" alignItems="center">
+                  <Text fontSize="18px" color={isDark ? Theme.colors.white : Theme.colors.black}>
+                    {message.content}
+                  </Text>
+                  <Flex $alignSelf="flex-end">
+                    <Text fontSize="12px" color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}>
+                      {getTime(message.createdAt, false)}
+                    </Text>
+                  </Flex>
                 </Flex>
               </Flex>
-            </Flex>
+            </>
           ))}
       </Flex>
       <Flex $alignSelf="flex-start" margin="6px 0" height="24px" alignItems="center">

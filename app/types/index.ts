@@ -32,7 +32,7 @@ export interface MessageData {
     _id: string;
     chatName: string;
     isGroupChat: boolean;
-    users: string[];
+    users: UserData[];
     createdAt: string;
     updatedAt: string;
     __v: number;

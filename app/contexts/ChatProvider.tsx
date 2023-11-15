@@ -1,6 +1,6 @@
 "use client";
 
-import { ChatData } from "@/types";
+import { ChatData, MessageData } from "@/types";
 import { useRouter } from "next/navigation";
 import React, { createContext, useState, useEffect, useContext } from "react";
 
@@ -19,8 +19,8 @@ type ChatContextType = {
   setSelectedChat: React.Dispatch<React.SetStateAction<ChatData | undefined | null>>;
   chats: ChatData[];
   setChats: React.Dispatch<React.SetStateAction<ChatData[]>>;
-  notifications: [];
-  setNotifications: React.Dispatch<React.SetStateAction<[]>>;
+  notifications: MessageData[];
+  setNotifications: React.Dispatch<React.SetStateAction<MessageData[]>>;
 };
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -33,7 +33,7 @@ const ChatProvider = ({ children }: IChatContext) => {
   const [user, setUser] = useState<UserData | undefined>(undefined);
   const [selectedChat, setSelectedChat] = useState<ChatData | undefined | null>(undefined);
   const [chats, setChats] = useState<ChatData[]>([]);
-  const [notifications, setNotifications] = useState<[]>([]);
+  const [notifications, setNotifications] = useState<MessageData[]>([]);
 
   const router = useRouter();
 

@@ -12,11 +12,17 @@ import io, { Socket } from "socket.io-client";
 
 const ENDPOINT = SERVER_URL;
 let socket: Socket;
-let selectedChatCompare: ChatData | undefined;
+let selectedChatCompare: ChatData | undefined | null;
 
-const SingleChat = () => {
+const SingleChat = ({
+  fetchAgain,
+  setFetchAgain
+}: {
+  fetchAgain: boolean;
+  setFetchAgain: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { isDark } = useContext(DarkLightModeContext)!;
-  const { user, selectedChat } = ChatState()!;
+  const { user, selectedChat, notifications, setNotifications } = ChatState()!;
   const [messages, setMessages] = useState<MessageData[]>([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
@@ -101,6 +107,9 @@ const SingleChat = () => {
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
 
+    return () => {
+      socket.disconnect();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -113,11 +122,15 @@ const SingleChat = () => {
   useEffect(() => {
     socket.on("message received", (newMessageReceived) => {
       if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id) {
-        // give notification
+        if (!notifications.includes(newMessageReceived)) {
+          setNotifications([newMessageReceived, ...notifications]);
+          setFetchAgain(!fetchAgain);
+        }
       } else {
         setMessages((prev) => [...prev, newMessageReceived]);
       }
     });
+
     return () => {
       socket.off("message received");
     };
