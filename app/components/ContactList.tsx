@@ -120,27 +120,28 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
             key={userChat?._id}
           >
             <Container
-              width="48px"
-              height="48px"
+              width="40px"
+              height="40px"
               padding="8px"
-              backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
-              borderRadius="50%"
+              backgroundColor={Theme.colors.violet}
+              borderRadius="12px"
+              hBackgroundColor={Theme.colors.lightViolet}
               cursor="pointer"
             >
               {!userChat.isGroupChat ? (
                 getSenderPic(loggedUser, userChat.users) === defaultProfileUrl ? (
-                  <VscAccount size={32} fill={isDark ? Theme.colors.white : Theme.colors.black} />
+                  <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
                 ) : (
                   <Image
                     src={getSenderPic(loggedUser, userChat.users)}
                     alt={user?.name || "user profile photo"}
-                    width={32}
-                    height={32}
+                    width={24}
+                    height={24}
                     style={{ borderRadius: "100%" }}
                   />
                 )
               ) : (
-                <VscAccount size={32} fill={isDark ? Theme.colors.white : Theme.colors.black} />
+                <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
               )}
             </Container>
             <Flex flexDirection="column">

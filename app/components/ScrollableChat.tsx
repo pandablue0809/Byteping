@@ -5,10 +5,11 @@ import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
 import { MessageData } from "@/types";
+import { getTime } from "@/utils/date";
 import Image from "next/image";
 import React, { useContext, useEffect, useRef } from "react";
 import { VscAccount } from "react-icons/vsc";
-import { PropagateLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 
 const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyping: boolean }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
@@ -33,56 +34,67 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
   }, [messages, isTyping]);
 
   return (
-    <Flex
-      as={"div"}
-      $overflowY="auto"
-      flexDirection="column"
-      gap="12px"
-      height="-webkit-fill-available"
-      margin="12px 0"
-      ref={messageContainerRef}
-    >
-      {messages &&
-        messages.map((message, index) => (
-          <Flex
-            key={message._id}
-            alignItems="center"
-            gap="12px"
-            margin="0 12px 0 0"
-            $alignSelf={message.sender._id === user?._id ? "flex-end" : "flex-start"}
-          >
-            {isSameSender(messages, message, index, user?._id) || isLastMessage(messages, index, user?._id) ? (
-              <Container
-                width="40px"
-                height="40px"
-                padding="8px"
-                backgroundColor={Theme.colors.violet}
-                borderRadius="12px"
-                hBackgroundColor={Theme.colors.lightViolet}
-                cursor="pointer"
-              >
-                {user?.pic !== defaultProfileUrl ? (
-                  <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
-                ) : (
-                  <Image
-                    src={message?.sender?.pic || ""}
-                    alt={message?.sender?.name || "user profile photo"}
-                    width={24}
-                    height={24}
-                    style={{ borderRadius: "100%" }}
-                  />
-                )}
-              </Container>
-            ) : (
-              <Container width="32px" height="32px" padding="4px" $display="hidden"></Container>
-            )}
-            <Text color={isDark ? Theme.colors.white : Theme.colors.black}>{message.content}</Text>
-          </Flex>
-        ))}
-      <Flex $alignSelf="flex-start" height="16px">
-        {isTyping && <PropagateLoader color={Theme.colors.violet} size={10} />}
+    <>
+      <Flex
+        as={"div"}
+        $overflowY="auto"
+        flexDirection="column"
+        gap="12px"
+        height="-webkit-fill-available"
+        margin="12px 0 0"
+        ref={messageContainerRef}
+      >
+        {messages &&
+          messages.map((message, index) => (
+            <Flex
+              key={message._id}
+              alignItems="center"
+              gap="12px"
+              margin="0 12px 0 0"
+              $alignSelf={message.sender._id === user?._id ? "flex-end" : "flex-start"}
+            >
+              {isSameSender(messages, message, index, user?._id) || isLastMessage(messages, index, user?._id) ? (
+                <Container
+                  width="40px"
+                  height="40px"
+                  padding="8px"
+                  backgroundColor={Theme.colors.violet}
+                  borderRadius="12px"
+                  hBackgroundColor={Theme.colors.lightViolet}
+                  cursor="pointer"
+                >
+                  {user?.pic !== defaultProfileUrl ? (
+                    <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
+                  ) : (
+                    <Image
+                      src={message?.sender?.pic || ""}
+                      alt={message?.sender?.name || "user profile photo"}
+                      width={24}
+                      height={24}
+                      style={{ borderRadius: "100%" }}
+                    />
+                  )}
+                </Container>
+              ) : (
+                <Container width="40px" height="40px" padding="4px" $display="hidden"></Container>
+              )}
+              <Flex gap="12px" alignItems="center">
+                <Text fontSize="18px" color={isDark ? Theme.colors.white : Theme.colors.black}>
+                  {message.content}
+                </Text>
+                <Flex $alignSelf="flex-end">
+                  <Text fontSize="12px" color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}>
+                    {getTime(message.createdAt, false)}
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
+          ))}
       </Flex>
-    </Flex>
+      <Flex $alignSelf="flex-start" margin="6px 0" height="24px" alignItems="center">
+        {isTyping ? <PulseLoader color={Theme.colors.violet} size={10} /> : <Container height="14px"></Container>}
+      </Flex>
+    </>
   );
 };
 

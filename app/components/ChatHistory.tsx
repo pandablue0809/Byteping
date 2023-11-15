@@ -93,27 +93,28 @@ const ChatHistory = ({
           >
             <Flex gap="8px" alignItems="center" $cursor="pointer" onClick={profileClickHandler}>
               <Container
-                width="48px"
-                height="48px"
+                width="40px"
+                height="40px"
                 padding="8px"
-                backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
-                borderRadius="50%"
+                backgroundColor={Theme.colors.violet}
+                borderRadius="12px"
+                hBackgroundColor={Theme.colors.lightViolet}
                 cursor="pointer"
               >
                 {!selectedChat.isGroupChat ? (
                   getSenderPic(loggedUser, selectedChat.users) === defaultProfileUrl ? (
-                    <VscAccount size={32} fill={isDark ? Theme.colors.white : Theme.colors.black} />
+                    <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
                   ) : (
                     <Image
                       src={getSenderPic(loggedUser, selectedChat.users)}
                       alt={user?.name || "user profile photo"}
-                      width={32}
-                      height={32}
+                      width={24}
+                      height={24}
                       style={{ borderRadius: "100%" }}
                     />
                   )
                 ) : (
-                  <VscAccount size={32} fill={isDark ? Theme.colors.white : Theme.colors.black} />
+                  <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
                 )}
               </Container>
               <Flex flexDirection="column">
@@ -143,12 +144,14 @@ const ChatHistory = ({
               borderRadius="12px"
               hBackgroundColor={Theme.colors.lightViolet}
               cursor="pointer"
-              onClick={() => setSelectedChat(undefined)}
+              onClick={() => {
+                setSelectedChat(null);
+              }}
             >
               <BiArrowBack size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
             </Container>
           </Flex>
-          <SingleChat />
+          <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         </>
       ) : (
         <Text color={isDark ? Theme.colors.white : Theme.colors.black}>Select a chat to start a Byte Chat...</Text>
