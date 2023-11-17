@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/arjunan-k/byteping/compare/v1.22.0...v1.23.0) (2023-11-15)
+
+
+### Features
+
+* **date:** add message date and scroll to contact list ([a2df5fd](https://github.com/arjunan-k/byteping/commit/a2df5fdba776e15aec664da1f6af567ca7081d8a))
+
 # [1.22.0](https://github.com/arjunan-k/byteping/compare/v1.21.0...v1.22.0) (2023-11-15)
 
 
