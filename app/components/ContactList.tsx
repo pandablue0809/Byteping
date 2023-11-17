@@ -9,8 +9,9 @@ import Container from "@/styles/Container.styled";
 import Loader from "./Loader";
 import { VscAccount } from "react-icons/vsc";
 import Image from "next/image";
-import { UserData } from "@/types";
+import { ChatData, UserData } from "@/types";
 import NewGroupButton from "./NewGroupButton";
+import { getDate, getTime } from "@/utils/date";
 
 const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
   const { isDark } = useContext(DarkLightModeContext)!;
@@ -25,6 +26,10 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
   };
 
   const defaultProfileUrl = "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg";
+
+  const getMessagedPersonName = (userChat: ChatData) => {
+    return userChat.latestMessage?.sender.email === user?.email ? "You" : userChat.latestMessage?.sender.name;
+  };
 
   const getSenderPic = (loggedUserData: UserData | undefined, users: UserData[]) => {
     if (!loggedUserData) {
@@ -145,10 +150,41 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
                 <VscAccount size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
               )}
             </Container>
-            <Flex flexDirection="column">
-              <Text fontSize="18px" fontWeight="600" color={isDark ? Theme.colors.white : Theme.colors.black}>
-                {!userChat.isGroupChat ? getSender(loggedUser, userChat.users) : userChat.chatName}
-              </Text>
+            <Flex flexDirection="column" gap="4px" $flex="1">
+              <Flex flexDirection="row" alignItems="center" justifyContent="space-between">
+                <Text fontSize="18px" fontWeight="600" color={isDark ? Theme.colors.white : Theme.colors.black}>
+                  {!userChat.isGroupChat ? getSender(loggedUser, userChat.users) : userChat.chatName}
+                </Text>
+                {userChat.latestMessage?.createdAt && (
+                  <Text
+                    fontSize="14px"
+                    fontWeight="400"
+                    color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}
+                  >
+                    {getDate(userChat.latestMessage?.createdAt) === "Today"
+                      ? getTime(userChat.latestMessage.createdAt, false)
+                      : getDate(userChat.latestMessage?.createdAt)}
+                  </Text>
+                )}
+              </Flex>
+              {userChat.latestMessage?.content && (
+                <Text
+                  style={{
+                    width: "75%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 1,
+                    WebkitBoxOrient: "vertical"
+                  }}
+                  fontSize="16px"
+                  color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}
+                >
+                  {userChat.isGroupChat
+                    ? `${getMessagedPersonName(userChat)}: ${userChat.latestMessage?.content}`
+                    : userChat.latestMessage.content}
+                </Text>
+              )}
             </Flex>
           </Flex>
         ))

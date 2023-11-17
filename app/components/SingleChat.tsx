@@ -72,6 +72,7 @@ const SingleChat = ({
         const data = await response.json();
         socket.emit("new message", data);
         setMessages((prev) => [...prev, data]);
+        setFetchAgain(!fetchAgain);
       } catch (error) {
         throw new Error("Failed to send Message");
       }
@@ -128,6 +129,7 @@ const SingleChat = ({
         }
       } else {
         setMessages((prev) => [...prev, newMessageReceived]);
+        setFetchAgain(!fetchAgain);
       }
     });
 

@@ -8,6 +8,16 @@ export interface UserData {
   __v?: number;
 }
 
+interface LatestMessage {
+  _id: string;
+  sender: UserData;
+  content: string;
+  chat: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
 export interface ChatData {
   _id: string;
   chatName: string;
@@ -17,6 +27,7 @@ export interface ChatData {
   updatedAt: string;
   __v: number;
   groupAdmin?: UserData;
+  latestMessage: LatestMessage;
 }
 
 export interface MessageData {
