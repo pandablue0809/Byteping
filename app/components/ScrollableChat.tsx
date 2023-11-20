@@ -49,6 +49,7 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
         height="-webkit-fill-available"
         margin="12px 0 0"
         ref={messageContainerRef}
+        className="hideVerticalScrollBar"
       >
         {messages &&
           messages.map((message, index) => (

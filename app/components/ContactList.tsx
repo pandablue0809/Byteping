@@ -109,6 +109,7 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
       display="flex"
       $mDisplay={selectedChat ? "none" : "flex"}
       $overflowY="scroll"
+      className="hideVerticalScrollBar"
     >
       <Flex width="100%" justifyContent="space-between" alignItems="center" margin="0 0 8px 0">
         <Text color={isDark ? Theme.colors.white : Theme.colors.black} fontSize="24px">
