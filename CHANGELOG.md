@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/arjunan-k/byteping/compare/v1.23.0...v1.24.0) (2023-11-17)
+
+
+### Features
+
+* **date:** add last message and date info in user chat tab ([e8c1816](https://github.com/arjunan-k/byteping/commit/e8c1816cdcf9e5695790259fdebda66f021dc6cf))
+
 # [1.23.0](https://github.com/arjunan-k/byteping/compare/v1.22.0...v1.23.0) (2023-11-15)
 
 
