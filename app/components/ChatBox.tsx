@@ -4,7 +4,6 @@ import React, { useContext, useState } from "react";
 import ChatWindow from "./ChatWindow";
 import ContactList from "./ContactList";
 import { DarkLightModeContext } from "@/contexts/DarkLightModeProvider";
-import { motion } from "framer-motion";
 
 const ChatBox = () => {
   const { isDark } = useContext(DarkLightModeContext)!;
@@ -12,8 +11,7 @@ const ChatBox = () => {
 
   return (
     <Flex
-      as={motion.section}
-      transition={{ duration: 2, type: "spring" }}
+      as={"section"}
       backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
       width="100%"
       borderRadius="0 0 4px 4px"

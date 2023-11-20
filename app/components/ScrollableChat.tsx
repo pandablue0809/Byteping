@@ -52,14 +52,14 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
       >
         {messages &&
           messages.map((message, index) => (
-            <>
-              <Flex $alignSelf="center">
-                {!isSameDate(message, index, messages) && (
+            <React.Fragment key={message._id}>
+              {!isSameDate(message, index, messages) && (
+                <Flex $alignSelf="center" key={`${message._id}${message.createdAt}`}>
                   <Text fontSize="16px" color={isDark ? Theme.colors.lightGrey : Theme.colors.extraDarkGrey}>
                     {getDate(message.createdAt)}
                   </Text>
-                )}
-              </Flex>
+                </Flex>
+              )}
               <Flex
                 key={message._id}
                 alignItems="center"
@@ -103,7 +103,7 @@ const ScrollableChat = ({ messages, isTyping }: { messages: MessageData[]; isTyp
                   </Flex>
                 </Flex>
               </Flex>
-            </>
+            </React.Fragment>
           ))}
       </Flex>
       <Flex $alignSelf="flex-start" margin="6px 0" height="24px" alignItems="center">

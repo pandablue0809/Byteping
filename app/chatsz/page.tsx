@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { fetchChats } from "@/utils/http";
 import { useQuery } from "@tanstack/react-query";
 import { ChatState } from "@/contexts/ChatProvider";
@@ -33,25 +32,6 @@ const Home = () => {
     gcTime: 1000
   });
 
-  const { data: newChat } = useQuery({
-    queryKey: ["chats"],
-    queryFn: fetchChats
-  });
-
-  const childVariants = {
-    hidden: {
-      opacity: 0,
-      x: -50
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
   let message;
 
   if (isLoading) {
@@ -68,31 +48,12 @@ const Home = () => {
 
   if (chats) {
     message = (
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          visible: {
-            transition: {
-              staggerChildren: 0.1
-            }
-          }
-        }}
-      >
+      <div>
         {chats.map((chat: Chat) => (
-          <motion.div key={chat._id} variants={childVariants}>
-            {chat.chatName}
-          </motion.div>
-        ))}
-        {newChat?.map((chat: Chat) => (
-          <motion.div key={chat._id} variants={childVariants}>
-            {chat.chatName}
-          </motion.div>
+          <div key={chat._id}>{chat.chatName}</div>
         ))}
 
-        <Container border="4px solid red" borderRadius="4px">
-          {user && <SideDrawer />}
-        </Container>
+        <SideDrawer />
 
         <Flex backgroundColor="#8EA7E9" textColor="#000" justifyContent="space-between">
           <Container>Search User</Container>
@@ -118,7 +79,7 @@ const Home = () => {
           {user && <MyChats />}
           {user && <ChatBox />}
         </section>
-      </motion.div>
+      </div>
     );
   }
   return message;

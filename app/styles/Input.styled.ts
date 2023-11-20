@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import isPropValid from "@emotion/is-prop-valid";
 
 interface InputProps {
   backgroundColor?: string;
@@ -51,7 +52,9 @@ interface InputProps {
   mJustifyContent?: string;
 }
 
-const Input = styled.input<InputProps>`
+const Input = styled.input.withConfig({
+  shouldForwardProp: (prop) => isPropValid(prop)
+})<InputProps>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
   padding: ${({ padding }) => padding};

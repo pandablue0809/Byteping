@@ -3,13 +3,10 @@
 import "./Home.css";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useScroll, useTransform } from "framer-motion";
 import Login from "@/components/Login/Login";
 import SignUp from "@/components/SignUp/SignUp";
 
 const Home = () => {
-  const { scrollY } = useScroll();
-  const moveDown = useTransform(scrollY, [0, 200, 300, 500], [0, 200, 300, 500]);
   const router = useRouter();
 
   useEffect(() => {
@@ -20,7 +17,7 @@ const Home = () => {
   }, [router]);
   return (
     <main>
-      <motion.h1 style={{ y: moveDown }}>BytePing</motion.h1>
+      <h1>BytePing</h1>
       <section className="login-signup-container">
         <Login />
         <SignUp />
