@@ -15,7 +15,8 @@ const ChatBox = () => {
       backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
       width="100%"
       borderRadius="0 0 4px 4px"
-      height="80vh"
+      height="calc(100vh - 80px - 48px - 48px)"
+      mHeight="calc(100vh - 80px - 24px - 24px)"
     >
       <ContactList fetchAgain={fetchAgain} />
       <ChatWindow fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />

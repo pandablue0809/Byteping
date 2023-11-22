@@ -36,29 +36,29 @@ export const getDate = (timestamp: string) => {
   let formattedMonth;
 
   if (month === 1) {
-    formattedMonth = "January";
+    formattedMonth = "Jan";
   } else if (month === 2) {
-    formattedMonth = "February";
+    formattedMonth = "Feb";
   } else if (month === 3) {
-    formattedMonth = "March";
+    formattedMonth = "Mar";
   } else if (month === 4) {
-    formattedMonth = "April";
+    formattedMonth = "Apr";
   } else if (month === 5) {
     formattedMonth = "May";
   } else if (month === 6) {
-    formattedMonth = "June";
+    formattedMonth = "Jun";
   } else if (month === 7) {
-    formattedMonth = "July";
+    formattedMonth = "Jul";
   } else if (month === 8) {
-    formattedMonth = "August";
+    formattedMonth = "Aug";
   } else if (month === 9) {
-    formattedMonth = "September";
+    formattedMonth = "Sep";
   } else if (month === 10) {
-    formattedMonth = "October";
+    formattedMonth = "Oct";
   } else if (month === 11) {
-    formattedMonth = "November";
+    formattedMonth = "Nov";
   } else if (month === 12) {
-    formattedMonth = "December";
+    formattedMonth = "Dec";
   } else {
     formattedMonth = "Invalid month";
   }

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { createContext, useState, ReactNode, useEffect } from "react";
 
 export const DarkLightModeContext = createContext<{ isDark: boolean; toggleDarkLightMode: () => void } | undefined>(
@@ -15,6 +14,8 @@ const DarkLightModeProvider: React.FC<DarkLightModeProviderProps> = ({ children 
 
   const toggleDarkLightMode = () => {
     localStorage.setItem("isDark", JSON.stringify(!isDark));
+    const switchSound = new Audio("/audios/switch.wav");
+    switchSound.play();
     setIsDark(!isDark);
   };
 

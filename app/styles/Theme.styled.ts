@@ -2,7 +2,7 @@ const Theme = {
   colors: {
     violet: "#615EF0",
     lightViolet: "#615ef0cc",
-    green: "#68D391",
+    green: "#43ff4b",
     lightGreen: "#C6F6D5",
     darkGreen: "#38A169",
     lightOrange: "#FEEBC8",
@@ -16,7 +16,8 @@ const Theme = {
     extraDarkGrey: "#718096"
   },
   breakpoints: {
-    mobile: "768px"
+    mobile: "1280px",
+    mobilePixel: 1280
   },
   fonts: {
     primary: "Metropolis",

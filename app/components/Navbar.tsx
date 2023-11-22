@@ -1,18 +1,16 @@
-import Container from "@/styles/Container.styled";
 import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
 import Theme from "@/styles/Theme.styled";
-import { BsSun } from "react-icons/bs";
-import { BsMoonStars } from "react-icons/bs";
 import { useContext } from "react";
 import { DarkLightModeContext } from "@/contexts/DarkLightModeProvider";
 import Nav from "@/styles/Nav.styled";
 import NotificationButton from "./NotificationButton";
 import AccountButton from "./AccountButton";
 import SearchButton from "./SearchButton";
+import DarkLightModeButton from "./DarkLightModeButton";
 
 const Navbar = () => {
-  const { isDark, toggleDarkLightMode } = useContext(DarkLightModeContext)!;
+  const { isDark } = useContext(DarkLightModeContext)!;
 
   return (
     <Nav
@@ -23,25 +21,11 @@ const Navbar = () => {
       $justifyContent="space-between"
       $alignItems="center"
       $borderBottom={`1px solid ${isDark ? Theme.colors.lightWhite : Theme.colors.lightGrey}`}
+      $height="80px"
     >
       <Flex gap="24px" alignItems="center" justifyContent="flex-start">
         <SearchButton />
-        <Container
-          width="40px"
-          height="40px"
-          padding="8px"
-          backgroundColor={Theme.colors.violet}
-          borderRadius="12px"
-          hBackgroundColor={Theme.colors.lightViolet}
-          cursor="pointer"
-          onClick={toggleDarkLightMode}
-        >
-          {isDark ? (
-            <BsSun size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
-          ) : (
-            <BsMoonStars size={24} fill={isDark ? Theme.colors.black : Theme.colors.white} />
-          )}
-        </Container>
+        <DarkLightModeButton />
       </Flex>
       <Text
         as={"h1"}

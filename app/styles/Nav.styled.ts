@@ -8,6 +8,7 @@ interface NavProps {
   $alignItems?: string;
   $borderBottom?: string;
   $transition?: string;
+  $height?: string;
 }
 
 const Nav = styled.div<NavProps>`
@@ -19,6 +20,7 @@ const Nav = styled.div<NavProps>`
   align-items: ${({ $alignItems }) => $alignItems};
   border-bottom: ${({ $borderBottom }) => $borderBottom};
   transition: ${({ $transition }) => $transition};
+  height: ${({ $height }) => $height};
 `;
 
 export default Nav;
