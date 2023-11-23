@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/arjunan-k/byteping/compare/v1.24.0...v1.25.0) (2023-11-22)
+
+
+### Features
+
+* **audio:** add sound for dark mode switch and re-format date util ([fe40e46](https://github.com/arjunan-k/byteping/commit/fe40e4662a6eb1ce50283abeb0bb437ab222729c))
+
 # [1.24.0](https://github.com/arjunan-k/byteping/compare/v1.23.0...v1.24.0) (2023-11-17)
 
 
