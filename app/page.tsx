@@ -57,7 +57,7 @@ const Home = () => {
         Features
       </Flex>
       <Flex
-        backgroundColor={Theme.colors.violet}
+        backgroundColor={isDark ? Theme.colors.black : Theme.colors.white}
         height="100vh"
         padding="48px"
         mPadding="24px"
