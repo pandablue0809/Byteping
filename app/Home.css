@@ -1,15 +1,25 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.hero-img {
+  background-image: url(../public/images/heroBanner.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.home-hero {
-  transition: background-color 1s ease;
-  animation: fadeIn 1s ease;
+.hero-img-logo {
+  position: absolute;
+  top: 48px;
+  left: 48px;
+}
+
+@media (max-width: 1280px) {
+  .hero-img {
+    background-image: url(../public/images/heroBannerMobile.jpg);
+  }
+  .hero-img-logo {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
 }
 
 .login-signup-container {

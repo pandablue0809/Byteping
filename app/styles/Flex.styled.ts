@@ -3,6 +3,7 @@ import isPropValid from "@emotion/is-prop-valid";
 
 interface FlexProps {
   backgroundColor?: string;
+  background?: string;
   textColor?: string;
   padding?: string;
   margin?: string;
@@ -53,6 +54,7 @@ const Flex = styled.div.withConfig({
   shouldForwardProp: (prop) => isPropValid(prop)
 })<FlexProps>`
   background-color: ${({ backgroundColor }) => backgroundColor};
+  background: ${({ background }) => background};
   color: ${({ textColor }) => textColor};
   padding: ${({ padding }) => padding};
   margin: ${({ margin }) => margin};

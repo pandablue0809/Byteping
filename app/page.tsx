@@ -1,7 +1,7 @@
 "use client";
 
 import "./Home.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Login from "@/components/Login/Login";
 import SignUp from "@/components/SignUp/SignUp";
@@ -9,12 +9,10 @@ import Flex from "./styles/Flex.styled";
 import Text from "./styles/Text.styled";
 import Container from "./styles/Container.styled";
 import Theme from "./styles/Theme.styled";
-import DarkLightModeButton from "./components/DarkLightModeButton";
 import { DarkLightModeContext } from "./contexts/DarkLightModeProvider";
 
 const Home = () => {
   const router = useRouter();
-  const [heroOneBorderRadius, setHeroOneBorderRadius] = useState("0");
   const { isDark } = useContext(DarkLightModeContext)!;
 
   useEffect(() => {
@@ -26,32 +24,31 @@ const Home = () => {
 
   return (
     <Container>
-      <DarkLightModeButton
-        position="absolute"
-        top={"32px"}
-        right={"32px"}
-        bg={Theme.colors.green}
-        hBg={Theme.colors.green}
-        iconSize={32}
-      />
       <Flex
         height="100vh"
+        padding="48px"
+        mPadding="24px"
+        className="hero-img"
+        $position="relative"
         alignItems="center"
-        justifyContent="center"
-        backgroundColor={Theme.colors.green}
-        borderRadius={heroOneBorderRadius}
-        onScroll={() => setHeroOneBorderRadius("0 0 0 100%")}
+        justifyContent="flex-end"
+        mJustifyContent="flex-start"
       >
         <Text
-          fontSize="5.5rem"
-          mFontSize="2rem"
+          className="hero-img-logo"
+          fontSize="2rem"
+          mFontSize="1rem"
           fontWeight="900"
-          fontStyle="italic"
           letterSpacing="16px"
-          color={isDark ? Theme.colors.black : Theme.colors.white}
+          color={Theme.colors.white}
         >
           BYTEPING
         </Text>
+        <Container border="2px solid white" padding="48px" mPadding="24px">
+          <Text fontSize="3.5rem" fontWeight="100" color={Theme.colors.white} letterSpacing="4px">
+            IMPRESSIVE EXPERIENCES THAT DELIVER
+          </Text>
+        </Container>
       </Flex>
       <Flex backgroundColor="#FBBC05" height="100vh">
         Features
