@@ -27,6 +27,7 @@ interface ContainerProps {
   hBoxShadow?: string;
   hTransform?: string;
   hBackgroundColor?: string;
+  hColor?: string;
   mPadding?: string;
   mMargin?: string;
   mWidth?: string;
@@ -65,6 +66,7 @@ const Container = styled.div.withConfig({
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};
     transform: ${({ hTransform }) => hTransform};
     background-color: ${({ hBackgroundColor }) => hBackgroundColor};
+    color: ${({ hColor }) => hColor};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

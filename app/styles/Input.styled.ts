@@ -30,10 +30,11 @@ interface InputProps {
   $zIndex?: string;
   $flex?: string;
   $fontSize?: string;
+  $fontWeight?: string;
   hBoxShadow?: string;
   hTransform?: string;
   $hBackgroundColor?: string;
-  $pTextColor: string;
+  $pTextColor?: string;
   $pFontSize?: string;
   $pFontFamily?: string;
   $pLineHeight?: string;
@@ -83,6 +84,7 @@ const Input = styled.input.withConfig({
   z-index: ${({ $zIndex }) => $zIndex};
   flex: ${({ $flex }) => $flex};
   font-size: ${({ $fontSize }) => $fontSize};
+  font-weight: ${({ $fontWeight }) => $fontWeight};
 
   &:hover {
     box-shadow: ${({ hBoxShadow }) => hBoxShadow};

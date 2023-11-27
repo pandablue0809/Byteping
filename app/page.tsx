@@ -3,13 +3,12 @@
 import "./Home.css";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Login from "@/components/Login/Login";
-import SignUp from "@/components/SignUp/SignUp";
 import Flex from "./styles/Flex.styled";
 import Text from "./styles/Text.styled";
 import Container from "./styles/Container.styled";
 import Theme from "./styles/Theme.styled";
 import Link from "next/link";
+import LoginContainer from "./components/LoginContainer";
 
 const Home = () => {
   const router = useRouter();
@@ -51,20 +50,7 @@ const Home = () => {
           </Text>
         </Container>
       </Flex>
-      <Flex
-        backgroundColor={Theme.colors.white}
-        height="100vh"
-        padding="48px"
-        mPadding="24px"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Flex mFlexDirection="column" width="50%">
-          <Login />
-          <SignUp />
-        </Flex>
-        <Flex className="sign-in-up-preview" $mDisplay="none" width="45%" height="75%" margin="0 24px 0 0"></Flex>
-      </Flex>
+      <LoginContainer />
     </Container>
   );
 };
