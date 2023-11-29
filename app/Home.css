@@ -35,6 +35,16 @@
   opacity: 1;
 }
 
+@keyframes zoom {
+  0%,
+  100% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 120% 120%;
+  }
+}
+
 .sign-in-up-preview {
   background: #b369c6;
   border-radius: 8px;
@@ -45,6 +55,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  animation: zoom 10s infinite;
 }
 
 .sign-in-up-preview:hover {

@@ -6,3 +6,5 @@ node_modules
 next-env.d.ts
 next.config.ts
 yarn.lock
+cypress
+cypress.config.ts
