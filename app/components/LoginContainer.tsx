@@ -12,6 +12,7 @@ const LoginContainer = () => {
 
   return (
     <Flex
+      as={"main"}
       backgroundColor={Theme.colors.white}
       height="100vh"
       padding="48px"
@@ -19,14 +20,14 @@ const LoginContainer = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Container width="50%" padding="48px" mPadding="0" mWidth="100%">
-        <Text fontSize="30px" fontWeight="500" margin="0 0 12px 0">
+      <Container width="50%" padding="48px" mPadding="0" mWidth="100%" as={"section"} className="signin-signup">
+        <Text fontSize="30px" fontWeight="500" margin="0 0 12px 0" as={"h2"}>
           {signIn ? "Sign In" : "Sign Up"}
         </Text>
-        <Text fontSize="16px" fontWeight="400" margin="0 0 4px 0">
+        <Text fontSize="16px" fontWeight="400" margin="0 0 4px 0" as={"p"}>
           {signIn ? "If you don’t have an account" : "If you already have an account"}
         </Text>
-        <Text fontSize="16px" fontWeight="400" margin="0 0 40px 0">
+        <Text fontSize="16px" fontWeight="400" margin="0 0 40px 0" as={"p"}>
           You can{" "}
           {signIn ? (
             <span onClick={() => setSignIn(!signIn)} className="dark-blue-span">
@@ -40,7 +41,14 @@ const LoginContainer = () => {
         </Text>
         {signIn ? <SignIn /> : <SignUp />}
       </Container>
-      <Flex className="sign-in-up-preview" $mDisplay="none" width="45%" height="75%" margin="0 24px 0 0"></Flex>
+      <Flex
+        className="sign-in-up-preview"
+        $mDisplay="none"
+        width="45%"
+        height="75%"
+        margin="0 24px 0 0"
+        as={"aside"}
+      ></Flex>
     </Flex>
   );
 };

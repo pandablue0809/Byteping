@@ -54,7 +54,7 @@ const SignIn = () => {
   }
 
   return (
-    <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%">
+    <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-in">
       <Input
         value={email}
         placeholder="Your mail goes here..."

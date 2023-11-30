@@ -21,8 +21,9 @@ const Home = () => {
   }, [router]);
 
   return (
-    <Container>
+    <>
       <Flex
+        as={"main"}
         height="100vh"
         padding="48px"
         mPadding="24px"
@@ -51,7 +52,7 @@ const Home = () => {
         </Container>
       </Flex>
       <LoginContainer />
-    </Container>
+    </>
   );
 };
 

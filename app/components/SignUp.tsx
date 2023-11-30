@@ -113,7 +113,7 @@ const SignUp = () => {
   };
 
   return (
-    <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%">
+    <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-up">
       <Input
         value={name}
         placeholder="Your name goes here..."
