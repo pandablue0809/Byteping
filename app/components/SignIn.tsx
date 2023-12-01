@@ -17,6 +17,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { setUser } = ChatState()!;
+  const [isError, setIsError] = useState("");
   const router = useRouter();
 
   const { mutateAsync, isPending } = useMutation({
@@ -34,7 +35,7 @@ const SignIn = () => {
 
   const submitHandler = async () => {
     if (!email || !password) {
-      // console.log("Fill email and password");
+      setIsError("Fill email & password");
       return;
     }
 
@@ -42,6 +43,7 @@ const SignIn = () => {
     try {
       await mutateAsync({ data });
     } catch (error) {
+      setIsError("Failed to sign in");
       // eslint-disable-next-line no-console
       console.error("Error:", error);
       return;
@@ -55,20 +57,26 @@ const SignIn = () => {
 
   return (
     <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-in">
-      <Input
-        value={email}
-        placeholder="Your mail goes here..."
-        $outline="0"
-        $border="0"
-        borderBottom="2px solid black"
-        padding="0 0 12px 0"
-        $fontSize="16px"
-        $fontWeight="400"
-        type="email"
-        onChange={(e) => setEmail(e.target.value)}
-        width="100%"
-        height="40px"
-      />
+      <Flex flexDirection="column" gap="12px">
+        <Text fontSize="18px" fontWeight="400" color="#b60000" as={"h3"} $height="24px">
+          {isError ? isError : ""}
+        </Text>
+        <Input
+          value={email}
+          placeholder="Your mail goes here..."
+          $outline="0"
+          $border="0"
+          borderBottom="2px solid black"
+          padding="0 0 12px 0"
+          $fontSize="16px"
+          $fontWeight="400"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          width="100%"
+          height="40px"
+          name="email"
+        />
+      </Flex>
       <Container $position="relative">
         <Input
           value={password}
@@ -83,6 +91,7 @@ const SignIn = () => {
           borderBottom="2px solid black"
           width="100%"
           height="40px"
+          name="password"
         />
         <Container
           cursor="pointer"
@@ -103,6 +112,7 @@ const SignIn = () => {
         onClick={submitHandler}
         border="2px solid black"
         hColor="white"
+        className="signInButton"
       >
         <Text fontWeight="600" fontSize="18px">
           {isPending ? "Submitting..." : "Login"}
@@ -117,6 +127,7 @@ const SignIn = () => {
         onClick={guestSubmitHandler}
         border="2px solid black"
         hColor="white"
+        className="guestPassword"
       >
         <Text fontWeight="600" fontSize="18px">
           Guest User

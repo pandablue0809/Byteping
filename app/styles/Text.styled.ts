@@ -18,6 +18,7 @@ interface TextProps {
   textTransform?: string;
   opacity?: string;
   $cursor?: string;
+  $height?: string;
   hBg?: string;
   hColor?: string;
   hPadding?: string;
@@ -70,6 +71,7 @@ const Text = styled.p.withConfig({
   text-transform: ${({ textTransform }) => textTransform};
   opacity: ${({ opacity }) => opacity};
   cursor: ${({ $cursor }) => $cursor};
+  height: ${({ $height }) => $height};
 
   &:hover {
     background: ${({ hBg }) => hBg};

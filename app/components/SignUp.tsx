@@ -22,13 +22,13 @@ const SignUp = () => {
   const [picture, setPicture] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState("");
   const router = useRouter();
 
   function postDetails(pic: File | undefined) {
     setLoading(true);
     if (pic === undefined || pic === null) {
-      // eslint-disable-next-line no-console
-      console.log("Please upload an image");
+      setIsError("Please upload proper image");
     } else if (pic?.type === "image/jpeg" || pic?.type === "image/png") {
       const data = new FormData();
       data.append("file", pic);
@@ -53,6 +53,7 @@ const SignUp = () => {
     } else {
       // eslint-disable-next-line no-console
       console.log("Please upload an image");
+      setIsError("Please upload proper image");
     }
   }
 
@@ -60,6 +61,7 @@ const SignUp = () => {
     setLoading(true);
     if (!name || !email || !password || !picture || !confirmPassword) {
       setLoading(false);
+      setIsError("Fill all the fields");
       // eslint-disable-next-line no-console
       console.log("Fill all the fields");
       return;
@@ -67,6 +69,7 @@ const SignUp = () => {
 
     if (password != confirmPassword) {
       setLoading(false);
+      setIsError("Password is not matching");
       // eslint-disable-next-line no-console
       console.log("Password is not matching");
       return;
@@ -105,29 +108,38 @@ const SignUp = () => {
           console.error("Error:", error);
         });
     } catch (error) {
+      setIsError("Something went wrong");
       // eslint-disable-next-line no-console
       console.error("Error:", error);
     } finally {
+      setIsError("");
       setLoading(false);
     }
   };
 
   return (
     <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-up">
-      <Input
-        value={name}
-        placeholder="Your name goes here..."
-        $outline="0"
-        $border="0"
-        borderBottom="2px solid black"
-        padding="0 0 12px 0"
-        $fontSize="16px"
-        $fontWeight="400"
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        width="100%"
-        height="40px"
-      />
+      <Flex flexDirection="column" gap="12px">
+        <Text fontSize="18px" fontWeight="400" color="#b60000" as={"h3"} $height="24px">
+          {isError ? isError : ""}
+        </Text>
+        <Input
+          value={name}
+          placeholder="Your name goes here..."
+          $outline="0"
+          $border="0"
+          borderBottom="2px solid black"
+          padding="0 0 12px 0"
+          $fontSize="16px"
+          $fontWeight="400"
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          width="100%"
+          height="40px"
+          name="name"
+          data-cy="signUpName"
+        />
+      </Flex>
       <Input
         value={email}
         placeholder="Your mail goes here..."
@@ -141,6 +153,8 @@ const SignUp = () => {
         onChange={(e) => setEmail(e.target.value)}
         width="100%"
         height="40px"
+        name="email"
+        data-cy="signUpEmail"
       />
 
       <Container $position="relative">
@@ -157,6 +171,8 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
           width="100%"
           height="40px"
+          name="password"
+          data-cy="signUpPassword"
         />
         <Container
           cursor="pointer"
@@ -183,6 +199,8 @@ const SignUp = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           width="100%"
           height="40px"
+          name="confirmPassword"
+          data-cy="signUpConfirmPassword"
         />
         <Container
           cursor="pointer"
@@ -207,6 +225,7 @@ const SignUp = () => {
           $fontWeight="400"
           type="file"
           accept="image/*"
+          name="imageUpload"
           onChange={(e) => {
             if (e.target && e.target.files && e.target.files.length > 0) {
               postDetails(e.target.files[0]);
@@ -214,6 +233,7 @@ const SignUp = () => {
           }}
           width="100%"
           height="40px"
+          data-cy="signUpImageUpload"
         />
       </label>
 
@@ -226,6 +246,7 @@ const SignUp = () => {
         onClick={submitHandler}
         border="2px solid black"
         hColor="white"
+        className="signUpSubmit"
       >
         <Text fontWeight="600" fontSize="18px">
           {loading ? "loading" : "Sign Up"}
