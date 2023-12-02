@@ -61,9 +61,17 @@ const SignUp = () => {
     setLoading(true);
     if (!name || !email || !password || !picture || !confirmPassword) {
       setLoading(false);
-      setIsError("Fill all the fields");
-      // eslint-disable-next-line no-console
-      console.log("Fill all the fields");
+      if (!name) {
+        setIsError("Please type your name");
+      } else if (!email) {
+        setIsError("Please type your email");
+      } else if (!password) {
+        setIsError("Please type your password");
+      } else if (!confirmPassword) {
+        setIsError("Please confirm your password");
+      } else if (!picture) {
+        setIsError("Please upload your picture");
+      }
       return;
     }
 
@@ -120,7 +128,15 @@ const SignUp = () => {
   return (
     <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-up">
       <Flex flexDirection="column" gap="12px">
-        <Text fontSize="18px" fontWeight="400" color="#b60000" as={"h3"} $height="24px">
+        <Text
+          fontSize="18px"
+          fontWeight="400"
+          color="#b60000"
+          as={"h3"}
+          $height="24px"
+          className="signUpErrorMessage"
+          data-cy="signUpErrorMessage"
+        >
           {isError ? isError : ""}
         </Text>
         <Input
@@ -247,9 +263,10 @@ const SignUp = () => {
         border="2px solid black"
         hColor="white"
         className="signUpSubmit"
+        data-cy="signUpSubmitButton"
       >
         <Text fontWeight="600" fontSize="18px">
-          {loading ? "loading" : "Sign Up"}
+          {loading ? "Loading" : "Sign Up"}
         </Text>
       </Container>
     </Flex>

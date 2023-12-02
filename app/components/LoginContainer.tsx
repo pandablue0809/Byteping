@@ -21,7 +21,7 @@ const LoginContainer = () => {
       alignItems="center"
     >
       <Container width="50%" padding="48px" mPadding="0" mWidth="100%" as={"section"} className="signin-signup">
-        <Text fontSize="30px" fontWeight="500" margin="0 0 12px 0" as={"h2"}>
+        <Text fontSize="30px" fontWeight="500" margin="0 0 12px 0" as={"h2"} data-cy="signInAndUpTitle">
           {signIn ? "Sign In" : "Sign Up"}
         </Text>
         <Text fontSize="16px" fontWeight="400" margin="0 0 4px 0" as={"p"}>
@@ -30,11 +30,11 @@ const LoginContainer = () => {
         <Text fontSize="16px" fontWeight="400" margin="0 0 12px 0" as={"p"}>
           You can{" "}
           {signIn ? (
-            <span onClick={() => setSignIn(!signIn)} className="dark-blue-span">
+            <span onClick={() => setSignIn(!signIn)} className="dark-blue-span" data-cy="registerHereButton">
               Register here !
             </span>
           ) : (
-            <span onClick={() => setSignIn(!signIn)} className="dark-blue-span">
+            <span onClick={() => setSignIn(!signIn)} className="dark-blue-span" data-cy="loginHereButton">
               Login here !
             </span>
           )}
