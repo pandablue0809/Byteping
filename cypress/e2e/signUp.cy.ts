@@ -12,6 +12,9 @@ describe(
     });
     it("should be able to click Register here ! for signing up to the application", () => {
       cy.visit("http://localhost:3000/");
+      cy.task("seedDatabase", "arjunank.json").then((returnValue) => {
+        console.log(returnValue);
+      });
       // cy.get(".signin-signup p span").click({ force: true });
       cy.get("[data-cy='registerHereButton']").then((el) => {
         expect(el.text("Register Here !"));
