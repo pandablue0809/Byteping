@@ -28,10 +28,26 @@
 // declare global {
 //   namespace Cypress {
 //     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+//       login(email: string, password: string): Chainable<void>;
+//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>;
+//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>;
+//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>;
 //     }
 //   }
 // }
+
+declare namespace Cypress {
+  interface Chainable {
+    // submitForm(): Chainable<void>;
+    // getByDataCyAttr(dataCyAttr: string): Chainable<Promise<any> | ((subject: any) => any)>;
+    // dataCy(dataCyAttr: string): Chainable<JQuery<HTMLElement>>;
+  }
+}
+
+// Cypress.Commands.add("submitForm", () => {
+//   cy.get("[data-cy='signUpSubmitButton']").click();
+// });
+
+// Cypress.Commands.add("dataCy", (dataCyAttr: string) => {
+//   return cy.get(`[data-cy=${dataCyAttr}]`) as Cypress.Chainable<JQuery<HTMLElement>>;
+// });

@@ -8,8 +8,22 @@ describe(
   },
   () => {
     beforeEach(() => {
-      cy.visit("/");
+      cy.fixture("signUp.json").as("signUpJson");
+      cy.clock();
+      // cy.tick(2000);
+      cy.visit("/").then((win) => {
+        cy.get("@signUpJson").then((signUpJson) => {
+          cy.stub(win.navigator.geolocation, "getCurrentPosition")
+            .as("getUserPosition")
+            .callsFake((cb) => {
+              setTimeout(() => {
+                cb({ signUpJson });
+              }, 100);
+            });
+        });
+      });
     });
+    cy.get("@getUserPosition").should("have.been.called");
     it("should be able to click Register here ! for signing up to the application", () => {
       cy.visit("http://localhost:3000/");
       cy.task("seedDatabase", "arjunank.json").then((returnValue) => {
