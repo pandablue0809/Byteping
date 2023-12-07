@@ -1,64 +1,41 @@
 /// <reference types="Cypress" />
 
-describe(
-  "sign up",
-  {
-    defaultCommandTimeout: 10000,
-    browser: "chrome"
-  },
-  () => {
-    beforeEach(() => {
-      cy.fixture("signUp.json").as("signUpJson");
-      cy.clock();
-      // cy.tick(2000);
-      cy.visit("/").then((win) => {
-        cy.get("@signUpJson").then((signUpJson) => {
-          cy.stub(win.navigator.geolocation, "getCurrentPosition")
-            .as("getUserPosition")
-            .callsFake((cb) => {
-              setTimeout(() => {
-                cb({ signUpJson });
-              }, 100);
-            });
-        });
-      });
-    });
-    cy.get("@getUserPosition").should("have.been.called");
-    it("should be able to click Register here ! for signing up to the application", () => {
-      cy.visit("http://localhost:3000/");
-      cy.task("seedDatabase", "arjunank.json").then((returnValue) => {
-        console.log(returnValue);
-      });
-      // cy.get(".signin-signup p span").click({ force: true });
-      cy.get("[data-cy='registerHereButton']").then((el) => {
-        expect(el.text("Register Here !"));
-      });
-      cy.get("[data-cy='registerHereButton']").click();
-      // cy.get("[data-cy='signInAndUpTitle']").should("have.text", "Sign Up");
-      // cy.get("[data-cy='signInAndUpTitle']").should("not.have.text", "Sign In");
-      // cy.submitForm();
-      cy.get("[data-cy='signUpSubmitButton']").as("submitButton");
-      cy.get("[data-cy='signUpName']").focus().blur();
-      cy.get("@submitButton")
-        .contains("Sign Up")
-        .click()
-        .then((el) => {
-          expect(el.text("Sign Up"));
-        });
-      cy.get("[data-cy='signUpErrorMessage']").should("have.class", "signUpErrorMessage");
-      cy.get("[data-cy='signUpName']").type("Lee");
-      cy.get("[data-cy='signUpEmail']").type("lee@gmail.com");
-      cy.get("[data-cy='signUpPassword']").type("123456");
-      cy.get("[data-cy='signUpConfirmPassword']").type("123456{enter}");
-      // cy.get("[data-cy='signUpImageUpload']").selectFile("../../public/images/brad.jpg");
-      // cy.get("@submitButton").contains("Sign Up").click().and("have.text", "Loading");
-      cy.get("@submitButton")
-        .contains("Sign Up")
-        .click()
-        .then((el) => {
-          expect(el.text("Sign Up"));
-        });
-      cy.get("[data-cy='signUpErrorMessage']").should("have.class", "signUpErrorMessage");
-    });
-  }
-);
+describe("sign up", { browser: "chrome" }, () => {
+  beforeEach(() => {
+    cy.fixture("signUp.json").as("signUpJson");
+    cy.clock();
+    cy.viewport(1500, 800);
+    cy.visit("/");
+  });
+  it("should test entire sign up functionalities", () => {
+    cy.get("[data-cy='registerHereButton']").should("have.text", "Register here !");
+    cy.get("[data-cy='registerHereButton']").click();
+    cy.get("[data-cy='signInAndUpTitle']").contains("Sign Up");
+    cy.get("[data-cy='signUpName']").focus().blur();
+    cy.get("[data-cy='signUpSubmitButton']").click();
+    cy.get("[data-cy='signUpErrorMessage']").should("have.text", "Please type your name");
+    cy.get("[data-cy='signUpName']").type("Adrian");
+    cy.get("[data-cy='signUpSubmitButton']").click();
+    cy.get("[data-cy='signUpErrorMessage']").should("have.text", "Please type your email");
+    cy.get("[data-cy='signUpEmail']").type("adrian@gmail.com");
+    cy.get("[data-cy='signUpSubmitButton']").click();
+    cy.get("[data-cy='signUpErrorMessage']").should("have.text", "Please type your password");
+    cy.get("[data-cy='signUpPassword']").type("123456");
+    cy.get("[data-cy='signUpSubmitButton']").click();
+    cy.get("[data-cy='signUpErrorMessage']").should("have.text", "Please confirm your password");
+    cy.get("[data-cy='signUpConfirmPassword']").type("adcdfe");
+    cy.get("[data-cy='signUpSubmitButton']").click();
+    cy.get("[data-cy='signUpErrorMessage']").should("have.text", "Please upload your picture");
+    cy.get("[data-cy='signUpImageUploadLabel']").should("have.text", "Upload your image");
+    cy.get("[data-cy='signUpImageUpload']").selectFile("cypress/images/brad.jpg", { force: true });
+    cy.get("[data-cy='signUpImageUploadLabel']").should("have.text", "Profile picture uploaded successfully");
+    cy.get("[data-cy='signUpSubmitButton']").click({ force: true });
+    cy.get("[data-cy='signUpErrorMessage']").should("have.text", "Password is not matching");
+    cy.get("[data-cy='signUpConfirmPassword']").type("123456");
+    cy.get("[data-cy='signUpSubmitButton']").should("have.text", "Sign Up");
+    cy.get("[data-cy='signUpSubmitButton']").click();
+    cy.get("[data-cy='signUpSubmitButton']").should("have.text", "Loading");
+    cy.location("pathname").should("eq", "/chats");
+    cy.screenshot("signUp");
+  });
+});

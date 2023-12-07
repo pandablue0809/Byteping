@@ -10,17 +10,13 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import Text from "@/styles/Text.styled";
 
 const SignUp = () => {
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [name, setName] = useState("");
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [email, setEmail] = useState("");
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [password, setPassword] = useState("");
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [confirmPassword, setConfirmPassword] = useState("");
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [picture, setPicture] = useState();
   const [showPassword, setShowPassword] = useState(false);
+  const [uploadedImageName, setUploadedImageName] = useState("");
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState("");
   const router = useRouter();
@@ -29,9 +25,10 @@ const SignUp = () => {
     setLoading(true);
     if (pic === undefined || pic === null) {
       setIsError("Please upload proper image");
-    } else if (pic?.type === "image/jpeg" || pic?.type === "image/png") {
+    } else if (pic?.type === "image/jpeg" || pic?.type === "image/png" || pic?.type === "image/jpg") {
       const data = new FormData();
       data.append("file", pic);
+      setUploadedImageName("Profile picture uploaded successfully");
       data.append("upload_preset", "byteping");
       data.append("cloud_name", "dx21sien7");
       fetch("https://api.cloudinary.com/v1_1/dx21sien7/image/upload", {
@@ -229,8 +226,8 @@ const SignUp = () => {
         </Container>
       </Container>
 
-      <label className="custom-file-upload">
-        Upload your image
+      <label className="custom-file-upload" data-cy="signUpImageUploadLabel">
+        {uploadedImageName ? uploadedImageName : "Upload your image"}
         <Input
           placeholder="Your secret goes here..."
           $outline="0"
