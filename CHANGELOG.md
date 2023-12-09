@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/arjunan-k/byteping/compare/v1.25.0...v1.26.0) (2023-12-09)
+
+
+### Features
+
+* **signup:** complete e2e cypress test for sign up workflow ([ff7b87b](https://github.com/arjunan-k/byteping/commit/ff7b87b5f9b3470dcc34830dce2453dfb9dffe6e))
+
 # [1.25.0](https://github.com/arjunan-k/byteping/compare/v1.24.0...v1.25.0) (2023-11-22)
 
 
