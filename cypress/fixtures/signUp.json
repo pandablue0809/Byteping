@@ -2,5 +2,7 @@
   "name": "Hector",
   "email": "hectorj@gmail.com",
   "password": "123456",
+  "wrongPassword": "abcdef",
+  "imagePath": "cypress/images/brad.jpg",
   "confirmPassword": "123456"
 }

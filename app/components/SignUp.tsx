@@ -75,8 +75,6 @@ const SignUp = () => {
     if (password != confirmPassword) {
       setLoading(false);
       setIsError("Password is not matching");
-      // eslint-disable-next-line no-console
-      console.log("Password is not matching");
       return;
     }
 
@@ -103,12 +101,11 @@ const SignUp = () => {
           return response.json();
         })
         .then((responseData) => {
-          // eslint-disable-next-line no-console
-          console.log("Response data:", responseData);
           router.push("/chats");
           localStorage.setItem("userInfo", JSON.stringify(responseData));
         })
         .catch((error) => {
+          setIsError("Email id already exist");
           // eslint-disable-next-line no-console
           console.error("Error:", error);
         });
