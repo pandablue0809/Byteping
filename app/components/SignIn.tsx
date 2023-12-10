@@ -34,8 +34,13 @@ const SignIn = () => {
   });
 
   const submitHandler = async () => {
-    if (!email || !password) {
-      setIsError("Fill email & password");
+    if (!email) {
+      setIsError("Fill your email");
+      return;
+    }
+
+    if (!password) {
+      setIsError("Type your secret");
       return;
     }
 
@@ -58,7 +63,7 @@ const SignIn = () => {
   return (
     <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-in">
       <Flex flexDirection="column" gap="12px">
-        <Text fontSize="18px" fontWeight="400" color="#b60000" as={"h3"} $height="24px">
+        <Text fontSize="18px" fontWeight="400" color="#b60000" as={"h3"} $height="24px" data-cy="signInErrorMessage">
           {isError ? isError : ""}
         </Text>
         <Input
@@ -75,6 +80,7 @@ const SignIn = () => {
           width="100%"
           height="40px"
           name="email"
+          data-cy="signInEmail"
         />
       </Flex>
       <Container $position="relative">
@@ -92,6 +98,7 @@ const SignIn = () => {
           width="100%"
           height="40px"
           name="password"
+          data-cy="signInPassword"
         />
         <Container
           cursor="pointer"
@@ -113,6 +120,7 @@ const SignIn = () => {
         border="2px solid black"
         hColor="white"
         className="signInButton"
+        data-cy="signInSubmitButton"
       >
         <Text fontWeight="600" fontSize="18px">
           {isPending ? "Submitting..." : "Login"}
@@ -128,6 +136,7 @@ const SignIn = () => {
         border="2px solid black"
         hColor="white"
         className="guestPassword"
+        data-cy="signInGuestButton"
       >
         <Text fontWeight="600" fontSize="18px">
           Guest User

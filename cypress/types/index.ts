@@ -6,3 +6,9 @@ export interface signUpJsonTypes {
   imagePath: string;
   confirmPassword: string;
 }
+
+export interface signInJsonTypes {
+  email: string;
+  password: string;
+  wrongPassword: string;
+}
