@@ -41,12 +41,20 @@ const Home = () => {
             fontWeight="900"
             letterSpacing="16px"
             color={Theme.colors.white}
+            data-cy="companyLogo"
           >
             BYTEPING
           </Text>
         </Link>
         <Container border="2px solid white" padding="48px" mPadding="24px" width="528px" mWidth="324px">
-          <Text fontSize="3.5rem" mFontSize="32px" fontWeight="100" color={Theme.colors.white} letterSpacing="4px">
+          <Text
+            fontSize="3.5rem"
+            mFontSize="32px"
+            fontWeight="100"
+            color={Theme.colors.white}
+            letterSpacing="4px"
+            data-cy="companyMotto"
+          >
             IMPRESSIVE EXPERIENCES THAT DELIVER
           </Text>
         </Container>

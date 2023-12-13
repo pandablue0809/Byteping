@@ -71,6 +71,7 @@ describe("sign up", () => {
       cy.get("@submitButton").click();
       cy.wait("@signUp");
       cy.location("pathname").should("eq", "/chats");
+      cy.visit("/");
     });
   });
 });
