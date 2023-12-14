@@ -1,5 +1,5 @@
 .hero-img {
-  background-image: url(../public/images/heroBanner.jpg);
+  background-image: url(../public/images/heroBanner.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,7 +51,7 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
   transform: perspective(800px) rotateY(10deg) rotateX(-10deg);
   transition: transform 0.3s ease-in-out;
-  background: url(../public/images/friends.jpg);
+  background: url(../public/images/friends.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -83,7 +83,7 @@
 
 @media (max-width: 1280px) {
   .hero-img {
-    background-image: url(../public/images/heroBannerMobile.jpg);
+    background-image: url(../public/images/heroBannerMobile.webp);
   }
   .hero-img-logo {
     position: absolute;

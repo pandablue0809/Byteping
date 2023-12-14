@@ -39,16 +39,7 @@ export interface MessageData {
     pic: string;
   };
   content: string;
-  chat: {
-    _id: string;
-    chatName: string;
-    isGroupChat: boolean;
-    users: UserData[];
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
-    latestMessage: string;
-  };
+  chat: ChatData;
   createdAt: string;
   updatedAt: string;
   __v: number;

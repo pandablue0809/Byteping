@@ -40,7 +40,7 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
         }
       }
     }
-    return users[0]._id === loggedUserData?._id ? users[1].pic : users[0].pic;
+    return users[0]._id === loggedUserData?._id ? users[1]?.pic : users[0]?.pic;
   };
 
   const getSender = (loggedUserData: UserData | undefined, users: UserData[]) => {
@@ -52,7 +52,7 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
         }
       }
     }
-    return users[0]._id === loggedUserData?._id ? users[1].name : users[0].name;
+    return users[0]._id === loggedUserData?._id ? users[1]?.name : users[0]?.name;
   };
 
   const fetchAllChats = async () => {

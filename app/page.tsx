@@ -42,6 +42,9 @@ const Home = () => {
             letterSpacing="16px"
             color={Theme.colors.white}
             data-cy="companyLogo"
+            role="link"
+            aria-label="This is Byteping company logo"
+            tabIndex={0}
           >
             BYTEPING
           </Text>
@@ -54,6 +57,9 @@ const Home = () => {
             color={Theme.colors.white}
             letterSpacing="4px"
             data-cy="companyMotto"
+            role="hero text"
+            aria-label="company motto sentence in landing page"
+            tabIndex={1}
           >
             IMPRESSIVE EXPERIENCES THAT DELIVER
           </Text>
