@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+.motion-underline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  background-color: white;
+  height: 2px;
+  width: 0;
+  opacity: 0;
+  transition:
+    opacity 0.4s ease-in-out,
+    left 0.4s ease-in-out,
+    width 0.4s ease-in-out;
+}
+
+.motion-underline:hover::before {
+  left: 0;
+  width: calc(100% - 16px);
+  opacity: 1;
+}
+
+svg.company-logo {
+  width: 214px;
+  height: 45px;
+  font-weight: 900;
+}
+
+svg.company-logo text.company-logo-text {
+  stroke: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  stroke-width: 2;
+  animation: 4s infinite alternate animate-stroke;
+  letter-spacing: 8px;
+  text-wrap: wrap;
+}
+
+@keyframes animate-stroke {
+  0% {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 3;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 32%;
+  }
+
+  50% {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 3;
+  }
+
+  80%,
+  100% {
+    fill: white;
+    stroke: transparent;
+    stroke-width: 0;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 32% 0;
+  }
+}
+
+@media (max-width: 1280px) {
+  svg.company-logo {
+    width: 140px;
+    height: 24px;
+  }
+
+  svg.company-logo text.company-logo-text {
+    font-size: 1rem;
+  }
+}

@@ -34,20 +34,11 @@ const Home = () => {
         mJustifyContent="flex-start"
       >
         <Link href={"/"} className="hero-img-logo">
-          <Text
-            className="text-with-border"
-            fontSize="2rem"
-            mFontSize="1rem"
-            fontWeight="900"
-            letterSpacing="16px"
-            color={Theme.colors.white}
-            data-cy="companyLogo"
-            role="link"
-            aria-label="This is Byteping company logo"
-            tabIndex={0}
-          >
-            BYTEPING
-          </Text>
+          <svg className="company-logo" viewBox="0 0">
+            <text x="50%" y="50%" dy=".32em" className="company-logo-text" data-cy="companyLogo" textAnchor="middle">
+              Byteping
+            </text>
+          </svg>
         </Link>
         <Container border="2px solid white" padding="48px" mPadding="24px" width="528px" mWidth="324px">
           <Text

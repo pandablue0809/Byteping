@@ -1,3 +1,5 @@
+@import "./motion/motion.css";
+
 .hero-img {
   background-image: url(../public/images/heroBanner.webp);
   background-position: center;
