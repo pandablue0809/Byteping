@@ -9,7 +9,7 @@ describe("sign in", () => {
   });
   it("should test entire sign in functionalities", () => {
     cy.fixture("signIn.json").then((signInJson: signInJsonTypes) => {
-      cy.get("[data-cy='companyLogo']").should("have.text", "BYTEPING");
+      cy.get("[data-cy='companyLogo']").should("have.text", "Byteping");
       cy.get("[data-cy='companyMotto']").should("have.text", "IMPRESSIVE EXPERIENCES THAT DELIVER");
       cy.get("[data-cy='signInErrorMessage']").as("signInErrorMessage");
       cy.get("[data-cy='signInEmail']").as("signInEmail");

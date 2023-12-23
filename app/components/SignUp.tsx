@@ -135,7 +135,7 @@ const SignUp = () => {
         </Text>
         <Input
           value={name}
-          placeholder="Your name goes here..."
+          placeholder="Type your name here"
           $outline="0"
           $border="0"
           borderBottom="2px solid black"
@@ -148,11 +148,12 @@ const SignUp = () => {
           height="40px"
           name="name"
           data-cy="signUpName"
+          required
         />
       </Flex>
       <Input
         value={email}
-        placeholder="Your mail goes here..."
+        placeholder="Type your email here"
         $outline="0"
         $border="0"
         borderBottom="2px solid black"
@@ -165,12 +166,13 @@ const SignUp = () => {
         height="40px"
         name="email"
         data-cy="signUpEmail"
+        required
       />
 
       <Container $position="relative">
         <Input
           value={password}
-          placeholder="Your secret goes here..."
+          placeholder="Type your password here"
           $outline="0"
           $border="0"
           borderBottom="2px solid black"
@@ -183,6 +185,8 @@ const SignUp = () => {
           height="40px"
           name="password"
           data-cy="signUpPassword"
+          tabIndex={0}
+          required
         />
         <Container
           cursor="pointer"
@@ -190,6 +194,15 @@ const SignUp = () => {
           $right="12px"
           $bottom="8px"
           onClick={() => setShowPassword(!showPassword)}
+          tabIndex={0}
+          role="button"
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter" || e.key === " ") {
+              setShowPassword(!showPassword);
+            }
+          }}
+          aria-label="Click to see the password you entered."
+          className="focus-outline"
         >
           {!showPassword ? <FaRegEye size={24} /> : <FaRegEyeSlash size={24} />}
         </Container>
@@ -198,7 +211,7 @@ const SignUp = () => {
       <Container $position="relative">
         <Input
           value={confirmPassword}
-          placeholder="Confirm you secret"
+          placeholder="Type your password again"
           $outline="0"
           $border="0"
           borderBottom="2px solid black"
@@ -211,23 +224,46 @@ const SignUp = () => {
           height="40px"
           name="confirmPassword"
           data-cy="signUpConfirmPassword"
+          required
         />
         <Container
+          tabIndex={0}
+          role="button"
           cursor="pointer"
           $position="absolute"
           $right="12px"
           $bottom="8px"
           onClick={() => setShowPassword(!showPassword)}
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter" || e.key === " ") {
+              setShowPassword(!showPassword);
+            }
+          }}
+          aria-label="Click to see the password you entered second time."
+          className="focus-outline"
         >
           {!showPassword ? <FaRegEye size={24} /> : <FaRegEyeSlash size={24} />}
         </Container>
       </Container>
 
-      <label className="custom-file-upload" data-cy="signUpImageUploadLabel">
+      <label
+        className="custom-file-upload  focus-outline"
+        data-cy="signUpImageUploadLabel"
+        tabIndex={0}
+        aria-label="Upload your image here"
+        onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
+          if (e.key === "Enter" || e.key === " ") {
+            const inputElement = e.currentTarget.children[0] as HTMLInputElement;
+            inputElement.click();
+            if (inputElement && inputElement.files && inputElement.files.length > 0) {
+              postDetails(inputElement.files[0]);
+            }
+          }
+        }}
+      >
         {uploadedImageName ? uploadedImageName : "Upload your image"}
         <Input
-          placeholder="Your secret goes here..."
-          $outline="0"
+          placeholder="Upload your image here"
           $border="0"
           borderBottom="2px solid black"
           padding="0 0 12px 0"
@@ -244,6 +280,7 @@ const SignUp = () => {
           width="100%"
           height="40px"
           data-cy="signUpImageUpload"
+          required
         />
       </label>
 
@@ -254,10 +291,18 @@ const SignUp = () => {
         padding="8px 12px"
         cursor="pointer"
         onClick={submitHandler}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === "Enter" || e.key === " ") {
+            submitHandler();
+          }
+        }}
         border="2px solid black"
         hColor="white"
-        className="signUpSubmit"
+        className="signUpSubmit focus-outline"
         data-cy="signUpSubmitButton"
+        tabIndex={0}
+        role="button"
+        aria-label="Click to Sign Up the form."
       >
         <Text fontWeight="600" fontSize="18px">
           {loading ? "Loading" : "Sign Up"}

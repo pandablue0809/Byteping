@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { loginSubmitHandler } from "@/utils/http";
 import { ChatState } from "@/contexts/ChatProvider";
@@ -68,7 +68,7 @@ const SignIn = () => {
         </Text>
         <Input
           value={email}
-          placeholder="Your mail goes here..."
+          placeholder="Type your email here"
           $outline="0"
           $border="0"
           borderBottom="2px solid black"
@@ -81,36 +81,53 @@ const SignIn = () => {
           height="40px"
           name="email"
           data-cy="signInEmail"
+          tabIndex={0}
+          required
         />
       </Flex>
       <Container $position="relative">
         <Input
           value={password}
-          placeholder="Password"
+          placeholder="Type your password here"
           type={showPassword ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
           padding="0 0 12px 0"
           $fontSize="16px"
           $fontWeight="400"
-          $outline="0"
           $border="0"
+          $outline="0"
           borderBottom="2px solid black"
           width="100%"
           height="40px"
           name="password"
           data-cy="signInPassword"
+          tabIndex={0}
+          required
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Container
+          tabIndex={0}
+          className="focus-outline"
+          role="button"
           cursor="pointer"
           $position="absolute"
           $right="12px"
           $bottom="8px"
-          onClick={() => setShowPassword(!showPassword)}
+          onClick={() => {
+            setShowPassword(!showPassword);
+          }}
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter" || e.key === " ") {
+              setShowPassword(!showPassword);
+            }
+          }}
+          aria-label="Click to see the password you entered."
         >
-          {!showPassword ? <FaRegEye size={24} /> : <FaRegEyeSlash size={24} />}
+          {!showPassword ? <FaRegEye size={24} aria-hidden="true" /> : <FaRegEyeSlash size={24} aria-hidden="true" />}
         </Container>
       </Container>
       <Container
+        tabIndex={0}
+        role="button"
         width="100%"
         textAlign="center"
         hBackgroundColor="black"
@@ -119,14 +136,22 @@ const SignIn = () => {
         onClick={submitHandler}
         border="2px solid black"
         hColor="white"
-        className="signInButton"
+        className="signInButton focus-outline"
         data-cy="signInSubmitButton"
+        aria-label="Click to submit the Sign In credentials."
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === "Enter" || e.key === " ") {
+            submitHandler();
+          }
+        }}
       >
-        <Text fontWeight="600" fontSize="18px">
+        <Text fontWeight="600" fontSize="18px" tabIndex={-1}>
           {isPending ? "Submitting..." : "Login"}
         </Text>
       </Container>
       <Container
+        tabIndex={0}
+        role="button"
         width="100%"
         textAlign="center"
         hBackgroundColor="black"
@@ -135,10 +160,16 @@ const SignIn = () => {
         onClick={guestSubmitHandler}
         border="2px solid black"
         hColor="white"
-        className="guestPassword"
+        className="guestPassword focus-outline"
         data-cy="signInGuestButton"
+        aria-label="Click to get the Guest User credentials."
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === "Enter" || e.key === " ") {
+            guestSubmitHandler();
+          }
+        }}
       >
-        <Text fontWeight="600" fontSize="18px">
+        <Text fontWeight="600" fontSize="18px" tabIndex={-1}>
           Guest User
         </Text>
       </Container>

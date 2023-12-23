@@ -33,14 +33,14 @@ const Home = () => {
         justifyContent="flex-end"
         mJustifyContent="flex-start"
       >
-        <Link href={"/"} className="hero-img-logo">
-          <svg className="company-logo" viewBox="0 0">
+        <Link href={"/"} className="hero-img-logo focus-outline" aria-label="Home page link of Byteping">
+          <svg className="company-logo" aria-hidden="true">
             <text x="50%" y="50%" dy=".32em" className="company-logo-text" data-cy="companyLogo" textAnchor="middle">
               Byteping
             </text>
           </svg>
         </Link>
-        <Container border="2px solid white" padding="48px" mPadding="24px" width="528px" mWidth="324px">
+        <Container border="2px solid white" padding="48px" mPadding="24px" width="528px" mWidth="324px" tabIndex={-1}>
           <Text
             fontSize="3.5rem"
             mFontSize="32px"
@@ -49,8 +49,9 @@ const Home = () => {
             letterSpacing="4px"
             data-cy="companyMotto"
             role="hero text"
-            aria-label="company motto sentence in landing page"
-            tabIndex={1}
+            aria-label="Company motto sentence"
+            tabIndex={0}
+            className="focus-outline"
           >
             IMPRESSIVE EXPERIENCES THAT DELIVER
           </Text>

@@ -1,5 +1,21 @@
 @import "./motion/motion.css";
 
+/* Remove outline on normal mouse click */
+.focus-outline:focus {
+  outline: none;
+}
+
+/* Add outline on focus for keyboard navigation */
+.focus-outline:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Add outline on focus for tab selection */
+.focus-outline:focus-visible {
+  outline: 4px solid #1aff1a;
+  outline-offset: 8px;
+}
+
 .hero-img {
   background-image: url(../public/images/heroBanner.webp);
   background-position: center;
@@ -92,26 +108,4 @@
     top: 24px;
     left: 24px;
   }
-}
-
-.login-signup-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 100px;
-  height: 100vh;
-}
-
-.display-flex-row {
-  display: flex;
-  gap: 16px;
-}
-
-.display-flex-col-login {
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
