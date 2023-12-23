@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/arjunan-k/byteping/compare/v1.26.0...v1.27.0) (2023-12-23)
+
+
+### Features
+
+* **accessibility:** add keyboard and speech helpers on sign in and up ([cdae7bb](https://github.com/arjunan-k/byteping/commit/cdae7bb0a6731b54df83ab6a63be8c29a89e2d4f))
+
 # [1.26.0](https://github.com/arjunan-k/byteping/compare/v1.25.0...v1.26.0) (2023-12-09)
 
 
