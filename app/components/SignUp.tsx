@@ -102,6 +102,7 @@ const SignUp = () => {
         })
         .then((responseData) => {
           router.push("/chats");
+          setIsError("Signed Up Successfully");
           localStorage.setItem("userInfo", JSON.stringify(responseData));
         })
         .catch((error) => {
@@ -130,6 +131,8 @@ const SignUp = () => {
           $height="24px"
           className="signUpErrorMessage"
           data-cy="signUpErrorMessage"
+          role="status"
+          aria-live="polite"
         >
           {isError ? isError : ""}
         </Text>

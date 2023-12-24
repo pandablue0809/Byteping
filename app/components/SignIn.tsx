@@ -25,6 +25,7 @@ const SignIn = () => {
     onSuccess: (responseData) => {
       setUser(responseData);
       localStorage.setItem("userInfo", JSON.stringify(responseData));
+      setIsError("Signed In Successfully");
       router.push("/chats");
     },
     onError: (err) => {
@@ -63,7 +64,16 @@ const SignIn = () => {
   return (
     <Flex flexDirection="column" gap="24px" width="75%" mWidth="100%" as={"main"} className="sign-in">
       <Flex flexDirection="column" gap="12px">
-        <Text fontSize="18px" fontWeight="400" color="#b60000" as={"h3"} $height="24px" data-cy="signInErrorMessage">
+        <Text
+          fontSize="18px"
+          fontWeight="400"
+          color="#b60000"
+          as={"h3"}
+          $height="24px"
+          data-cy="signInErrorMessage"
+          aria-live="polite"
+          role="status"
+        >
           {isError ? isError : ""}
         </Text>
         <Input

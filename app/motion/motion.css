@@ -62,6 +62,24 @@ svg.company-logo text.company-logo-text {
   }
 }
 
+.magneto {
+  width: 444px;
+  height: 444px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.magneto:hover {
+  color: black;
+  background-color: white;
+}
+
 @media (max-width: 1280px) {
   svg.company-logo {
     width: 140px;
