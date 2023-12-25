@@ -99,6 +99,15 @@
   display: none;
 }
 
+.whatMakesItDifferent {
+  font-size: 160px;
+  color: #a5a7a9;
+  font-weight: 900;
+  font-style: normal;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: hidden;
+}
+
 @media (max-width: 1280px) {
   .hero-img {
     background-image: url(../public/images/heroBannerMobile.webp);
@@ -107,5 +116,9 @@
     position: absolute;
     top: 24px;
     left: 24px;
+  }
+
+  .whatMakesItDifferent {
+    font-size: 52px;
   }
 }

@@ -63,21 +63,29 @@ svg.company-logo text.company-logo-text {
 }
 
 .magneto {
-  width: 444px;
-  height: 444px;
+  width: 280px;
+  height: 280px;
+  padding: 40px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: white;
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition:
+    box-shadow 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    background 0.3s ease-in-out;
+  background: transparent;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  color: #000000;
+  border: 2px solid black;
 }
 
 .magneto:hover {
-  color: black;
-  background-color: white;
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 @media (max-width: 1280px) {

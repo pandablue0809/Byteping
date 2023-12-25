@@ -6,6 +6,7 @@ import StyledComponentsProvider from "./providers/StyledComponentsProvider";
 import { Nunito } from "next/font/google";
 import DarkLightModeProvider from "./contexts/DarkLightModeProvider";
 import StyledComponentsRegistry from "./libs/registry";
+import SmoothScroll from "./components/SmoothScroll";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <StyledComponentsRegistry>
             <StyledComponentsProvider>
               <ReactQueryProvider>
-                <body className={font.className}>{children}</body>
+                <SmoothScroll>
+                  <body className={font.className}>{children}</body>
+                </SmoothScroll>
               </ReactQueryProvider>
             </StyledComponentsProvider>
           </StyledComponentsRegistry>

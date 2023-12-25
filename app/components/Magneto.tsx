@@ -47,16 +47,15 @@ const Magneto = () => {
         as={"span"}
         ref={magnetoText}
         className="focus-outline magnetoText"
-        fontSize="3rem"
-        mFontSize="28px"
-        fontWeight="200"
+        fontSize="1rem"
+        fontWeight="500"
         letterSpacing="8px"
         data-cy="companyMotto"
         role="hero text"
         aria-label="Company motto sentence"
         tabIndex={0}
       >
-        IMPRESSIVE EXPERIENCES THAT DELIVER
+        EXPERIENCE
       </Text>
     </button>
   );

@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import Flex from "./styles/Flex.styled";
 import Link from "next/link";
 import LoginContainer from "./components/LoginContainer";
-import Magneto from "./components/Magneto";
+import Text from "./styles/Text.styled";
+import Container from "./styles/Container.styled";
+import Theme from "./styles/Theme.styled";
+import ScrollArrow from "./components/ScrollArrow";
+import WhatMakesItDifferent from "./components/WhatMakesItDifferent";
 
 const Home = () => {
   const router = useRouter();
@@ -38,8 +42,25 @@ const Home = () => {
             </text>
           </svg>
         </Link>
-        <Magneto />
+        <Container border="2px solid white" padding="48px" mPadding="24px" width="528px" mWidth="312px" tabIndex={-1}>
+          <Text
+            fontSize="3.5rem"
+            mFontSize="32px"
+            fontWeight="100"
+            color={Theme.colors.white}
+            letterSpacing="4px"
+            data-cy="companyMotto"
+            role="hero text"
+            aria-label="Company motto sentence"
+            tabIndex={0}
+            className="focus-outline"
+          >
+            IMPRESSIVE EXPERIENCES THAT DELIVER
+          </Text>
+        </Container>
+        <ScrollArrow rotate="90deg" bottom="0" right="0" />
       </Flex>
+      <WhatMakesItDifferent />
       <LoginContainer />
     </>
   );
