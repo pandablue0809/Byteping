@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/arjunan-k/byteping/compare/v1.27.0...v1.28.0) (2023-12-28)
+
+
+### Features
+
+* **gsap:** style features of byteping using gsap & split text js ([ad75f70](https://github.com/arjunan-k/byteping/commit/ad75f7087ca50427118672e38a5de3ed3189f868))
+
 # [1.27.0](https://github.com/arjunan-k/byteping/compare/v1.26.0...v1.27.0) (2023-12-23)
 
 
