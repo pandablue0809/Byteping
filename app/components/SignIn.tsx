@@ -68,13 +68,13 @@ const SignIn = () => {
           fontSize="18px"
           fontWeight="400"
           color="#b60000"
-          as={"h3"}
+          as={"span"}
           $height="24px"
           data-cy="signInErrorMessage"
           aria-live="polite"
-          role="status"
+          role="alert"
         >
-          {isError ? isError : ""}
+          {isError ? isError : null}
         </Text>
         <Input
           value={email}
@@ -156,7 +156,7 @@ const SignIn = () => {
         }}
       >
         <Text fontWeight="600" fontSize="18px" tabIndex={-1}>
-          {isPending ? "Submitting..." : "Login"}
+          {isPending ? "Submitting..." : "Sign In"}
         </Text>
       </Container>
       <Container

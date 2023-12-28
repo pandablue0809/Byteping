@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     body {
       -ms-overflow-style: none;
       scrollbar-width: none;
+      overflow-x: hidden;
     }
 
     body::-webkit-scrollbar {

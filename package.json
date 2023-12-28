@@ -29,6 +29,7 @@
     "react-icons": "^4.11.0",
     "react-spinners": "^0.13.8",
     "socket.io-client": "^4.7.2",
+    "split-text-js": "^1.0.3",
     "styled-components": "^6.0.8",
     "utf-8-validate": "^5.0.10",
     "ws": "^8.14.2"

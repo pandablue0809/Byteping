@@ -1,6 +1,7 @@
 import React from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import Arrow from "../../public/images/rightArrowWhite.json";
+import rightArrowWhiteSrc from "../../public/images/rightArrowWhite.json";
+import trackArrowSrc from "../../public/images/trackArrow.json";
 import Container from "@/styles/Container.styled";
 import { useLenis } from "@studio-freight/react-lenis";
 
@@ -9,20 +10,38 @@ interface ScrollArrowProps {
   bottom?: string;
   left?: string;
   right?: string;
+  height?: string;
+  width?: string;
   rotate?: string;
+  scrollToId: string;
+  rightArrowWhite?: boolean;
+  trackArrow?: boolean;
+  className?: string;
 }
 
-const ScrollArrow = ({ top, bottom, left, right, rotate = "0deg" }: ScrollArrowProps) => {
+const ScrollArrow = ({
+  top,
+  bottom,
+  left,
+  right,
+  rotate = "0deg",
+  rightArrowWhite,
+  trackArrow,
+  scrollToId,
+  height,
+  width,
+  className
+}: ScrollArrowProps) => {
   const lenis = useLenis(() => {});
 
   const handleKBScroll = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
-      lenis.scrollTo("#container-2", { lerp: 0.05 });
+      lenis.scrollTo(scrollToId, { lerp: 0.05 });
     }
   };
 
   const handleScroll = () => {
-    lenis.scrollTo("#container-2", { lerp: 0.05 });
+    lenis.scrollTo(scrollToId, { lerp: 0.05 });
   };
 
   return (
@@ -34,12 +53,23 @@ const ScrollArrow = ({ top, bottom, left, right, rotate = "0deg" }: ScrollArrowP
       $bottom={bottom}
       $right={right}
       $left={left}
+      role="button"
+      aria-label="arrow button to scroll down"
       cursor="pointer"
       onClick={handleScroll}
       onKeyDown={handleKBScroll}
-      className="focus-outline"
+      className={`focus-outline ${className}`}
     >
-      <Player autoplay loop src={Arrow} style={{ height: "150px", width: "150px" }}></Player>
+      {rightArrowWhite && (
+        <Player
+          autoplay
+          loop
+          src={rightArrowWhiteSrc}
+          style={{ height: height, width: width }}
+          className="rightArrowWhite"
+        />
+      )}
+      {trackArrow && <Player autoplay loop src={trackArrowSrc} className="trackArrow" />}
     </Container>
   );
 };

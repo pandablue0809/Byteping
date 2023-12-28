@@ -108,6 +108,16 @@
   overflow-y: hidden;
 }
 
+.featureContainer {
+  overflow-x: hidden;
+}
+
+.featureVideo,
+.featureImage {
+  height: 512px;
+  border-radius: 12px;
+}
+
 @media (max-width: 1280px) {
   .hero-img {
     background-image: url(../public/images/heroBannerMobile.webp);
@@ -120,5 +130,10 @@
 
   .whatMakesItDifferent {
     font-size: 52px;
+  }
+
+  .featureVideo,
+  .featureImage {
+    height: 300px;
   }
 }

@@ -11,6 +11,7 @@ import Container from "./styles/Container.styled";
 import Theme from "./styles/Theme.styled";
 import ScrollArrow from "./components/ScrollArrow";
 import WhatMakesItDifferent from "./components/WhatMakesItDifferent";
+import Feature from "./components/Feature";
 
 const Home = () => {
   const router = useRouter();
@@ -34,6 +35,7 @@ const Home = () => {
         alignItems="center"
         justifyContent="flex-end"
         mJustifyContent="flex-start"
+        id="container-1"
       >
         <Link href={"/"} className="hero-img-logo focus-outline" aria-label="Home page link of Byteping">
           <svg className="company-logo" aria-hidden="true">
@@ -42,15 +44,25 @@ const Home = () => {
             </text>
           </svg>
         </Link>
-        <Container border="2px solid white" padding="48px" mPadding="24px" width="528px" mWidth="312px" tabIndex={-1}>
+        <Container
+          border="2px solid white"
+          padding="48px"
+          mPadding="24px"
+          width="528px"
+          mWidth="312px"
+          tabIndex={-1}
+          as={"aside"}
+        >
           <Text
+            as={"h1"}
             fontSize="3.5rem"
             mFontSize="32px"
             fontWeight="100"
             color={Theme.colors.white}
             letterSpacing="4px"
             data-cy="companyMotto"
-            role="hero text"
+            role="heading"
+            aria-level={1}
             aria-label="Company motto sentence"
             tabIndex={0}
             className="focus-outline"
@@ -58,9 +70,29 @@ const Home = () => {
             IMPRESSIVE EXPERIENCES THAT DELIVER
           </Text>
         </Container>
-        <ScrollArrow rotate="90deg" bottom="0" right="0" />
+        <ScrollArrow
+          rotate="90deg"
+          bottom="0"
+          right="0"
+          rightArrowWhite
+          scrollToId="#container-2"
+          height="150px"
+          width="150px"
+        />
       </Flex>
       <WhatMakesItDifferent />
+      <Feature
+        headingText="Web accessibility"
+        headingPara="I design web apps with a touch of magic, making them accessible to all by weaving the threads of inclusivity into every line of code."
+        isAImage={false}
+        videoSrc="https://www.youtube.com/embed/0jjR-d2XnzE?si=G8VoZiB3sVsoQ4Kc"
+      />
+      <Feature
+        headingText="E2E Testing"
+        headingPara="I write tests that embrace failure gracefully and ironically, struggle to craft ones that always succeed. It's a coding paradox."
+        isAImage={false}
+        videoSrc="https://www.youtube.com/embed/VBgdEkmweQQ?si=UGqnG__0caal4oX7"
+      />
       <LoginContainer />
     </>
   );

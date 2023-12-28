@@ -8,6 +8,7 @@ import Input from "@/styles/Input.styled";
 import Container from "@/styles/Container.styled";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import Text from "@/styles/Text.styled";
+import { SERVER_URL } from "@/utils/global";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -79,7 +80,7 @@ const SignUp = () => {
     }
 
     try {
-      const url = "http://localhost:5000/api/user/register";
+      const url = `${SERVER_URL}/api/user/register`;
       const data = {
         name,
         email,

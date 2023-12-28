@@ -18,7 +18,7 @@ const LoginContainer = () => {
 
   return (
     <Flex
-      as={"main"}
+      as={"section"}
       backgroundColor={Theme.colors.white}
       height="100vh"
       padding="48px"
@@ -26,7 +26,7 @@ const LoginContainer = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Container width="50%" padding="48px" mPadding="0" mWidth="100%" as={"section"} className="signin-signup">
+      <Container width="50%" padding="48px" mPadding="0" mWidth="100%" as={"article"} className="signin-signup">
         <Text
           fontSize="30px"
           fontWeight="500"

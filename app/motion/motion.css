@@ -88,6 +88,29 @@ svg.company-logo text.company-logo-text {
   border: 2px solid rgb(255, 255, 255);
 }
 
+.textWrapper {
+  text-align: center;
+}
+
+.ThreeDText {
+  font-size: 8rem;
+  color: rgb(0, 0, 0);
+  line-height: 0;
+}
+
+.ThreeDText:nth-child(even) {
+  color: rgb(99, 99, 99);
+}
+
+.trackArrowContainer {
+  top: calc(50% - 75px);
+}
+
+.trackArrow {
+  width: 150px;
+  height: 150px;
+}
+
 @media (max-width: 1280px) {
   svg.company-logo {
     width: 140px;
@@ -96,5 +119,18 @@ svg.company-logo text.company-logo-text {
 
   svg.company-logo text.company-logo-text {
     font-size: 1rem;
+  }
+
+  .ThreeDText {
+    font-size: 2.8rem;
+  }
+
+  .trackArrowContainer {
+    top: calc(50% - 30px);
+  }
+
+  .trackArrow {
+    width: 60px;
+    height: 60px;
   }
 }

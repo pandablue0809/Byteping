@@ -1,11 +1,12 @@
 /// <reference types="Cypress" />
+import { SERVER_URL } from "@/utils/global";
 import { signUpJsonTypes } from "../types";
 
 describe("sign up", () => {
   beforeEach(() => {
     cy.viewport(1500, 800);
     cy.clock();
-    cy.intercept("POST", "http://localhost:5000/api/user/register", {
+    cy.intercept("POST", `${SERVER_URL}/api/user/register`, {
       _id: "65746f73fd62be74c03caace",
       name: "Brian",
       email: "brian@gmail.com",
