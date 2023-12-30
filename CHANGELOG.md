@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/arjunan-k/byteping/compare/v1.28.0...v1.29.0) (2023-12-30)
+
+
+### Features
+
+* **motion:** style the landing page with features and web motion ([8b5801b](https://github.com/arjunan-k/byteping/commit/8b5801b4f5671269fdf8be34626c3e4ff303aa72))
+
 # [1.28.0](https://github.com/arjunan-k/byteping/compare/v1.27.0...v1.28.0) (2023-12-28)
 
 
