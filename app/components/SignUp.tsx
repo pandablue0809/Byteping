@@ -302,7 +302,7 @@ const SignUp = () => {
         }}
         border="2px solid black"
         hColor="white"
-        className="signUpSubmit focus-outline"
+        className="signUpSubmit focus-outline smoothBgAndColorTransition"
         data-cy="signUpSubmitButton"
         tabIndex={0}
         role="button"

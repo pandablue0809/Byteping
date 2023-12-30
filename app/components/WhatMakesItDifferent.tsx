@@ -5,6 +5,9 @@ import ScrollArrow from "./ScrollArrow";
 import Container from "@/styles/Container.styled";
 import gsap from "gsap";
 import SplitTextJS from "split-text-js";
+import bubbleLottieBg from "../../public/images/bubbleLottieBg.json";
+import { Player } from "@lottiefiles/react-lottie-player";
+import Magneto from "./Magneto";
 
 const WhatMakesItDifferent = () => {
   useEffect(() => {
@@ -49,7 +52,8 @@ const WhatMakesItDifferent = () => {
       className="whatMakesItDifferent"
       as={"section"}
     >
-      <Container as={"article"} tabIndex={-1}>
+      <Player autoplay loop src={bubbleLottieBg} className="bubbleLottieBg" />
+      <Flex as={"article"} tabIndex={-1}>
         <Container
           className="textWrapper focus-outline"
           as={"main"}
@@ -63,16 +67,17 @@ const WhatMakesItDifferent = () => {
           <h2 className="ThreeDText">DIFFERENT</h2>
           <h2 className="ThreeDText">?</h2>
         </Container>
-      </Container>
+      </Flex>
       <ScrollArrow
         bottom="0"
         right="0"
         trackArrow
-        scrollToId="#container-1"
+        scrollToId="#container-3"
         width="150px"
         height="150px"
         className="trackArrowContainer"
       />
+      <Magneto />
     </Flex>
   );
 };

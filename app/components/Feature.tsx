@@ -1,30 +1,45 @@
 import Container from "@/styles/Container.styled";
 import Flex from "@/styles/Flex.styled";
 import Text from "@/styles/Text.styled";
-import Image from "next/image";
 import React, { useEffect } from "react";
 import { gsap, ScrollTrigger } from "gsap/all";
 
 interface FeatureProps {
   textOnLeft?: boolean;
   isAImage?: boolean;
+  haveAButton?: boolean;
   imageSrc?: string;
   imageAltText?: string;
   videoSrc?: string;
   videoAltText?: string;
   headingText?: string;
   headingPara?: string;
+  titleColor?: string;
+  paraColor?: string;
+  bgColor?: string;
+  linkText?: string;
+  linkUrl?: string;
+  buttonText?: string;
+  id?: string;
 }
 
 const Feature = ({
   textOnLeft = true,
   isAImage = false,
+  haveAButton = false,
+  linkText,
+  linkUrl,
+  buttonText,
   imageSrc,
   videoSrc,
   imageAltText,
   videoAltText,
   headingText,
-  headingPara
+  headingPara,
+  titleColor = "white",
+  paraColor = "white",
+  bgColor = "black",
+  id
 }: FeatureProps) => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -46,6 +61,7 @@ const Feature = ({
   }, []);
   return (
     <Flex
+      id={id}
       className="featureContainer"
       as={"section"}
       mFlexDirection={textOnLeft ? "column" : "column-reverse"}
@@ -56,6 +72,7 @@ const Feature = ({
       justifyContent="center"
       gap="64px"
       mGap="48px"
+      background={bgColor}
     >
       {textOnLeft && (
         <Flex
@@ -74,28 +91,47 @@ const Feature = ({
             letterSpacing="2px"
             textTransform="uppercase"
             fontFamily="sans-serif"
-            color="#707172"
+            color={titleColor}
             tabIndex={0}
             className="focus-outline"
           >
             {headingText}
           </Text>
-          <Text as={"p"} fontSize="18px" fontWeight="400" tabIndex={0} className="focus-outline">
+          <Text as={"p"} fontSize="18px" fontWeight="400" tabIndex={0} className="focus-outline" color={paraColor}>
             {headingPara}
           </Text>
+          {haveAButton && (
+            <Text color={paraColor}>
+              {buttonText}{" "}
+              <Text as={"a"} href={linkUrl} className="featureButtonLink focus-outline" color={paraColor}>
+                {linkText}
+              </Text>{" "}
+            </Text>
+          )}
         </Flex>
       )}
       <Container as={"aside"} width="45%" mWidth="100%" className="featureAsset">
         {isAImage ? (
-          <Image
-            src={imageSrc ? imageSrc : "This is a image"}
-            fill
-            alt={imageAltText ? imageAltText : ""}
-            className="featureImage"
-          />
+          <Container $position="relative" className="featureImageContainer">
+            {
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={
+                  imageSrc
+                    ? imageSrc
+                    : "https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                }
+                style={{ objectFit: "contain" }}
+                alt={imageAltText ? imageAltText : "This is a image"}
+                className="featureImage focus-outline"
+                tabIndex={0}
+              />
+            }
+          </Container>
         ) : (
           <iframe
-            className="featureVideo"
+            tabIndex={0}
+            className="featureVideo focus-outline"
             width="100%"
             height="360"
             allowFullScreen
@@ -123,15 +159,23 @@ const Feature = ({
             letterSpacing="2px"
             textTransform="uppercase"
             fontFamily="sans-serif"
-            color="#707172"
+            color={titleColor}
             tabIndex={0}
             className="focus-outline"
           >
             {headingText}
           </Text>
-          <Text as={"p"} fontSize="18px" fontWeight="400" tabIndex={0} className="focus-outline">
+          <Text as={"p"} fontSize="18px" fontWeight="400" tabIndex={0} className="focus-outline" color={paraColor}>
             {headingPara}
           </Text>
+          {haveAButton && (
+            <Text color={paraColor}>
+              {buttonText}{" "}
+              <Text as={"a"} href={linkUrl} className="featureButtonLink focus-outline" color={paraColor}>
+                {linkText}
+              </Text>{" "}
+            </Text>
+          )}
         </Flex>
       )}
     </Flex>

@@ -63,9 +63,12 @@ svg.company-logo text.company-logo-text {
 }
 
 .magneto {
-  width: 280px;
-  height: 280px;
-  padding: 40px;
+  position: absolute;
+  bottom: 24px;
+  left: calc(50% - 112px);
+  width: 224px;
+  height: 224px;
+  padding: 24px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -73,19 +76,19 @@ svg.company-logo text.company-logo-text {
   justify-content: center;
   align-items: center;
   transition:
-    box-shadow 0.3s ease-in-out,
-    color 0.3s ease-in-out,
-    background 0.3s ease-in-out;
-  background: transparent;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-  color: #000000;
-  border: 2px solid black;
+    box-shadow 0.4s ease-in-out,
+    color 0.4s ease-in-out,
+    background 0.4s ease-in-out;
+  box-shadow: 0 20px 40px rgba(57, 93, 255, 0.8);
+  background: #395dff;
+  color: #ffffff;
+  border: 2px solid rgb(57, 93, 255);
 }
 
 .magneto:hover {
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 30px 50px rgba(57, 93, 255, 0.9);
+  background: #2d54ff;
   color: #ffffff;
-  border: 2px solid rgb(255, 255, 255);
 }
 
 .textWrapper {

@@ -55,7 +55,7 @@ const Magneto = () => {
         aria-label="Company motto sentence"
         tabIndex={0}
       >
-        EXPERIENCE
+        CATCH ME
       </Text>
     </button>
   );

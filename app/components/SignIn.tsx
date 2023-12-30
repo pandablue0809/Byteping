@@ -146,7 +146,7 @@ const SignIn = () => {
         onClick={submitHandler}
         border="2px solid black"
         hColor="white"
-        className="signInButton focus-outline"
+        className="signInButton focus-outline smoothBgAndColorTransition"
         data-cy="signInSubmitButton"
         aria-label="Click to submit the Sign In credentials."
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -170,7 +170,7 @@ const SignIn = () => {
         onClick={guestSubmitHandler}
         border="2px solid black"
         hColor="white"
-        className="guestPassword focus-outline"
+        className="guestPassword focus-outline smoothBgAndColorTransition"
         data-cy="signInGuestButton"
         aria-label="Click to get the Guest User credentials."
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {

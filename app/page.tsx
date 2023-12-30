@@ -11,7 +11,7 @@ import Container from "./styles/Container.styled";
 import Theme from "./styles/Theme.styled";
 import ScrollArrow from "./components/ScrollArrow";
 import WhatMakesItDifferent from "./components/WhatMakesItDifferent";
-import Feature from "./components/Feature";
+import Features from "./components/Features";
 
 const Home = () => {
   const router = useRouter();
@@ -81,18 +81,7 @@ const Home = () => {
         />
       </Flex>
       <WhatMakesItDifferent />
-      <Feature
-        headingText="Web accessibility"
-        headingPara="I design web apps with a touch of magic, making them accessible to all by weaving the threads of inclusivity into every line of code."
-        isAImage={false}
-        videoSrc="https://www.youtube.com/embed/0jjR-d2XnzE?si=G8VoZiB3sVsoQ4Kc"
-      />
-      <Feature
-        headingText="E2E Testing"
-        headingPara="I write tests that embrace failure gracefully and ironically, struggle to craft ones that always succeed. It's a coding paradox."
-        isAImage={false}
-        videoSrc="https://www.youtube.com/embed/VBgdEkmweQQ?si=UGqnG__0caal4oX7"
-      />
+      <Features />
       <LoginContainer />
     </>
   );

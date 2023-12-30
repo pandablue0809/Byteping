@@ -189,6 +189,8 @@ const ContactList = ({ fetchAgain }: { fetchAgain: boolean }) => {
             </Flex>
           </Flex>
         ))
+      ) : chats?.length === 0 ? (
+        <Text color={isDark ? Theme.colors.white : Theme.colors.black}>Select your buddy to ping a byte...</Text>
       ) : (
         <Loader height="100%" />
       )}
