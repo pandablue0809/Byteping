@@ -157,6 +157,10 @@
   }
 
   .featureVideo {
-    height: 300px;
+    height: 360px;
+  }
+
+  .featureImage {
+    height: 360px;
   }
 }

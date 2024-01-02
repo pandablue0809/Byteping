@@ -64,11 +64,11 @@ svg.company-logo text.company-logo-text {
 
 .magneto {
   position: absolute;
-  bottom: 24px;
-  left: calc(50% - 112px);
-  width: 224px;
-  height: 224px;
-  padding: 24px;
+  bottom: 32px;
+  left: calc(50% - 90px);
+  width: 180px;
+  height: 180px;
+  padding: 16px;
   border: none;
   border-radius: 50%;
   cursor: pointer;

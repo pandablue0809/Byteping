@@ -47,7 +47,7 @@ const Magneto = () => {
         as={"span"}
         ref={magnetoText}
         className="focus-outline magnetoText"
-        fontSize="1rem"
+        fontSize="0.7rem"
         fontWeight="500"
         letterSpacing="8px"
         data-cy="companyMotto"
