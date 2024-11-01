@@ -1,3 +1,52 @@
+# 1.0.0 (2024-11-01)
+
+
+### Bug Fixes
+
+* **login:** fix login not throwing error for incorrect password ([5748d00](https://github.com/pandablue0809/Byteping/commit/5748d0003428ccab9427a14ff04724537d5a4304))
+* **yaml:** fix yaml format in releaserc file ([7759b83](https://github.com/pandablue0809/Byteping/commit/7759b8382f7f0d96876bc988e6da223d63440f60))
+
+
+### Features
+
+* **accessibility:** add keyboard and speech helpers on sign in and up ([25ff795](https://github.com/pandablue0809/Byteping/commit/25ff795475df166e925b38ff3600ca468d09282a))
+* **audio:** add sound for dark mode switch and re-format date util ([c3bbf64](https://github.com/pandablue0809/Byteping/commit/c3bbf64ee61c759af2b5f118b6ec8d46d95d832a))
+* **chat:** create chat window based on selected user ([6c1867d](https://github.com/pandablue0809/Byteping/commit/6c1867d1a7fa2636d0f2d2ea63e99a322b17760d))
+* **chat:** create ui for sender and user messages in scroll window ([44db0fb](https://github.com/pandablue0809/Byteping/commit/44db0fb2609c314e036b836e69de89822922b07d))
+* **cloudinary:** setup cloudinary integration for image upload ([010ae80](https://github.com/pandablue0809/Byteping/commit/010ae80bada225618f874aa75d22c664944e1a76))
+* **date:** add last message and date info in user chat tab ([013c232](https://github.com/pandablue0809/Byteping/commit/013c232edb72d7e96811da2a37fd07042cd35f0b))
+* **date:** add message date and scroll to contact list ([06b1bd4](https://github.com/pandablue0809/Byteping/commit/06b1bd46550ebf938916a56e38fb7af62eb5a0d5))
+* **font:** setup global font for the app ([3bf8634](https://github.com/pandablue0809/Byteping/commit/3bf8634e045b0efd594c301ce84cbffd7c3dc351))
+* **group:** create group chat modal and submit handler for group creation ([a99de7a](https://github.com/pandablue0809/Byteping/commit/a99de7ad916677850cf251a1fc140e8f21694285))
+* **group:** create group update modal and functionalities ([22f8a7f](https://github.com/pandablue0809/Byteping/commit/22f8a7f019ebb5da706a8336242bd511553acba6))
+* **group:** create modal for group creation and fetch all chats ([0e324a1](https://github.com/pandablue0809/Byteping/commit/0e324a1d8fc907e7f9cb1d37ef1a501e3ff15d78))
+* **gsap:** style features of byteping using gsap & split text js ([6138e50](https://github.com/pandablue0809/Byteping/commit/6138e502db974c55eb25ab543c260aa5195a5573))
+* **message:** create selected chat ui and utils for fetching and sending messages ([82320c0](https://github.com/pandablue0809/Byteping/commit/82320c0321b764a681799f028ba310db58fa10a4))
+* **message:** create ui for messages based on sender ([6650ead](https://github.com/pandablue0809/Byteping/commit/6650eadc5c6a4138b349a8d99bd8259462b82be7))
+* **motion:** style the landing page with features and web motion ([441a51b](https://github.com/pandablue0809/Byteping/commit/441a51b186f22283a25ae200378ac36c266a7118))
+* **nav:** create profile modal component and notification dropdown ([934900f](https://github.com/pandablue0809/Byteping/commit/934900f1834b920878166692672900460ae03caa))
+* **route:** add global state for notification and fix chats route ([ba51e03](https://github.com/pandablue0809/Byteping/commit/ba51e03a4d478d955b38cf9f1b3be10c4eacb3d9))
+* **search:** add search for users functionality in side drawer ([fee9023](https://github.com/pandablue0809/Byteping/commit/fee9023857ac40f747c0d5f532de6e7ea36eb17d))
+* **search:** create profile modal and side drawer for user search ([ce23d0d](https://github.com/pandablue0809/Byteping/commit/ce23d0dbf322cb2a78d2dc22c2b58caa86f0efc3))
+* **signup:** complete e2e cypress test for sign up workflow ([02961b4](https://github.com/pandablue0809/Byteping/commit/02961b4fef33821576bde432bf873e9a752d42b2))
+* **socket:** add websocket connection for sending and fetching messages ([1b5720e](https://github.com/pandablue0809/Byteping/commit/1b5720e293ea51dfc35e8013a3d2ae26dd21b607))
+* **socket:** create socket.io connection b/w server for real time chat ([2d68d19](https://github.com/pandablue0809/Byteping/commit/2d68d19167d78089ee0212859ea94f7c02c49690))
+* **style:** create custom flex container using styled components ([ff247b9](https://github.com/pandablue0809/Byteping/commit/ff247b988b71b693092a172d2b0fbe968a55c9cc))
+* **style:** fix profile icons and make js to ts ([c339ecd](https://github.com/pandablue0809/Byteping/commit/c339ecd0433d4c44f047220774ae75ab43440347))
+* **style:** setup styled components and initial chat page layout ([069499f](https://github.com/pandablue0809/Byteping/commit/069499facc136d1b55a47250f4d25e36e121d089))
+* **tanstack:** use tanstack react query for optimal data fetching ([2023173](https://github.com/pandablue0809/Byteping/commit/20231731a175a2ed145804bdd783faa24d66af3c))
+* **time:** add time of messages and fix typing indicator ui shaking ([90cebc2](https://github.com/pandablue0809/Byteping/commit/90cebc284d69517f3eacdd44504af2dc1513fc19))
+* **ui:** build ui for navbar and chat window ([0dc6f22](https://github.com/pandablue0809/Byteping/commit/0dc6f22becb5b893a1357e298709e3f1c27bc7db))
+* **ui:** create dark & light mode theme state across app ([9684d1d](https://github.com/pandablue0809/Byteping/commit/9684d1d114f5d71ebb1ffc8efec703729019d512))
+* **ui:** create ui for dark mode and notifications ([f96d98c](https://github.com/pandablue0809/Byteping/commit/f96d98cdfaaf5bfa6eeeb379d775a4c843c0cbb7))
+* **ui:** setup figma font colors and styled global components ([e252de6](https://github.com/pandablue0809/Byteping/commit/e252de64020dae0a355d6af75e47683796674bc5))
+* **window:** create chat and selected chat window based on selected user ([2195ce2](https://github.com/pandablue0809/Byteping/commit/2195ce200da1183d2f8a635b939a6bdd26f9b22b))
+
+
+### Performance Improvements
+
+* **tanstack:** refactor post request to tanstack mutation query for optimizing ([99c10ad](https://github.com/pandablue0809/Byteping/commit/99c10ad3e0ca79115cf963aa9b9068c72821330d))
+
 # [1.29.0](https://github.com/arjunan-k/byteping/compare/v1.28.0...v1.29.0) (2023-12-30)
 
 
