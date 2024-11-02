@@ -9,7 +9,7 @@ const Features = () => {
         headingText="Web accessibility"
         headingPara="I design web apps with a touch of magic, making them accessible to all by weaving the threads of inclusivity into every line of code."
         isAImage={false}
-        videoSrc="https://www.youtube.com/embed/0jjR-d2XnzE?si=G8VoZiB3sVsoQ4Kc"
+        videoSrc="https://www.youtube.com/embed/0jjR-d2XnzE?si=G8VoZiB3sVsoQ4c"
         bgColor="#A1EEBD"
         titleColor="black"
         paraColor="black"
@@ -26,7 +26,7 @@ const Features = () => {
         headingText="Byteping Functionality"
         headingPara="Your time is valuable, so there's no need to attempt guest credentials and wait for the free serverless API of Render to restart. I have all the functionalities recorded."
         isAImage={false}
-        videoSrc="https://www.youtube.com/embed/GfginJ1uzgk?si=6CQiJBELzmBRUg-6"
+        videoSrc="https://www.youtube.com/embed/GfginJ1uzgk?si=6CQiJBELzmBRUg6"
         bgColor="#FFD1DA"
         titleColor="black"
         paraColor="black"
@@ -40,14 +40,14 @@ const Features = () => {
         bgColor="#B31312"
         haveAButton
         linkText="Github"
-        linkUrl="https://github.com/arjunan-k/byteping"
+        linkUrl="https://github.com/pandablue0809/byteping"
         buttonText="Check out the code in"
       />
       <Feature
         headingText="E2E Testing"
         headingPara="I write tests that embrace failure gracefully and ironically, struggle to craft ones that always succeed. It's a coding paradox."
         isAImage={false}
-        videoSrc="https://www.youtube.com/embed/VBgdEkmweQQ?si=UGqnG__0caal4oX7"
+        videoSrc="https://www.youtube.com/embed/VBgdEkmweQQ?si=UGqnG__0caal4oX"
         bgColor="#F6F7C4"
         titleColor="black"
         paraColor="black"
